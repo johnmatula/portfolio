@@ -1,58 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Chris Withers • Actor in NYC</title>
-  <meta name="author" content="Chris Withers">
-  <meta name="description" content="Chris Withers is an actor in New York City.">
-  <meta name="keywords" content="Chris Withers,cwithers,heyitscdubs,actor,NYC">
-  <meta property="og:title" content="Chris Withers" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://chriswithers.me" />
-  <meta property="og:image" content="https://chriswithers.me/img/opengraph.jpg" />
-  <meta property="og:description" content="Chris Withers is an actor in New York City area.">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-WMLZGTQ');</script>
-  <!-- End Google Tag Manager -->
-  <link rel="stylesheet" href="css/main.css">
+  ${require('_shell/_head.html')
+    pagetitle="John Matula"
+    description="John Matula is a product designer in New York City."
+    url="https://johnmatu.la"
+    ogimage="XXX!!"
+  }
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WMLZGTQ"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  ${require('./_nav.html')}
+  ${require('_shell/_bodyopening.html')}
+  ${require('_shell/_nav.html')}
 
-  <div class="static">
-  ${require('./_about.html')}
-  ${require('./_resume.html')}
-  ${require('./_photos.html')}
-  ${require('./_headshots.html')}
-  ${require('./_videos.html')}
-  ${require('./_footer.html')}
-  </div>
 
-  ${require('./_contact.html')}
 
-  <script src="js/tobi.min.js"></script>
-  <script src="js/menuspy.min.js"></script>
-  <script src="js/smoothscroll.min.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    const tobi = new Tobi();
-
-    var elm = document.querySelector('.nav');
-    var ms = new MenuSpy(elm, {enableLocationHash: false});
-    var scroll = new SmoothScroll('a[href*="#"]', {
-      speed: 200,
-      offset: 100
-    });
-  </script>
+  ${require('_shell/_footer.html')}
+  ${require('_shell/_contact.html')}
+  ${require('_shell/_bodyclosing.html')}
 </body>
 </html>
