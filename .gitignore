@@ -2,7 +2,7 @@
 node_modules
 dist
 .DS_Store
-src/html/case-studies/frontend-academy
-src/html/case-studies/product-design
-src/html/case-studies/seven-year-cleanup
-src/html/case-studies/ux-feedback-sessions
+src/html/case-studies/frontend-academy/*
+src/html/case-studies/product-design/*
+src/html/case-studies/seven-year-cleanup/*
+src/html/case-studies/ux-feedback-sessions/*
