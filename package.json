@@ -9,7 +9,7 @@
     "watch:html": "watch 'npm run build:html' src/html",
     "watch:js": "watch 'npm run build:js' src/js",
     "watch:img": "watch 'npm run build:img' src/img",
-    "build:vendorjs": "mkdir -p dist/js && minify src/js/tobi.js --out-file dist/js/tobi.min.js && minify src/js/menuspy.js --out-file dist/js/menuspy.min.js && minify src/js/smoothscroll.js --out-file dist/js/smoothscroll.min.js",
+    "build:vendorjs": "mkdir -p dist/js && minify src/js/vendor/tobi.js --out-file dist/js/tobi.min.js && minify src/js/vendor/menuspy.js --out-file dist/js/menuspy.min.js && minify src/js/vendor/smoothscroll.js --out-file dist/js/smoothscroll.min.js && minify src/js/vendor/alpine.js --out-file dist/js/alpine.min.js && minify src/js/vendor/alpine.es5.js --out-file dist/js/alpine.es5.min.js",
     "build:css": "node-sass -r src/scss -o .tmp/css --output-style compressed && postcss .tmp/css/**/*.css --use autoprefixer -b '>= 0.75% in US' --base .tmp/css --dir dist/css",
     "build:html": "html-includes --src 'src/html' --dest 'dist'",
     "build:js": "mkdir -p dist/js && minify src/js/main.js --out-file dist/js/main.min.js",
