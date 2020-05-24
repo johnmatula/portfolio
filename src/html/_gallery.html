@@ -1,0 +1,12 @@
+<li class="gallery__thumbnail gallery__thumbnail--${props.block}">
+  <a href="${props.link}" class="gallery__link gallery__link--${props.block} lightbox">
+    <img
+      srcset="
+        ${props.src1x},
+        ${props.src2x} 2x,
+        ${props.src3x} 3x
+      "
+      src="${props.src3x}"
+      class="gallery__image gallery__image--${props.block}" alt="${props.caption}" />
+  </a>
+</li>

@@ -1,0 +1,40 @@
+// This is for the gallery thumbnail selector. For the component,
+// see vendor/tobi since all of those styles come straight from the plugin.
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: $space-gridoffset;
+  padding: 0;
+
+  &__thumbnail {
+    display: flex;
+    flex: 0 1 50%;
+    margin: 0;
+    padding: $space-grid;
+
+    @include at-least(narrow) {
+      flex: 0 1 33.33%;
+    }
+
+    @include at-least(wide) {
+      flex: 0 1 25%;
+    }
+
+    @include at-least(extrawide) {
+      flex: 0 1 20%;
+    }
+  }
+
+  &__link {
+    display: block;
+    flex: 1 1 100%;
+  }
+
+  &__image {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}

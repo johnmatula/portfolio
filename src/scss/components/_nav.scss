@@ -1,0 +1,142 @@
+.nav {
+  background: $color-shade-200;
+  bottom: $height-contact-narrow;
+  box-shadow: $shadow-upward;
+  height: $height-nav-narrow;
+  left: 0;
+  padding: 0 $space-c;
+  position: fixed;
+  right: 0;
+  z-index: 20;
+
+  @include at-least(medium) {
+    background: linear-gradient(143deg, $color-blue-300 40%, $color-blue-500 70%);
+    bottom: unset;
+    box-shadow: $shadow-nav-medium;
+    height: $height-nav-medium;
+    position: absolute;
+    top: 0;
+
+    @include at-least(tall) {
+      position: fixed;
+    }
+  }
+
+  &__contents {
+    align-items: center;
+    display: flex;
+    height: 100%;
+  }
+
+  &__header {
+    display: none;
+
+    @include at-least(medium) {
+      display: block;
+      flex: 1 1 100%;
+    }
+  }
+
+  &__headertitle {
+    @include font(700, 36px, 30px, -0.75px, $font-zilla);
+
+    color: $color-shade-100;
+    margin: 0;
+    padding: 0;
+    text-shadow: 0 0 4px rgba($color-blue-700,.45), 0 0 10px rgba($color-blue-700,.3);
+
+    @include at-least(wide) {
+      @include font(700, 50px, 40px, -1px, $font-zilla);
+    }
+  }
+
+  &__links {
+    justify-content: space-between;
+    display: flex;
+    flex: 1 1 100%;
+    height: 100%;
+    list-style: none;
+    margin: 0 $space-a*-1;
+    padding: 0;
+
+    @include at-least(medium) {
+      flex: 0 0 auto;
+      justify-content: flex-end;
+    }
+
+    @include at-least(wide) {
+      margin: 0 $space-b*-1;
+    }
+  }
+
+  &__linkitem {
+    display: flex;
+
+    &--narrow {
+      display: none;
+
+      @include at-least(narrow) {
+        display: flex;
+      }
+    }
+  }
+
+  &__link {
+    @include font(400, 18px, 18px, -.26px);
+
+    align-items: center;
+    color: $color-blue-500;
+    display: flex;
+    padding: 0 $space-a;
+    position: relative;
+    text-decoration: none;
+
+    @include at-least(medium) {
+      @include font(400, 20px, 20px, -.35px);
+      color: $color-shade-100;
+    }
+
+    @include at-least(wide) {
+      @include font(400, 24px, 24px, -.4px);
+
+      padding: 0 $space-b;
+    }
+
+    &:hover, &:focus {
+      color: $color-blue-300;
+
+      @include at-least(medium) {
+        color: $color-shade-100;
+      }
+    }
+
+    &::after {
+      background: $color-blue-300;
+      bottom: to-rem(8px);
+      content: '';
+      display: block;
+      height: 2px;
+      left: $space-a;
+      opacity: 0;
+      position: absolute;
+      right: $space-a;
+      transition: opacity .1s, transform 0s .1s;
+      transform: translateY(6px);
+
+      @include at-least(medium) {
+        bottom: to-rem(14px);
+      }
+
+      @include at-least(wide) {
+        left: $space-b;
+        right: $space-b;
+      }
+    }
+  }
+
+  &__linkitem.js--active .nav__link::after {
+    opacity: 0;
+    //transform: translateY(0px);
+    //transition: opacity .1s, transform .1s ease-out;
+  }
+}

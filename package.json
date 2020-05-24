@@ -1,0 +1,55 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "John’s personal portfolio site.",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-p build:vendorjs watch:scss watch:js watch:html watch:img browsersync",
+    "watch:scss": "watch 'npm run build:css' src/scss",
+    "watch:html": "watch 'npm run build:html' src/html",
+    "watch:js": "watch 'npm run build:js' src/js",
+    "watch:img": "watch 'npm run build:img' src/img",
+    "build:vendorjs": "mkdir -p dist/js && minify src/js/tobi.js --out-file dist/js/tobi.min.js && minify src/js/menuspy.js --out-file dist/js/menuspy.min.js && minify src/js/smoothscroll.js --out-file dist/js/smoothscroll.min.js",
+    "build:css": "node-sass -r src/scss -o .tmp/css --output-style compressed && postcss .tmp/css/**/*.css --use autoprefixer -b '>= 0.75% in US' --base .tmp/css --dir dist/css",
+    "build:html": "html-includes --src 'src/html' --dest 'dist'",
+    "build:js": "mkdir -p dist/js && minify src/js/main.js --out-file dist/js/main.min.js",
+    "build:img": "mkdir -p dist/img && rsync src/img/* dist/img",
+    "browsersync": "browser-sync start --server 'dist' --files 'dist'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnmatula/portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "CSS",
+    "SCSS"
+  ],
+  "author": "John Matula",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnmatula/portfolio/issues"
+  },
+  "homepage": "https://github.com/johnmatula/portfolio#readme",
+  "dependencies": {
+    "autoprefixer": "^9.7.0",
+    "babel": "^6.23.0",
+    "babel-minify": "^0.5.1",
+    "browser-sync": "^2.26.7",
+    "html-includes": "^4.2.0",
+    "html-minifier": "^4.0.0",
+    "node-sass": "^4.13.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.3",
+    "watch": "^1.0.2"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    ">= 0.75%"
+  ]
+}

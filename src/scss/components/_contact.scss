@@ -1,0 +1,157 @@
+.contact {
+  background: $color-shade-300;
+  bottom: 0;
+  height: $height-contact-narrow;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 20;
+  
+  @include at-least(narrow) {
+    padding: 0 $space-b;
+  }
+  
+  @include at-least(medium) {
+    background: $color-shade-200;
+    box-shadow: $shadow-upward;
+    height: $height-contact-medium;
+    padding: $space-a $space-c;
+  }
+  
+  &__contents {
+    align-items: stretch;
+    display: flex;
+    height: 100%;
+  }
+  
+  &__resume {
+    @include font(600, 18px, 20px, -.2px);
+    
+    align-items: center;
+    background-image: url('../img/resume.png');
+    background-position: right 4% top;
+    background-repeat: no-repeat;
+    background-size: 60px auto;
+    background-color: $color-pink-500;
+    color: $color-shade-200;
+    display: flex;
+    flex: 1 1 100%;
+    order: 9;
+    padding: 0 $space-a;
+    
+    &:hover, &:focus {
+      background-color: $color-pink-300;
+      color: $color-shade-100;
+    }
+    
+    &:active {
+      background-color: $color-pink-700;
+      color: $color-shade-100;
+    }
+    
+    @include at-least(extranarrow) {
+      background-size: 40% auto;
+    }
+    
+    @include at-least(narrow) {
+      background-position: right -15px top;
+    }
+    
+    @include at-least(medium) {
+      background-size: 100px auto;
+      border-radius: 4px;
+      box-shadow: $shadow-button;
+      flex: 0 0 auto;
+      order: unset;
+      padding-right: 100px;
+    }
+  }
+  
+  &__resumedownload {
+    display: none;
+    
+    @include at-least(medium) {
+      display: inline;
+    }
+  }
+  
+  &__links {
+    display: flex;
+    flex: 0 0 auto;
+    
+    @include at-least(medium) {
+      justify-content: flex-end;
+      flex: 1 1 100%;
+      padding: 0 0 0 $space-a;
+    }
+  }
+  
+  &__social {
+    display: flex;
+    flex: 0 0 auto;
+    
+    @include at-least(wide) {
+      justify-content: flex-end;
+      flex: 1 1 100%;
+    }
+  }
+  
+  &__link {
+    @include font(600, 18px, 20px, -.2px);
+    
+    align-items: center;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 26px 26px;
+    color: $color-shade-100;
+    display: flex;
+    flex: 0 0 auto;
+    text-indent: -9999px;
+    width: to-rem(44px);
+    
+    @include at-least(narrow) {
+      background-size: 32px 32px;
+      justify-self: flex-end;
+      width: to-rem(64px);
+    }
+    
+    &--email {
+      background-image: url('../img/icon--mail.svg');
+      
+      @include at-least(wide) {
+        align-items: center;
+        background-position: left $space-a center;
+        border-radius: 4px;
+        box-shadow: $shadow-pinkborder;
+        color: $color-shade-900;
+        display: flex;
+        flex: 0 0 auto;
+        padding: 0 $space-a 0 60px;
+        text-indent: 0;
+        width: auto;
+        
+        &:hover, &:focus {
+          box-shadow: $shadow-pinkborder-hover;
+          color: $color-shade-900;
+        }
+        
+        &:active {
+          box-shadow: $shadow-pinkborder-active;
+          color: $color-shade-900;
+        }
+      }
+    }
+    
+    &--instagram {
+      background-image: url('../img/icon--instagram.svg');
+    }
+    
+    &--twitter {
+      background-image: url('../img/icon--twitter.svg');
+    }
+    
+    &--youtube {
+      background-image: url('../img/icon--youtube.svg');
+    }
+  }
+}

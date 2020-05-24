@@ -1,0 +1,35 @@
+// Colors
+$color-blue-300: #64d2e3;
+$color-blue-500: #34a6c2;
+$color-blue-700: #004152;
+$color-pink-300: #ff7094;
+$color-pink-500: #e46384;
+$color-pink-700: #c93a5e;
+$color-shade-100: #fbfcfe;
+$color-shade-200: #f4f5f7;
+$color-shade-300: #e7e8ea;
+$color-shade-500: #a5a6a9;
+$color-shade-900: #0f0f0f;
+
+// Spacings
+$space-a: to-rem(10px);
+$space-b: to-rem(20px);
+$space-c: to-rem(30px);
+$space-d: to-rem(40px);
+$space-e: to-rem(50px);
+$space-gridoffset: to-rem(-10px);
+$space-grid: to-rem(10px);
+
+// Specific heights
+$height-contact-narrow: to-rem(44px);
+$height-contact-medium: to-rem(70px);
+$height-nav-narrow: to-rem(44px);
+$height-nav-medium: to-rem(80px);
+
+// Shadows
+$shadow-nav-medium: 0 1px 0px rgba(0,0,0,.1), 0 3px 9px rgba(0,0,0,.12);
+$shadow-button: 0 0 0 1px rgba(0,0,0,.1), 0 2px 5px rgba(0,0,0,.4);
+$shadow-upward: 0 -1px 0px rgba(0,0,0,.1), 0 -3px 9px rgba(0,0,0,.12);
+$shadow-pinkborder: 0 0 0 2px $color-pink-500 inset;
+$shadow-pinkborder-hover: 0 0 0 2px $color-pink-300 inset;
+$shadow-pinkborder-active: 0 0 0 2px $color-pink-700 inset;
