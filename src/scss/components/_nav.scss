@@ -1,142 +1,145 @@
 .nav {
-  background: $color-shade-200;
-  bottom: $height-contact-narrow;
-  box-shadow: $shadow-upward;
-  height: $height-nav-narrow;
-  left: 0;
-  padding: 0 $space-c;
   position: fixed;
-  right: 0;
-  z-index: 20;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 9rem;
+  transition: z-index 0s .35s;
+  z-index: 2;
 
-  @include at-least(medium) {
-    background: linear-gradient(143deg, $color-blue-300 40%, $color-blue-500 70%);
-    bottom: unset;
-    box-shadow: $shadow-nav-medium;
-    height: $height-nav-medium;
+  &:hover, &:focus, &:focus-within {
+    transition: z-index 0s;
+    transform: scaleX(1);
+    z-index: 10;
+
+    .nav__list {
+      transform: scaleX(1);
+    }
+
+    .nav__link {
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    .nav__linktext {
+      opacity: 1;
+      transition: opacity .2s .15s, transform .35s;
+      transform: translateX(0);
+    }
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  &::before {
+    background: rgba(0, 60, 255, 1);
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
     position: absolute;
+    right: 0;
     top: 0;
-
-    @include at-least(tall) {
-      position: fixed;
-    }
+    transform: scaleX(var(--scale-sidebar-collapsed));
+    transform-origin: top left;
+    transition: transform .35s;
   }
 
-  &__contents {
-    align-items: center;
-    display: flex;
-    height: 100%;
-  }
-
-  &__header {
-    display: none;
-
-    @include at-least(medium) {
-      display: block;
-      flex: 1 1 100%;
-    }
-  }
-
-  &__headertitle {
-    @include font(700, 36px, 30px, -0.75px, $font-zilla);
-
-    color: $color-shade-100;
+  &__list {
+    list-style: none;
     margin: 0;
     padding: 0;
-    text-shadow: 0 0 4px rgba($color-blue-700,.45), 0 0 10px rgba($color-blue-700,.3);
-
-    @include at-least(wide) {
-      @include font(700, 50px, 40px, -1px, $font-zilla);
-    }
   }
 
-  &__links {
-    justify-content: space-between;
-    display: flex;
-    flex: 1 1 100%;
-    height: 100%;
-    list-style: none;
-    margin: 0 $space-a*-1;
-    padding: 0;
-
-    @include at-least(medium) {
-      flex: 0 0 auto;
-      justify-content: flex-end;
-    }
-
-    @include at-least(wide) {
-      margin: 0 $space-b*-1;
-    }
-  }
-
-  &__linkitem {
+  &__listitem {
     display: flex;
 
-    &--narrow {
+    &::before {
       display: none;
-
-      @include at-least(narrow) {
-        display: flex;
-      }
     }
   }
 
   &__link {
-    @include font(400, 18px, 18px, -.26px);
-
     align-items: center;
-    color: $color-blue-500;
+    background: rgba(255,255,255,0);
+    color: black;
     display: flex;
-    padding: 0 $space-a;
+    flex: 1 1 100%;
+    line-height: 1rem;
+    padding-right: .5rem;
     position: relative;
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
 
-    @include at-least(medium) {
-      @include font(400, 20px, 20px, -.35px);
-      color: $color-shade-100;
-    }
-
-    @include at-least(wide) {
-      @include font(400, 24px, 24px, -.4px);
-
-      padding: 0 $space-b;
-    }
-
-    &:hover, &:focus {
-      color: $color-blue-300;
-
-      @include at-least(medium) {
-        color: $color-shade-100;
-      }
-    }
-
-    &::after {
-      background: $color-blue-300;
-      bottom: to-rem(8px);
+    // Nav link icon
+    &::before {
+      background-color: fuchsia;border-radius:50%;
       content: '';
       display: block;
-      height: 2px;
-      left: $space-a;
-      opacity: 0;
-      position: absolute;
-      right: $space-a;
-      transition: opacity .1s, transform 0s .1s;
-      transform: translateY(6px);
+      flex: 0 0 auto;
+      height: 1.5rem;
+      margin: .75rem 1.25rem;
+      position: relative;
+      width: 1.5rem;
+      z-index: 2;
+    }
 
-      @include at-least(medium) {
-        bottom: to-rem(14px);
+    &--logo {
+      height: 5rem;
+
+      &::before {
+        margin: .75rem 1rem;
+        width: 2rem;
+        height: 2rem;
       }
+    }
 
-      @include at-least(wide) {
-        left: $space-b;
-        right: $space-b;
+    // Hover and active background highlight
+    &::after {
+      content: '';
+      background: yellow;
+      bottom: 0;
+      display: block;
+      left: 0;
+      opacity: 0;
+      right: 0;
+      position: absolute;
+      transform: scaleX(var(--scale-sidebar-collapsed));
+      transform-origin: top left;
+      transition: opacity .15s, transform .35s;
+      top: 0;
+      z-index: 0;
+    }
+
+    &:hover, &:focus, &:focus-within {
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      &::after {
+        opacity: .75;
+        transition: transform .35s;
       }
     }
   }
 
-  &__linkitem.js--active .nav__link::after {
+  &__linktext {
+    font-size: 1rem;
     opacity: 0;
-    //transform: translateY(0px);
-    //transition: opacity .1s, transform .1s ease-out;
+    position: relative;
+    transform: translateX(-5rem);
+    transition: opacity .25s, transform .35s;
+    z-index: 1;
+
+    &--logo {
+      font-size: 1.25rem;
+      line-height: 1rem;
+      font-weight: 800;
+    }
   }
 }

@@ -2,39 +2,25 @@
 // see vendor/tobi since all of those styles come straight from the plugin.
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  margin: $space-gridoffset;
-  padding: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column: gallery;
+  grid-gap: 1rem;
+  grid-template: auto / repeat(5, 1fr);
+}
 
-  &__thumbnail {
-    display: flex;
-    flex: 0 1 50%;
-    margin: 0;
-    padding: $space-grid;
+.thumbnail {
+  background: #e53200;
+  outline: 0;
+  grid-column-end: span 1;
+  grid-row-end: span 1;
+  min-height: 4rem;
 
-    @include at-least(narrow) {
-      flex: 0 1 33.33%;
-    }
-
-    @include at-least(wide) {
-      flex: 0 1 25%;
-    }
-
-    @include at-least(extrawide) {
-      flex: 0 1 20%;
-    }
+  &--two-row {
+    grid-row-end: span 2;
   }
 
-  &__link {
-    display: block;
-    flex: 1 1 100%;
-  }
-
-  &__image {
-    display: block;
-    height: auto;
-    width: 100%;
+  &--two-column {
+    grid-column-end: span 2;
   }
 }
