@@ -1,3 +1,42 @@
+:root {
+  // Vars manipulated by JavaScript
+  --width-page: 1;
+  --scroll-y: 0;
+
+  // Sizes
+  --width-sidebar-expanded: 144;
+  --width-sidebar-collapsed: 64;
+  --scale-sidebar-collapsed: calc(var(--width-sidebar-collapsed) / var(--width-sidebar-expanded));
+  --scale-sidebar-contents: calc(1 / var(--scale-sidebar-collapsed));
+  --width-sidebar-difference: calc(var(--width-sidebar-expanded) - var(--width-sidebar-collapsed));
+  --width-content: calc(var(--width-page) - var(--width-sidebar-collapsed));
+  --scale-nav: calc((var(--width-content) - var(--width-sidebar-difference)) / (var(--width-content)));
+
+  --percent-scrolled: calc(var(--scroll-y) * 1px);
+
+  @media (min-width: 512px) {
+    --width-sidebar-expanded: 162;
+    --width-sidebar-collapsed: 72;
+  }
+
+  @media (min-width: 640px) {
+    --width-sidebar-expanded: 180;
+    --width-sidebar-collapsed: 80;
+  }
+}
+
+.a11y--hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+
+/*
 // Colors
 $color-blue-300: #64d2e3;
 $color-blue-500: #34a6c2;
@@ -32,4 +71,4 @@ $shadow-button: 0 0 0 1px rgba(0,0,0,.1), 0 2px 5px rgba(0,0,0,.4);
 $shadow-upward: 0 -1px 0px rgba(0,0,0,.1), 0 -3px 9px rgba(0,0,0,.12);
 $shadow-pinkborder: 0 0 0 2px $color-pink-500 inset;
 $shadow-pinkborder-hover: 0 0 0 2px $color-pink-300 inset;
-$shadow-pinkborder-active: 0 0 0 2px $color-pink-700 inset;
+$shadow-pinkborder-active: 0 0 0 2px $color-pink-700 inset;*/
