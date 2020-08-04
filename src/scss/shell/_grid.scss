@@ -14,8 +14,8 @@
   @media (min-width: 512px) {
     grid-template:
       minmax(min-content, 24vh) auto /
-      [sidebar-start fullwidth-start content-start summary-start content-aside-start spec-key-start] minmax(min-content, 8rem)
-      [gallery-start] 1fr
+      [sidebar-start fullwidth-start content-start summary-start content-aside-start spec-key-start gallery-start] minmax(min-content, 8rem)
+      1fr
       [spec-key-end spec-value-start] 1fr
       [content-aside-end aside-start] 1fr
       1fr
