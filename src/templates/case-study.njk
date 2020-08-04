@@ -1,0 +1,13 @@
+{% extends "../components/shell/_shell.njk" %}
+
+** Case Study Template **
+
+{% block content %}
+
+  <blockquote>
+  {{ summary }}
+</blockquote>
+
+  {{ content | safe }}
+
+{% endblock %}
