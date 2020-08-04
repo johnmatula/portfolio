@@ -24,7 +24,7 @@
   .nav:hover ~ .content &,
   .nav:focus ~ .content &,
   .nav:focus-within ~ .content & {
-    transform: translateX(0) scale(var(--scale-nav));
+    transform: translateX(0) scale3d(var(--scale-nav), var(--scale-nav), 0);
     transition: transform .35s;
 
     &::before {
