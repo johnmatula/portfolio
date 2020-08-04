@@ -1,0 +1,4 @@
+{
+  "layout": "case-study",
+  "permalink": "projects/{{ title | slug }}/index.html"
+}
