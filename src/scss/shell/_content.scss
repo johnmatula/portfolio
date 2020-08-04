@@ -35,8 +35,13 @@ hr.section-rule {
   height: 4rem;
   position: relative;
 
+  @media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 196dpi) {
+    transform: scaleY(.5);
+  }
+
   &::before {
-    background-color: #ccc;
+    background-color: #999;
     content: '';
     display: block;
     left: 0;
