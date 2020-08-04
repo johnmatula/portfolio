@@ -4,18 +4,12 @@
   "description": "John’s personal portfolio site.",
   "main": "index.js",
   "scripts": {
-    "start": "run-p build:vendorjs watch:scss watch:js watch:html watch:img browsersync",
-    "watch:scss": "watch 'npm run build:css' src/scss",
-    "watch:html": "watch 'npm run build:html' src/html",
-    "watch:js": "watch 'npm run build:js' src/js",
-    "watch:img": "watch 'npm run build:img' src/img",
-    "build:vendorjs": "mkdir -p dist/js && minify src/js/vendor/tobi.js --out-file dist/js/tobi.min.js && minify src/js/vendor/menuspy.js --out-file dist/js/menuspy.min.js && minify src/js/vendor/smoothscroll.js --out-file dist/js/smoothscroll.min.js && minify src/js/vendor/alpine.js --out-file dist/js/alpine.min.js && minify src/js/vendor/alpine.es5.js --out-file dist/js/alpine.es5.min.js",
-    "build:css": "node-sass -r src/scss -o .tmp/css --output-style compressed && postcss .tmp/css/**/*.css --use autoprefixer -b '>= 0.75% in US' --base .tmp/css --dir dist/css",
-    "build:html": "html-includes --src 'src/html' --dest 'dist'",
-    "build:js": "mkdir -p dist/js && minify src/js/main.js --out-file dist/js/main.min.js",
-    "build:img": "mkdir -p dist/img && rsync src/img/* dist/img",
-    "browsersync": "browser-sync start --server 'dist' --files 'dist'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:sass": "sass --style=compressed src/components:src/supporting/generated/css src/supporting/css:src/supporting/generated/css",
+    "build:js": "babel src/components --out-file src/supporting/generated/js/main.js --source-maps --ignore 'src/supporting/**/*.js'",
+    "watch:eleventy": "eleventy --serve",
+    "watch:sass": "npm run build:sass -- --watch",
+    "watch:js": "watch 'npm run build:js' src/components",
+    "start": "npm-run-all build:sass build:js --parallel watch:eleventy watch:sass watch:js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +18,8 @@
   "keywords": [
     "portfolio",
     "CSS",
-    "SCSS"
+    "SCSS",
+    "eleventy"
   ],
   "author": "John Matula",
   "license": "MIT",
@@ -32,18 +27,7 @@
     "url": "https://github.com/johnmatula/portfolio/issues"
   },
   "homepage": "https://github.com/johnmatula/portfolio#readme",
-  "dependencies": {
-    "autoprefixer": "^9.8.0",
-    "babel": "^6.23.0",
-    "babel-minify": "^0.5.1",
-    "browser-sync": "^2.26.7",
-    "html-includes": "^4.3.2",
-    "html-minifier": "^4.0.0",
-    "node-sass": "^4.14.1",
-    "npm-run-all": "^4.1.5",
-    "postcss-cli": "^7.1.1",
-    "watch": "^1.0.2"
-  },
+  "dependencies": {},
   "postcss": {
     "plugins": {
       "autoprefixer": {}
@@ -51,5 +35,17 @@
   },
   "browserslist": [
     ">= 0.75%"
-  ]
+  ],
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "autoprefixer": "^9.8.6",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1",
+    "sass": "^1.26.10",
+    "watch": "^1.0.2"
+  }
 }
