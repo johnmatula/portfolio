@@ -5,13 +5,13 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="John Matula">
-  <meta name="description" content="${props.description}">
+  <meta name="description" content="{{ opengraph }}">
   <meta name="keywords" content="John Matula,jmatula,matula,matulaspatula,UX,product designer">
-  <meta property="og:title" content="XXXXXX" />
+  <meta property="og:title" content="{{ title }} • John Matula" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="XXXXXX" />
+  <meta property="og:url" content="https://johnmatu.la{{ page.url }}" />
   <meta property="og:image" content="XXXXXX" />
-  <meta property="og:description" content="XXXXXX">
+  <meta property="og:description" content="{{ opengraph }}">
   <script type="module" src="/js/alpine.min.js"></script>
   <script nomodule src="/js/alpine-ie11.min.js" defer></script>
   <!--<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -25,7 +25,6 @@
 
 </head>
 <body>
-
   <!--<noscript>
     <iframe
       src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
@@ -36,8 +35,16 @@
   </noscript>
   -->
 
+  {% include "../nav/_nav.njk" %}
+
+  <main class="content">
+    <div class="structure">
+
   {% block content %}
   {% endblock %}
+
+    </div>
+  </main>
 
   <script src="/js/main.js"></script>
 </body>
