@@ -18,8 +18,6 @@ window.addEventListener('scroll', function (e) {
     });
     ticking = true;
   }
-
-  console.log('JS is so so SO fun!');
 });
 
 //# sourceMappingURL=main.js.map
