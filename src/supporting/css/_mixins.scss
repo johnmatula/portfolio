@@ -1,0 +1,41 @@
+$at-least-breakpoints: (
+  'compressed'    : (min-width:    1px),
+  'extranarrow'   : (min-width:  340px),
+  'narrow'        : (min-width:  460px),
+  'medium'        : (min-width:  680px),
+  'mediumwide'    : (min-width:  768px),
+  'wide'          : (min-width:  900px),
+  'extrawide'     : (min-width: 1200px),
+  'tall'          : (min-height: 550px)
+);
+
+@mixin at-least($name) {
+  // If the key exists in the map
+  @if map-has-key($at-least-breakpoints, $name) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($at-least-breakpoints, $name))} {
+      @content;
+    }
+  } @else {
+    @warn "No breakpoints map value exists for ‘#{$name}’.";
+  }
+}
+
+// Font utilities
+@function to-rem($size) {
+  $rem-size: $size / $base-font-size;
+  @return $rem-size * 1rem;
+}
+
+@mixin font($font-weight, $font-size, $line-height, $letter-spacing: null, $font-family: null) {
+  @if ($font-family) {
+    font-family: $font-family;
+  }
+  @if ($letter-spacing) {
+    letter-spacing: $letter-spacing / $base-font-size * 1rem;
+  }
+
+  font-size: $font-size / $base-font-size * 1rem;
+  font-weight: $font-weight;
+  line-height: $line-height / $base-font-size * 1rem;
+}
