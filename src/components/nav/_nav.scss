@@ -1,0 +1,162 @@
+.nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 9rem;
+  transition: z-index 0s .35s;
+  z-index: 2;
+
+  &:hover, &:focus, &:focus-within, &.js--pinned {
+    transition: z-index 0s;
+    transform: scaleX(1);
+    z-index: 10;
+
+    .nav__list {
+      transform: scaleX(1);
+    }
+
+    .nav__link {
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    .nav__linktext {
+      opacity: 1;
+      transition: opacity .2s .15s, transform .35s;
+      transform: translateX(0);
+    }
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  &::before {
+    background: rgba(0, 60, 255, 1);
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scaleX(var(--scale-sidebar-collapsed));
+    transform-origin: top left;
+    transition: transform .35s;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__listitem {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &__link {
+    align-items: center;
+    background: rgba(255,255,255,0);
+    border: none;
+    color: black;
+    display: flex;
+    flex: 1 1 100%;
+    line-height: 1rem;
+    margin: 0;
+    padding: 0;
+    padding-right: .5rem;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+
+    // Nav link icon
+    &::before {
+      background-color: fuchsia;border-radius:50%;
+      content: '';
+      display: block;
+      flex: 0 0 auto;
+      height: 1.5rem;
+      margin: .75rem 1.25rem;
+      position: relative;
+      width: 1.5rem;
+      z-index: 2;
+    }
+
+    &--logo {
+      height: 5rem;
+
+      &::before {
+        margin: .75rem 1rem;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    // Hover and active background highlight
+    &::after {
+      content: '';
+      background: yellow;
+      bottom: 0;
+      display: block;
+      left: 0;
+      opacity: 0;
+      right: 0;
+      position: absolute;
+      transform: scaleX(var(--scale-sidebar-collapsed));
+      transform-origin: top left;
+      transition: opacity .15s, transform .35s;
+      top: 0;
+      z-index: 0;
+    }
+
+    &:hover, &:focus, &:focus-within {
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      &::after {
+        opacity: .75;
+        transition: transform .35s;
+      }
+    }
+  }
+
+  &__linktext {
+    font-size: 1rem;
+    opacity: 0;
+    position: relative;
+    transform: translateX(-5rem);
+    transition: opacity .25s, transform .35s;
+    z-index: 1;
+
+    &--logo {
+      font-size: 1.25rem;
+      line-height: 1rem;
+      font-weight: 800;
+    }
+  }
+
+  &__linkitem {
+    // TEMP, should be handled with JS
+    &:focus-within .submenu {
+      visibility: visible;
+    }
+  }
+}
+
+.submenu {
+}

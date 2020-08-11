@@ -1,4 +1,4 @@
-<nav class="nav">
+<nav class="nav" x-data="{ tab: false }" :class="{ 'js--pinned': tab !== false }">
   <ul class="nav__list">
     <li class="nav__listitem nav__listitem--logo">
       <a href="#" class="nav__link nav__link--logo">
@@ -11,9 +11,14 @@
       </a>
     </li>
     <li class="nav__listitem">
-      <a href="#" class="nav__link">
+      <button href="#" class="nav__link" @click="tab = 'studies'">
         <span class="nav__linktext">Case Studies</span>
-      </a>
+      </button>
+      <ul class="submenu" :class="{'js--active': tab === 'studies'}" x-ref="submenu--studies" @click.away="tab = false">
+        <li>Rec Sports</li>
+        <li>Another Item</li>
+        <li>Let’s Launch this Puppy</li>
+      </ul>
     </li>
     <li class="nav__listitem">
       <a href="#" class="nav__link">
