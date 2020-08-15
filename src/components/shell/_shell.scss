@@ -25,10 +25,7 @@ body {
   transition: transform .35s;
   transform-origin: right var(--percent-scrolled);
 
-  .nav:hover ~ .content &,
-  .nav:focus ~ .content &,
-  .nav:focus-within ~ .content &,
-  .nav.js--pinned ~ .content & {
+  .nav.js--expanded ~ .content & {
     // Use scale3d to avoid a page repaint (it’s scaling down so no need to do so)
     // Also include a tiny z-axis scale to avoid a Chrome rendering bug.
     transform: translateX(0) scale3d(var(--scale-nav), var(--scale-nav), .0000001);
