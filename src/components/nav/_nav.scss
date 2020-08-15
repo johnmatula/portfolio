@@ -1,13 +1,13 @@
 .nav {
-  position: fixed;
-  left: 0;
-  top: 0;
   height: 100vh;
-  width: 9rem;
+  left: 0;
+  position: fixed;
+  top: 0;
   transition: z-index 0s .35s;
+  width: calc(var(--width-sidebar) * 1px);
   z-index: 2;
 
-  &:hover, &:focus, &:focus-within, &.js--pinned {
+  &.js--expanded {
     transition: z-index 0s;
     transform: scaleX(1);
     z-index: 10;
@@ -81,19 +81,6 @@
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
 
-    // Nav link icon
-    &::before {
-      background-color: fuchsia;border-radius:50%;
-      content: '';
-      display: block;
-      flex: 0 0 auto;
-      height: 1.5rem;
-      margin: .75rem 1.25rem;
-      position: relative;
-      width: 1.5rem;
-      z-index: 2;
-    }
-
     &--logo {
       height: 5rem;
 
@@ -121,7 +108,7 @@
       z-index: 0;
     }
 
-    &:hover, &:focus, &:focus-within {
+    &:hover, &:focus, &:focus-within, .js--active & {
       &::after {
         opacity: 1;
       }
