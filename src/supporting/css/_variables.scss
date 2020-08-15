@@ -1,41 +1,47 @@
+@use 'mixins' as *;
+
 $test: #eee;
 
 :root {
+
   // Vars manipulated by JavaScript
   --width-page: 1;
   --scroll-y: 0;
 
   // Sizes
-  --width-sidebar-expanded: 144;
-  --width-sidebar-collapsed: 64;
+  // For sidebar trickery, remember three breakpoints:
+  --width-sidebar-expanded: 12; // Rems, but unitless for calculations
+  --width-sidebar-collapsed: 5; // Rems, but unitless for calculations
   --scale-sidebar-collapsed: calc(var(--width-sidebar-collapsed) / var(--width-sidebar-expanded));
   --scale-sidebar-contents: calc(1 / var(--scale-sidebar-collapsed));
   --width-sidebar-difference: calc(var(--width-sidebar-expanded) - var(--width-sidebar-collapsed));
-  --width-content: calc(var(--width-page) - var(--width-sidebar-collapsed));
+  --width-content: calc((var(--width-page) / var(--rem-base)) - var(--width-sidebar-collapsed));
   --scale-nav: calc((var(--width-content) - var(--width-sidebar-difference)) / (var(--width-content)));
 
-  --percent-scrolled: calc(var(--scroll-y) * 1px);
-
-  @media (min-width: 512px) {
-    --width-sidebar-expanded: 162;
-    --width-sidebar-collapsed: 72;
-  }
-
-  @media (min-width: 640px) {
-    --width-sidebar-expanded: 180;
-    --width-sidebar-collapsed: 80;
-  }
+  --percent-scrolled: calc((var(--scroll-y) / var(--rem-base)) * 1rem);
 }
 
-.a11y--hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
+
+// TYPE RAMP
+//
+// Two  ramps are used at a basis of 1 (a) and 1.25 (b). The numeral
+// refers to the power at which the scale (1.618, ϕ, ugh I know) is raised.
+// That factor is then multiplied to a or b to get the rem value.
+
+$b5: 13.861rem;
+$a5: 11.089rem;
+$b4: 8.567rem;
+$a4: 6.854rem;
+$b3: 5.295rem;
+$a3: 4.236rem;
+$b2: 3.272rem;
+$a2: 2.618rem;
+$b1: 2.023rem;
+$a1: 1.618rem;
+$b0: 1.25rem;
+$a0: 1rem;
+$b-1: .773rem;
+$a-1: .618rem;
 
 
 /*

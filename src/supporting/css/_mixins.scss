@@ -1,12 +1,14 @@
 $at-least-breakpoints: (
-  'compressed'    : (min-width:    1px),
-  'extranarrow'   : (min-width:  340px),
-  'narrow'        : (min-width:  460px),
-  'medium'        : (min-width:  680px),
-  'mediumwide'    : (min-width:  768px),
-  'wide'          : (min-width:  900px),
-  'extrawide'     : (min-width: 1200px),
-  'tall'          : (min-height: 550px)
+  // Widths
+  'w0': (min-width:  420px),
+  'w1': (min-width:  640px),
+  'w2': (min-width:  760px),
+  'w3': (min-width:  960px),
+  'w4': (min-width: 1240px),
+  'w5': (min-width: 1500px),
+
+  // Heights
+  'h0': (min-height: 540px)
 );
 
 @mixin at-least($name) {
@@ -22,11 +24,6 @@ $at-least-breakpoints: (
 }
 
 // Font utilities
-@function to-rem($size) {
-  $rem-size: $size / $base-font-size;
-  @return $rem-size * 1rem;
-}
-
 @mixin font($font-weight, $font-size, $line-height, $letter-spacing: null, $font-family: null) {
   @if ($font-family) {
     font-family: $font-family;
@@ -38,4 +35,15 @@ $at-least-breakpoints: (
   font-size: $font-size / $base-font-size * 1rem;
   font-weight: $font-weight;
   line-height: $line-height / $base-font-size * 1rem;
+}
+
+
+.a11y--hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
