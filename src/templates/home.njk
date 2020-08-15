@@ -1,7 +1,17 @@
 {% extends "../components/shell/_shell.njk" %}
 
-** Home template **
-
 {% block content %}
-  {{ content | safe }}
+  <section class="home home--introduction">
+    {% block introduction %}{% endblock %}
+  </section>
+  <section class="home home--about">
+    {% block about %}{% endblock %}
+  </section>
+  <section class="home home--portfolio home--2up">
+    <div class="">{% block projects %}{% endblock %}</div>
+    <div class="">{% block work %}{% endblock %}</div>
+  </section>
+  <section class="">
+    {% block final %}{% endblock %}
+  </section>
 {% endblock %}
