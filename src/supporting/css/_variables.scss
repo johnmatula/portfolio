@@ -19,6 +19,38 @@ $test: #eee;
   --scale-nav: calc((var(--width-content) - var(--width-sidebar-difference)) / (var(--width-content)));
 
   --percent-scrolled: calc((var(--scroll-y) / var(--rem-base)) * 1rem);
+
+  --padding-link-decoration: .1rem;
+
+
+  // HUES
+  //
+  // Color values intended to be mapped to semantically-defined color variables.
+  // For WCAG AA passable combinations:
+  //  •  Shade 0, 100, 300 can be used with any 700, 900, or 1000 hue.
+  //  •  Shade 500 can be used with all other Shade hues.
+
+  --hue-red-100: #f06242;
+  --hue-red-300: #ed431d;
+  --hue-red-500: #bf2908;
+  --hue-red-700: #9d2207;
+  --hue-red-900: #761a05;
+
+  --hue-blue-100: #25b6bb;
+  --hue-blue-300: #1e9599;
+  --hue-blue-500: #146467;
+  --hue-blue-700: #0a4547;
+  --hue-blue-900: #0a3233;
+
+  --hue-shade-0: #fff;
+  --hue-shade-100: #f6f5f3;
+  --hue-shade-300: #bab8b5;
+  --hue-shade-500: #74706d;
+  --hue-shade-700: #4a4745;
+  --hue-shade-900: #171512;
+  --hue-shade-1000: #000;
+
+
 }
 
 
@@ -42,6 +74,13 @@ $b0: 1.25rem;
 $a0: 1rem;
 $b-1: .773rem;
 $a-1: .618rem;
+$b-2: .477rem;
+$a-2: .382rem;
+
+
+$font-jm: 'JMGroteskWeb', BlinkMacSystemFont, system-ui, -apple-system, 'Segoe UI', 'Apple Color Emoji';
+$font-fraunces: 'FrauncesWeb', $font-jm;
+
 
 
 /*
