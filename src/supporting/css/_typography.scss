@@ -1,0 +1,89 @@
+@use "mixins" as *;
+@use "variables" as *;
+
+// TYPOGRAPHY
+//
+// Gonna try using the @extend directive in SCSS to keep styles DRY.
+// In order to keep specificity low and minimize the correct-but-odd
+// behavior of @extend, I’m using placeholder classes (with %).
+
+%typography-title {
+  font-family: $font-jm;
+  font-size: var(--a2);
+  font-weight: 700;
+  letter-spacing: -.06rem;
+  line-height: 1.115;
+}
+
+%typography-summary {
+  font-family: $font-jm;
+  font-size: var(--b0);
+  letter-spacing: -.033rem;
+  line-height: 1.44;
+}
+
+%typography-home-introduction {
+
+}
+
+%typography-home-body {
+  font-family: $font-fraunces;
+  font-variation-settings: "opsz" 20, "SOFT" 35, "WONK" 0;
+  font-size: var(--a0);
+  font-weight: 380;
+  letter-spacing: -.01rem;
+  line-height: 1.8;
+}
+
+%typography-section-heading {
+  font-family: $font-jm;
+  font-size: var(--a0);
+  font-weight: 700;
+  letter-spacing: -.008rem;
+  line-height: 1.5;
+}
+
+%typography-subheading {
+  font-family: $font-jm;
+  font-size: var(--b-1);
+  font-weight: 600;
+  letter-spacing: -.0025rem;
+  line-height: 1.375;
+}
+
+%typography-details {
+  font-family: $font-jm;
+  font-size: var(--b-1);
+  font-weight: 400;
+  letter-spacing: -.005rem;
+  line-height: 1.375;
+}
+
+%typography-body {
+  font-family: $font-fraunces;
+  font-variation-settings: "opsz" 20, "SOFT" 35, "WONK" 1;
+  font-size: var(--a0);
+  font-weight: 350;
+  letter-spacing: -.01rem;
+  line-height: 1.5;
+}
+
+%typography-link-title {
+
+}
+
+%typography-navigation {
+  font-family: $font-jm;
+  font-weight: 400;
+  font-size: var(--a0);
+  letter-spacing: -.015;
+  line-height: 1;
+}
+
+%typography-footer {
+  font-family: $font-jm;
+  font-size: var(--a-1);
+  font-weight: 400;
+  letter-spacing: .005;
+  line-height: 1;
+}
