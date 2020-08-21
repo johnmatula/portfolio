@@ -1,4 +1,4 @@
-function nav() {
+function sidebar() {
   return {
     submenu: false,
     openSubmenu(menu) {
@@ -25,3 +25,7 @@ function nav() {
     }
   }
 }
+
+window.addEventListener("load", () => {
+  document.body.classList.add("js--ready");
+})

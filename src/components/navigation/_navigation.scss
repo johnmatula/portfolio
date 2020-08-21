@@ -1,0 +1,371 @@
+@use "utilities" as *;
+
+:root {
+  // Vars manipulated by JavaScript
+  --width-page: 1;
+  --scroll-y: 0;
+  --env-safe-top: 0;
+  --env-safe-right: 0;
+  --env-safe-bottom: 0;
+  --env-safe-left: 0;
+
+  // Sizes
+  --height-navbar-expanded: 11.089;
+  --height-navbar-collapsed: 3.272;
+  --height-navbar-difference: calc(var(--height-navbar-expanded) - var(--height-navbar-collapsed));
+  --scale-navbar-collapsed: calc(var(--height-navbar-collapsed) / var(--height-navbar-expanded));
+
+  --width-sidebar-expanded: calc(11.089 + var(--env-safe-left)); // Rems, but unitless for calculations
+  --width-sidebar-collapsed: calc(6.854 + var(--env-safe-left)); // Rems, but unitless for calculations
+  --scale-sidebar-collapsed: calc(var(--width-sidebar-collapsed) / var(--width-sidebar-expanded));
+  --scale-sidebar-contents: calc(1 / var(--scale-sidebar-collapsed));
+  --width-sidebar-difference: calc(var(--width-sidebar-expanded) - var(--width-sidebar-collapsed));
+  --width-content: calc((var(--width-page) / var(--rem-base)) - var(--width-sidebar-collapsed));
+  --scale-nav: calc((var(--width-content) - var(--width-sidebar-difference)) / (var(--width-content)));
+
+  --percent-scrolled: calc((var(--scroll-y) / var(--rem-base)) * 1rem);
+}
+
+// A mask is applied over a single stroke (think like a neon tube lol) so
+// that everything can be animated. The dash-offsets were calculated in
+// Illustrator using one of the JSX plugins I downloaded a while ago.
+.logo {
+  // Link is positioned absolutely over the logo, and then sibling
+  // selectors “transfer” the transitions to the SVG. This is to sidestep
+  // a Safari bug where SVGs within visited links do not animate.
+  &__link {
+    box-shadow: none;
+    background: none;
+    display: block;
+    flex: 0 0 auto;
+    height: calc(var(--height-logo) + var(--b-1) + var(--b-1));
+    padding: var(--b-1) var(--a0) var(--b-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+    position: absolute;
+    width: calc(var(--width-logo) + var(--a0) + var(--a0));
+    z-index: var(--z-sidebar-logo);
+
+    @include at-least(w0) {
+      height: calc(var(--height-logo) + var(--a1) + var(--a1));
+      padding: var(--a1) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+      width: calc(var(--width-sidebar-collapsed) * 1rem);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: none;
+    }
+
+    &:active ~ .logo__svg .logo__filled {
+      stroke: var(--hue-red-700);
+      transition: none;
+    }
+  }
+
+  &__svg {
+    flex: 0 0 var(--width-logo);
+    margin: var(--b-1) var(--a0) var(--b-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+    width: var(--width-logo);
+
+    @include at-least(w0) {
+      margin: var(--a1) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+    }
+  }
+
+  &__unfilled {
+    fill: rgba(0,0,0,.08);
+  }
+
+  &__filled {
+    animation: none;
+    stroke-dasharray: 215.0285;
+    stroke-dashoffset: 215.0285;
+    stroke: var(--hue-red-300);
+    transition: stroke var(--timing-sidebar-fade-out);
+
+    .js--ready & {
+      animation: jmline-draw 1.75s;
+      animation-fill-mode: forwards;
+      animation-delay: .5s;
+    }
+
+    .js--expanded & {
+      stroke: var(--hue-shade-100);
+      transition: stroke var(--timing-sidebar-fade-in);
+    }
+  }
+}
+
+// All values calculated in Illustrator by dividing at each start and end
+// of the segment, calculating the width, and adding it all together.
+@keyframes jmline-draw {
+  0% {
+    stroke-dashoffset: 215.0285;
+  }
+  18.74% {
+    animation-timing-function: ease-in;
+    stroke-dashoffset: 166.3889;
+  }
+  18.75% {
+    stroke-dashoffset: 133.283;
+  }
+  41.24% {
+    animation-timing-function: ease-out;
+    stroke-dashoffset: 84.6434;
+  }
+  41.25% {
+    stroke-dashoffset: 51.5375;
+  }
+  75% {
+    animation-timing-offset: ease-out;
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+
+// Only adjust sidebar width so that hit target area is as expected.
+// Do all other visual goopery with pseudo elements and transforms.
+.sidebar {
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  height: calc(var(--height-navbar-collapsed) * 1rem);
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: height 0s var(--timing-sidebar-slide-out);
+  width: 100%;
+  z-index: var(--z-sidebar);
+
+  @include at-least(w0) {
+    align-items: flex-start;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    transition: width 0s var(--timing-sidebar-slide-out);
+    width: calc(var(--width-sidebar-collapsed) * 1rem);
+  }
+
+  &.js--expanded {
+    height: calc(var(--height-navbar-expanded) * 1rem);
+    transform: scaleX(1);
+    transition: height 0s 0s;
+
+    @include at-least(w0) {
+      height: auto;
+      transition: width 0s 0s;
+      width: calc(var(--width-sidebar-expanded) * 1rem);
+    }
+
+    &::after {
+      opacity: 1;
+      transform: scaleX(1) scaleY(1);
+      transition: transform var(--timing-sidebar-slide-in), opacity var(--timing-sidebar-fade-in);
+    }
+
+    &::before {
+      transform: translateX(0) translateY(0);
+      transition: transform var(--timing-sidebar-slide-in);
+
+      @include at-least(w0) {
+        transform: translateX(calc(var(--width-sidebar-expanded) * 1rem - .5px)) scaleX(0.5);
+      }
+    }
+  }
+
+  &::before {
+    background-color: var(--translucent-white-96);
+    box-shadow: 0 -0.5px 0 0 var(--translucent-shade-54) inset;
+    bottom: 0;
+    content: '';
+    contain: strict;
+    display: block;
+    height: calc(var(--height-navbar-expanded) * 1rem);
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateY(calc(var(--height-navbar-difference) * -1rem));
+    transform-origin: top left;
+    transition: transform var(--timing-sidebar-slide-out);
+    z-index: var(--z-backdrop);
+
+    @include at-least(w0) {
+      background-color: var(--translucent-shade-54);
+      box-shadow: none;
+      content: '';
+      height: auto;
+      right: unset;
+      transform: translateX(calc(var(--width-sidebar-collapsed) * 1rem - .5px)) scaleX(0.5);
+      width: 1px;
+    }
+  }
+
+  &::after {
+    background: var(--hue-red-500);
+    bottom: 0;
+    contain: strict;
+    content: '';
+    display: block;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scaleY(var(--scale-navbar-collapsed));
+    transform-origin: top left;
+    transition: transform var(--timing-sidebar-slide-out), opacity var(--timing-sidebar-fade-out);
+    z-index: var(--z-backdrop);
+
+    @include at-least(w0) {
+      transform: scaleX(var(--scale-sidebar-collapsed));
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  flex: 1 1 100%;
+  height: calc(var(--height-navbar-collapsed) * 1rem);
+  opacity: 1;
+  position: relative; // otherwise Safari has a jumping bug during transition
+  transition: opacity var(--timing-sidebar-fade-out), visibility 0s 0s;
+  visibility: visible;
+
+  @include at-least(w0) {
+    display: block;
+    width: calc(var(--width-sidebar-collapsed) * 1rem);
+  }
+
+  .js--expanded & {
+    opacity: 0;
+    transition: opacity var(--timing-sidebar-fade-in), visibility 0s var(--timing-sidebar-fade-in);
+    visibility: hidden;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    @include at-least(w0) {
+      display: block;
+      width: auto;
+    }
+  }
+
+  &__listitem {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    &::before {
+      display: none;
+    }
+
+    &--w0 {
+      display: none;
+
+      @include at-least(w0) {
+        display: block;
+      }
+    }
+  }
+
+  &__link {
+    align-items: center;
+    background: rgba(255,255,255,0);
+    border: none;
+    box-shadow: none;
+    color: var(--color-blue-700); // ????????????
+    contain: layout;
+    cursor: pointer;
+    display: flex;
+    flex: 1 1 100%;
+    line-height: 1rem;
+    margin: 0;
+    padding: var(--b-1) var(--a0) var(--b-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: none;
+      color: var(--color-blue-700);
+    }
+
+    // CAREFUL WITH THIS! Re-evaluate
+    &:active, &:focus {
+      outline: none;
+    }
+
+    // Hover and active background highlight
+    &::after {
+      content: '';
+      background: var(--hue-red-500);
+      bottom: 0;
+      display: block;
+      left: 0;
+      opacity: 0;
+      right: 0;
+      position: absolute;
+      transform: scaleX(1) scaleY(1);
+      transform-origin: top left;
+      transition: opacity var(--timing-link), transform var(--timing-sidebar-slide-out);
+      top: 0;
+      z-index: -1;
+
+      .js--expanded & {
+        transform: scaleY(calc(1 / var(--scale-navbar-collapsed)));
+        transition: opacity var(--timing-link), transform var(--timing-sidebar-slide-in);
+
+        @include at-least(w0) {
+          transform: scaleX(calc(1 / var(--scale-sidebar-collapsed)));
+        }
+      }
+    }
+
+    &:hover, &:focus, &:focus-within, .js--active & {
+      &::after {
+        opacity: .2;
+      }
+    }
+
+    &:active {
+      &::after {
+        opacity: .35;
+        transition: transform var(--timing-sidebar-slide-in);
+      }
+    }
+  }
+
+  &__linktext {
+    @extend %typography-navigation;
+
+    opacity: 0;
+    position: relative;
+    transform: translateX(-5rem);
+    transition: opacity .25s, transform .35s;
+    z-index: 1;
+
+    &--logo {
+      font-size: 1.25rem;
+      line-height: 1rem;
+      font-weight: 800;
+    }
+  }
+}

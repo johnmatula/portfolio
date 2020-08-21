@@ -1,0 +1,30 @@
+<div class="sidebar" x-data="sidebar()" :class="{ 'js--expanded': submenu }" x-init="listenForEscape" @click.away="closeSubmenus">
+  <div class="logo">
+    <a class="logo__link a11y--no-text" href="/" aria-label="Home" class="logo__link">Home</a>
+    <svg class="logo__svg" xmlns="http://www.w3.org/2000/svg" viewBox="10 15 40 34"><mask id="cutout"><path fill="#fff" d="M22 45a4 4 0 01-4 4h-8v-4h6a1 1 0 001-1V15h5v30zm14 4h-5V20a1 1 0 00-1-1h-6v-4h8a4 4 0 014 4v30zm14 0h-5V20a1 1 0 00-1-1h-6v-4h8a4 4 0 014 4v30z"/></mask><path mask="url(#cutout)" class="logo__unfilled" d="M10 15h40v34H10z"/><path class="logo__filled" fill="none" mask="url(#cutout)" stroke-width="6" stroke-miterlimit="10" d="M19.5 11v34c0 1.1-.9 2-2 2H6l14-30h11.5c1.1 0 2 .9 2 2v34l.5-36h11.5c1.1 0 2 .9 2 2v34"/></svg>
+  </div>
+  <nav class="nav">
+    <ul class="nav__list">
+      <li class="nav__listitem">
+        <a class="nav__link" href="/#about">About</a>
+      </li>
+      <li class="nav__listitem">
+        <a class="nav__link" href="/#projects">Projects</a>
+      </li>
+      <li class="nav__listitem nav__listitem--w0">
+        <a class="nav__link" href="/#work">More Work</a>
+      </li>
+      <li class="nav__listitem">
+        <button class="nav__link" @click="openSubmenu('contact')">Contact</button>
+      </li>
+    </ul>
+  </nav>
+  <div class="footer">
+    <p class="footer__links">
+      <a class="footer__link" href="/privacy">Privacy</a>
+      <a class="footer__link" href="/colophon">Colophon</a>
+    </p>
+    <p class="footer__copyright">© 2009–2020</p>
+  </div>
+  {% include "../contact/_contact.njk" %}
+</div>
