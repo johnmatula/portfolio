@@ -1,34 +1,38 @@
 @use 'mixins' as *;
 
-$test: #eee;
-
 :root {
+  // ROOT EM HEIGHT BASES
 
-  // Vars manipulated by JavaScript
-  --width-page: 1;
-  --scroll-y: 0;
+  --rem-base: 16;
 
-  // Sizes
-  // For sidebar trickery, remember three breakpoints:
-  --width-sidebar-expanded: 12; // Rems, but unitless for calculations
-  --width-sidebar-collapsed: 5; // Rems, but unitless for calculations
-  --scale-sidebar-collapsed: calc(var(--width-sidebar-collapsed) / var(--width-sidebar-expanded));
-  --scale-sidebar-contents: calc(1 / var(--scale-sidebar-collapsed));
-  --width-sidebar-difference: calc(var(--width-sidebar-expanded) - var(--width-sidebar-collapsed));
-  --width-content: calc((var(--width-page) / var(--rem-base)) - var(--width-sidebar-collapsed));
-  --scale-nav: calc((var(--width-content) - var(--width-sidebar-difference)) / (var(--width-content)));
+  @include at-least(w1) {
+    --rem-base: 18;
+  }
 
-  --percent-scrolled: calc((var(--scroll-y) / var(--rem-base)) * 1rem);
+  @include at-least(w3) {
+    --rem-base: 20;
+  }
+
+  @include at-least(w4) {
+    --rem-base: 22;
+  }
+
+  @include at-least(w5) {
+    --rem-base: 24;
+  }
+
 
   --padding-link-decoration: .1rem;
+  --width-logo: 2rem;
+  --height-logo: 1.75rem;
 
 
   // HUES
   //
-  // Color values intended to be mapped to semantically-defined color variables.
-  // For WCAG AA passable combinations:
-  //  •  Shade 0, 100, 300 can be used with any 700, 900, or 1000 hue.
-  //  •  Shade 500 can be used with all other Shade hues.
+  // The brand palette. To adhere to WCAG AA, these combinations are OK:
+  //  •  Shades 0 and 100 can be used with any 500, 700, 900, or 1000 hue.
+  //  •  Shades 0, 100, 300 can be used with any 700, 900, or 1000 hue.
+  //  •  Shade 500 can be used with any other Shade.
 
   --hue-red-100: #f06242;
   --hue-red-300: #ed431d;
@@ -51,71 +55,74 @@ $test: #eee;
   --hue-shade-1000: #000;
 
 
+  // TRANSLUCENT HUES
+  //
+  // Translucent shades are based on Shade 900.
+  // Translucent red is based on Red 500.
+  --translucent-red-20: rgba(191,41,8,.2);
+
+  --translucent-shade-05: rgba(23,21,18,.05);
+  --translucent-shade-54: rgba(23,21,18,.54);
+
+  --translucent-white-96: rgba(255,255,255,.96);
+
+
+
+  // TYPE RAMP
+  //
+  // Two ramps are used at a basis of 1 (a) and 1.25 (b). The numeral
+  // refers to the power at which the scale (1.618, ϕ, ugh I know) is raised.
+  // That factor is then multiplied to a or b to get the rem value.
+
+  --b5: 13.861rem;
+  --a5: 11.089rem;
+  --b4: 8.567rem;
+  --a4: 6.854rem;
+  --b3: 5.295rem;
+  --a3: 4.236rem;
+  --b2: 3.272rem;
+  --a2: 2.618rem;
+  --b1: 2.023rem;
+  --a1: 1.618rem;
+  --b0: 1.25rem;
+  --a0: 1rem;
+  --b-1: .773rem;
+  --a-1: .618rem;
+  --b-2: .477rem;
+  --a-2: .382rem;
+
+
+  // Z-INDEX VALUES
+  //
+  // Collected in one spot to avoid random too-many-nines.
+  // (Stacking contexts should also be considered when positioning.)
+  --z-backdrop: -1;
+  --z-sidebar: 10;
+  --z-sidebar-contact: 11;
+  --z-sidebar-logo: 12;
+  --z-sidebar-footer: 13;
+
+
+  // TIMINGS
+  --timing-sidebar-slide-in: .425s;
+  --timing-sidebar-fade-in: .275s;
+  --timing-sidebar-slide-out: .25s;
+  --timing-sidebar-fade-out: .2s;
+  --timing-link: .15s;
+
+  // SAFE-AREA ENVS
+  // These values are redefined so that JavaScript can access them.
+  --env-safe-top-pixels: env(safe-area-inset-top, 0px);
+  --env-safe-right-pixels: env(safe-area-inset-right, 0px);
+  --env-safe-bottom-pixels: env(safe-area-inset-bottom, 0px);
+  --env-safe-left-pixels: env(safe-area-inset-left, 0px);
 }
 
 
-// TYPE RAMP
+// FONT STACKS
 //
-// Two  ramps are used at a basis of 1 (a) and 1.25 (b). The numeral
-// refers to the power at which the scale (1.618, ϕ, ugh I know) is raised.
-// That factor is then multiplied to a or b to get the rem value.
-
-$b5: 13.861rem;
-$a5: 11.089rem;
-$b4: 8.567rem;
-$a4: 6.854rem;
-$b3: 5.295rem;
-$a3: 4.236rem;
-$b2: 3.272rem;
-$a2: 2.618rem;
-$b1: 2.023rem;
-$a1: 1.618rem;
-$b0: 1.25rem;
-$a0: 1rem;
-$b-1: .773rem;
-$a-1: .618rem;
-$b-2: .477rem;
-$a-2: .382rem;
-
+// Since typefaces are loaded in asynchronously (they’re a little hefty as
+// of August 2020), the fallback font is especially critical.
 
 $font-jm: 'JMGroteskWeb', BlinkMacSystemFont, system-ui, -apple-system, 'Segoe UI', 'Apple Color Emoji';
 $font-fraunces: 'FrauncesWeb', $font-jm;
-
-
-
-/*
-// Colors
-$color-blue-300: #64d2e3;
-$color-blue-500: #34a6c2;
-$color-blue-700: #004152;
-$color-pink-300: #ff7094;
-$color-pink-500: #e46384;
-$color-pink-700: #c93a5e;
-$color-shade-100: #fbfcfe;
-$color-shade-200: #f4f5f7;
-$color-shade-300: #e7e8ea;
-$color-shade-500: #a5a6a9;
-$color-shade-900: #0f0f0f;
-
-// Spacings
-$space-a: to-rem(10px);
-$space-b: to-rem(20px);
-$space-c: to-rem(30px);
-$space-d: to-rem(40px);
-$space-e: to-rem(50px);
-$space-gridoffset: to-rem(-10px);
-$space-grid: to-rem(10px);
-
-// Specific heights
-$height-contact-narrow: to-rem(44px);
-$height-contact-medium: to-rem(70px);
-$height-nav-narrow: to-rem(44px);
-$height-nav-medium: to-rem(80px);
-
-// Shadows
-$shadow-nav-medium: 0 1px 0px rgba(0,0,0,.1), 0 3px 9px rgba(0,0,0,.12);
-$shadow-button: 0 0 0 1px rgba(0,0,0,.1), 0 2px 5px rgba(0,0,0,.4);
-$shadow-upward: 0 -1px 0px rgba(0,0,0,.1), 0 -3px 9px rgba(0,0,0,.12);
-$shadow-pinkborder: 0 0 0 2px $color-pink-500 inset;
-$shadow-pinkborder-hover: 0 0 0 2px $color-pink-300 inset;
-$shadow-pinkborder-active: 0 0 0 2px $color-pink-700 inset;*/
