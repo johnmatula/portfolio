@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="author" content="John Matula">
   <meta name="description" content="{{ opengraph }}">
   <meta name="keywords" content="John Matula,jmatula,matula,matulaspatula,UX,product designer">
-  <meta property="og:title" content="{{ title }} • John Matula" />
+  <meta property="og:title" content="{% block ogtitle %}{% endblock %}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://johnmatu.la{{ page.url }}" />
   <meta property="og:image" content="XXXXXX" />
@@ -21,8 +21,9 @@
   })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>-->
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/fonts.css" media="print" onload="this.media='all'">
+  <link rel="preload" href="/fonts/fraunces.20200818.woff2" as="font" type="font/woff2" crossorigin>
 
-  <title>{{ title }}</title>
+  <title>{% block titletag %}{% endblock %}</title>
 
 </head>
 <body>
@@ -36,7 +37,7 @@
   </noscript>
   -->
 
-  {% include "../nav/_nav.njk" %}
+  {% include "src/components/navigation/_navigation.njk" %}
 
   <main class="content">
     <div class="structure">
