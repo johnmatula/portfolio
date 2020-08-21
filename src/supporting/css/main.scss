@@ -1,3 +1,5 @@
 @use "utilities" as *;
-@use "../../components/shell/shell";
-@use "../../components/nav/nav";
+@use "../../templates/shell/shell";
+@use "../../components/navigation/navigation";
+@use "../../components/contact/contact";
+@use "../../components/footer/footer";
