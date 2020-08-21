@@ -1,0 +1,70 @@
+@use "utilities" as *;
+
+.footer {
+  color: var(--hue-shade-700);
+  display: none;
+  position: relative;
+  transition: color var(--timing-sidebar-fade-out);
+  width: calc(var(--width-sidebar-collapsed) * 1rem);
+  z-index: var(--z-sidebar-footer);
+
+  @include at-least(h0) {
+    @include at-least(w0) {
+      display: block;
+    }
+  }
+
+  @include at-least(w3) {
+    font-size: var(--a-1);
+  }
+
+  &__links {
+    margin: 0;
+  }
+
+  &__link {
+    @extend %typography-footer;
+
+    background: none;
+    box-shadow: none;
+    color: var(--hue-shade-700);
+    display: block;
+    margin: 0;
+    padding: var(--a-1) var(--a0) var(--a-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+
+    @include at-least(w3) {
+      padding-bottom: var(--b-2);
+      padding-top: var(--b-2);
+    }
+
+    .js--expanded & {
+      color: var(--hue-shade-100);
+      transition: color var(--timing-sidebar-fade-in);
+
+      &:hover, &:focus {
+        transition: color var(--timing-link), background-color var(--timing-link);
+      }
+
+      &:active {
+        transition: none;
+      }
+    }
+  }
+
+  &__copyright {
+    @extend %typography-footer;
+
+    margin: 0;
+    padding: var(--a-1) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+    transition: color var(--timing-sidebar-fade-out);
+
+    @include at-least(w3) {
+      padding-top: var(--b-2);
+    }
+
+    .js--expanded & {
+      color: var(--hue-shade-100);
+      transition: color var(--timing-sidebar-fade-in);
+    }
+  }
+}

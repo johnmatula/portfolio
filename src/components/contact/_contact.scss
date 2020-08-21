@@ -1,0 +1,31 @@
+@use "utilities" as *;
+
+.contact {
+  bottom: 0;
+  color: var(--hue-shade-0);
+  contain: size layout;
+  height: calc(var(--height-navbar-expanded) * 1rem);
+  left: 0;
+  opacity: 0;
+  padding: calc((var(--height-navbar-collapsed) * 1rem) + var(--b-1)) var(--a0) var(--a0) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(calc(var(--height-navbar-difference) * -1rem));
+  transition: opacity var(--timing-sidebar-fade-out), transform var(--timing-sidebar-slide-out), visibility 0s var(--timing-sidebar-fade-out);
+  visibility: hidden;
+  z-index: var(--z-sidebar-contact);
+
+  @include at-least(w0) {
+    transform: translateX(calc(var(--width-sidebar-difference) * -1rem));
+    padding: var(--a4) var(--a0) var(--a4) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+    width: calc(var(--width-sidebar-expanded) * 1rem);
+  }
+
+  .js--expanded & {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    transition: opacity var(--timing-sidebar-fade-in), transform var(--timing-sidebar-slide-in), visibility 0s 0s;
+    visibility: visible;
+  }
+}
