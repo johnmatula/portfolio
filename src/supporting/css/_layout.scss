@@ -1,0 +1,114 @@
+@use "mixins" as *;
+@use "variables" as *;
+
+// GRID
+//
+// The baseline grid to use for all modules. Since subgrid isn’t quite
+// a reality yet, each section will be a separate grid instance.
+//
+// Columns are strictly defined; rows auto fill in (e.g., for new ¶s).
+// I’m using column line naming heavily, hooking into the automatic
+// behavior that comes with `-start` and `-end` naming along with `grid-area`.
+//
+// There are 14 lines defined in total. At small breakpoints, lines are
+// “collapsed” and start to “split apart” at wider breakpoints. This makes
+// positioning trivial by simply defining a `grid-area` and watching all the
+// elements get laid out as expected across all breakpoints.
+//
+// All done with a placeholder class (%) so that I’m not repeating this
+// behemoth of named grid lines. (Is this the right way to do this? I suppose
+// only time will tell haha.)
+
+
+%layout-grid {
+  align-items: baseline;
+  display: grid;
+  //outline: 4px solid var(--hue-red-300);
+  outline-offset: -5px;
+  grid-template-columns:
+    [header-start fullwidth-start content-start summary-start content-aside-start aside-start spec-key-start spec-value-start gallery-start] 6fr
+    [content-end content-aside-end spec-key-end spec-value-end summary-end] 1fr
+    [header-end aside-end fullwidth-end gallery-end];
+
+  @include at-least(w3) {
+    grid-template-columns:
+      [full-bleed-start sidebar-start]
+        calc(var(--width-sidebar-expanded) * 1rem)
+      [sidebar-end]
+        var(--b2)
+      [header-start]
+        var(--a4)
+      [header-end]
+        var(--b1)
+      [content-full-start content-half-a-start content-third-a-start details-key-start]
+        1fr
+      []
+        var(--b1)
+      []
+        1fr
+      [content-third-a-end details-key-end]
+        var(--b1)
+      [content-third-b-start details-value-start]
+        1fr
+      [content-half-a-end]
+        var(--b1)
+      [content-half-b-start]
+        1fr
+      [content-third-b-end]
+        var(--b1)
+      [content-third-c-start]
+        1fr
+      []
+        var(--b1)
+      []
+        1fr
+      [content-full-end content-half-b-end content-third-c-end details-value-end
+       float-gutter-start]
+        var(--a1)
+      [float-gutter-end]
+        var(--b2)
+      [full-bleed-end];
+  }
+}
+// Layout shell, with navigation bar and main content area.
+.wrapper__outer {
+  align-items: center;
+  background: var(--hue-shade-0);
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+  padding: 4rem 0 0; //need env safe????
+  z-index: 0;
+
+  @include at-least(w0) {
+    margin: 0 0 0 calc(var(--width-sidebar-difference) * -1rem);
+    padding: 0; //need env safe????
+    width: calc(100% + (var(--width-sidebar-difference) * 1rem));
+  }
+}
+
+.wrapper__inner {
+  flex: 0 0 auto;
+  max-width: 90rem;
+  position: relative;
+  transition: transform var(--timing-sidebar-slide-out);
+  transform-origin: right var(--percent-scrolled);
+
+  .sidebar.js--expanded ~ .wrapper__outer & {
+    // Use `scale3d` to avoid a rerender (since the contents are scaling down,
+    // it’s not necessary). Doing so requires a tiny z-axis scale so that
+    // content doesn’t flash away in Chrome and Firefox (rendering bug?).
+    transform: translateY(calc(var(--height-navbar-difference) * 1rem));
+    transition: transform var(--timing-sidebar-slide-in);
+
+    @include at-least(w0) {
+      transform: translateX(0) scale3d(var(--scale-nav), var(--scale-nav), .00001);
+    }
+  }
+
+  & > * {
+    margin: 0;
+  }
+}
