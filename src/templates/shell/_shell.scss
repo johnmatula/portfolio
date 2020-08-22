@@ -97,15 +97,15 @@
 
       // I want a responsive bullet, but using rems on pseudo elements can
       // make them non-square (they get squished!). This uses a clip path
-      // on a pseudo element that spans the height of the list item.
-
+      // on a pseudo element that spans the height of the list item, with
+      // an extra half-pixel for safety. (This is so fiddly...)
       &::before {
         background: var(--hue-shade-500);
-        clip-path: circle(calc(var(--a-2) / 2) at 50% calc(var(--a0) * 1.5 / 2));
+        clip-path: circle(calc((var(--a-2) / 2) - 0.5px) at 50% calc(var(--a0) * 1.5 / 2));
         content: '';
         display: block;
         height: 100%;
-        margin: 0 calc(var(--b0) - var(--a-2)) 0 calc(var(--b0) * -1);
+        margin: 0 calc(var(--b0) - var(--a-2)) 0 calc(var(--a0) * -1);
         position: absolute;
         width: var(--a-2);
       }
