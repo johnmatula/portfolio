@@ -5,7 +5,10 @@
 {% block ogtitle %}{{ title }} • John Matula{% endblock %}
 
 {% block content %}
-<h1 class="pagetitle">{{ title }}</h1>
-<p class="summary">{{ summary }}</p>
-{{ content | safe }}
+  <section class="hero">
+    <div class="hero__visual">&nbsp;</div>
+    <h1 class="hero__title">{{ title }}</h1>
+    <p class="hero__summary">{{ summary }}</p>
+  </section>
+  {{ content | safe }}
 {% endblock %}
