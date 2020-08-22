@@ -1,209 +1,133 @@
 @use "utilities" as *;
 
-// Layout shell, with navigation bar and main content area.
-.content {
-  align-items: center;
-  background: var(--hue-shade-0);
-  justify-content: space-between;
-  display: flex;
-  font-family: $font-fraunces;
-  flex-direction: column;
-  margin: 0;
-  min-height: 100vh;
-  position: relative;
-  padding: 4rem 0 0; //need env safe????
-  width: calc(100%);
-  z-index: 0;
+.hero {
+  @extend %layout-grid;
 
-  @include at-least(w0) {
-    padding: 0; //need env safe????
+  background-color: var(--hue-shade-100);
+  min-height: 44vh;
+
+  margin: 0 0 var(--a3);
+
+  &__visual {
+    grid-column: full-bleed;
+    min-height: 33vh;
   }
 
-  &::before {
-    background-color: red;
-    content: '';
-    display: block;
-    grid-column: 1 / -1;
-    grid-row: 1 / 1;
-    z-index: var(--z-backdrop);
+  &__title {
+    @extend %typography-title;
+
+    grid-column: content-full;
+    margin: 0 0 var(--b1);
+  }
+
+  &__summary {
+    @extend %typography-summary;
+
+    grid-column: content-full;
+    margin: 0 0 var(--a2);
   }
 }
 
-.structure {
-  flex: 0 0 auto;
-  max-width: 90rem;
-  transition: transform var(--timing-sidebar-slide-out);
-  transform-origin: right var(--percent-scrolled);
+// I style generic tags in the `section` block to avoid class="" bloat.
+.section {
+  @extend %layout-grid;
 
-  .sidebar.js--expanded ~ .content & {
-    // Use `scale3d` to avoid a rerender (since the contents are scaling down,
-    // it’s not necessary). Doing so requires a tiny z-axis scale so that
-    // content doesn’t flash away in Chrome and Firefox (rendering bug?).
-    transform: translateY(calc(var(--height-navbar-difference) * 1rem));
-    transition: transform var(--timing-sidebar-slide-in);
+  margin: 0 0 var(--a3);
 
-    @include at-least(w0) {
-      transform: translateX(0) scale3d(var(--scale-nav), var(--scale-nav), .00001);
+  .header {
+    grid-column: header;
+
+    h2 {
+      @extend %typography-section-heading;
+
+      margin: 0 0 var(--a-1);
+    }
+
+    &__parenthetical {
+      @extend %typography-supporting;
+
+      color: var(--hue-shade-700);
     }
   }
 
-  & > * {
-    margin: 0;
-    //outline: 1px solid rgba(0, 230, 230, .5);
-    outline-offset: -1px;
-  }
-}
-
-
-
-
-
-
-
-
-.pagetitle {
-  @extend %typography-title;
-
-  align-items: flex-end;
-  align-self: stretch;
-  display: flex;
-  grid-column: fullwidth;
-
-  @media (min-width: 720px) {
-    padding: 0 calc(8rem + 1rem);
-  }
-}
-
-.summary {
-  @extend %typography-summary;
-
-  grid-column: summary;
-  padding-bottom: var(--a2);
-}
-
-.header {
-
-  justify-content: flex-start;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  grid-column: header;
-
-  h2 {
-    @extend %typography-section-heading;
+  h3 {
+    grid-column: content-full;
 
     margin: 0;
   }
 
-  .header__parenthetical {
-    color: #888;
-    font-size: .875rem;
-    font-weight: 400;
-    margin-top: .25rem;
-  }
-}
+  p, ul {
+    @extend %typography-body;
 
-hr.section-rule {
-  border: 0;
-  display: block;
-  grid-column: fullwidth;
-  height: 4rem;
-  position: relative;
-
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 196dpi) {
-    transform: scaleY(.5);
+    grid-column: content-full;
+    margin: 0 0 var(--b0);
   }
 
-  &::before {
-    background-color: #999;
-    content: '';
-    display: block;
-    left: 0;
-    height: 1px;
-    position: absolute;
-    right: 0;
-    top: 2rem;
-  }
-}
-
-h3 {
-  grid-column: content;
-}
-
-.copyimage {
-  align-self: stretch;
-  grid-column: aside;
-}
-
-p {
-  @extend %typography-body;
-
-  grid-column: content;
-
-  .paragraph--beforeimage {
-    grid-column: content-aside;
-  }
-}
-
-.paragraph {
-  grid-column: content;
-  display: block;
-
-  &::first-line {
+  > p:first-of-type::first-line, strong {
     font-weight: 450;
   }
 
-  p {
-    margin: 0;
+  > :last-child {
+    margin-bottom: 0;
   }
-}
 
-.paragraph aside {
-  float: right;
-  margin-right: calc((var(--a3) * -1) - 1rem); //mind the gap
-  min-height: 10rem;
-  background: var(--hue-blue-100);
-  width: 14rem;
-  //clip-path: polygon(7rem 0, 0 10rem, 14rem 10rem);
-  //shape-outside: polygon(7rem 0, 0 10rem, 14rem 10rem); //note! negative margins affects percentages for shape outside
-}
+  .p__container {
+    grid-column: content-full;
 
-.spec__key {
-  @extend %typography-subheading;
+    aside {
+      background: var(--hue-blue-100);
+      float: right;
+      margin: 0 calc(var(--a1) * -1) var(--a0) var(--a0);
+      min-height: var(--a4);
+      width: calc(33.3333% - (var(--a0) * 2 / 3) + var(--a1));
 
-  grid-column: spec-key;
-}
-
-.spec__value,
-.spec__valuelist {
-  grid-column: spec-value;
-}
-
-ul {
-  grid-column: content;
-  list-style: none;
-  padding: 0;
-
-  li {
-    position: relative;
-
-    &::before {
-      background: #aaa;
-      border-radius: 50%;
-      content: '';
-      display: block;
-      height: .25rem;
-      left: -.75rem;
-      position: absolute;
-      transform: translate(50%, -50%);
-      top: .625rem;
-      width: .25rem;
+      //clip-path: polygon(7rem 0, 0 10rem, 14rem 10rem);
+      //shape-outside: polygon(7rem 0, 0 10rem, 14rem 10rem); //note! negative margins affects percentages for shape outside
     }
   }
 
-  li + li {
-    margin-top: .5rem;
+  ul {
+    grid-column: content-full;
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin: 0 0 var(--b0);
+      position: relative;
+
+      // I want a responsive bullet, but using rems on pseudo elements can
+      // make them non-square (they get squished!). This uses a clip path
+      // on a pseudo element that spans the height of the list item.
+
+      &::before {
+        background: var(--hue-shade-500);
+        clip-path: circle(calc(var(--a-2) / 2) at 50% calc(var(--a0) * 1.5 / 2));
+        content: '';
+        display: block;
+        height: 100%;
+        margin: 0 calc(var(--b0) - var(--a-2)) 0 calc(var(--b0) * -1);
+        position: absolute;
+        width: var(--a-2);
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
   }
+
+.details__key {
+  @extend %typography-subheading;
+
+  grid-column: details-key;
+}
+
+.details__value,
+.details__valuelist {
+  @extend %typography-details;
+
+  grid-column: details-value;
+}
 }
 
 // To minimize all repaints, draw the “underline” via box-shadow and
@@ -256,6 +180,7 @@ a {
 
 // Grid properties are kept here for clarity.
 .structure {
+  /*
   // Essentially single-column, with a
   // narrow ending sidebar for a little variation.
   display: grid;
@@ -306,5 +231,5 @@ a {
       1fr
       [aside-end fullwidth-end gallery-end] var(--a0)
       [padding-end];
-  }
+  }*/
 }
