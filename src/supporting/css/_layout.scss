@@ -26,15 +26,94 @@
   //outline: 4px solid var(--hue-red-300);
   outline-offset: -5px;
   grid-template-columns:
-    [header-start fullwidth-start content-start summary-start content-aside-start aside-start spec-key-start spec-value-start gallery-start] 6fr
-    [content-end content-aside-end spec-key-end spec-value-end summary-end] 1fr
-    [header-end aside-end fullwidth-end gallery-end];
+    [full-bleed-start]
+      var(--b0)
+    [header-start content-full-start content-half-a-start content-half-b-start content-third-a-start content-third-b-start content-third-c-start details-key-start]
+      1fr
+    [details-key-end]
+      var(--a0)
+    [details-value-start]
+      3fr
+    [content-full-end content-half-a-end content-half-b-end content-third-a-end content-third-b-end content-third-c-end details-value-end]
+      var(--b0)
+    [full-bleed-end];
+
+  @include at-least(w0) {
+    grid-template-columns:
+      [full-bleed-start]
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        var(--a1)
+      [header-start content-full-start content-half-a-start content-half-b-start content-third-a-start content-third-b-start content-third-c-start details-key-start]
+        1fr
+      [details-key-end]
+        var(--a0)
+      [details-value-start]
+        2fr
+      [content-full-end content-half-a-end content-half-b-end content-third-a-end content-third-b-end content-third-c-end details-value-end]
+        var(--b0)
+      [full-bleed-end];
+  }
+
+  @include at-least(w1) {
+    grid-template-columns:
+      [full-bleed-start]
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        var(--b1)
+      [header-start content-full-start content-half-a-start content-half-b-start content-third-a-start content-third-b-start content-third-c-start details-key-start]
+        1fr
+      [details-key-end]
+        var(--b1)
+      [details-value-start]
+        2fr
+      [content-full-end content-half-a-end content-half-b-end content-third-a-end content-third-b-end content-third-c-end details-value-end]
+        var(--b1)
+      [full-bleed-end];
+  }
+
+  @include at-least(w2) {
+    grid-template-columns:
+      [full-bleed-start]
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        var(--b2)
+      [header-start]
+        var(--a4)
+      [header-end]
+        var(--b1)
+      [content-full-start content-half-a-start content-third-a-start details-key-start]
+        1fr
+      []
+        var(--b1)
+      []
+        1fr
+      [content-third-a-end details-key-end]
+        var(--b1)
+      [content-third-b-start details-value-start]
+        1fr
+      [content-half-a-end]
+        var(--b1)
+      [content-half-b-start]
+        1fr
+      [content-third-b-end]
+        var(--b1)
+      [content-third-c-start]
+        1fr
+      []
+        var(--a2)
+      []
+        1fr
+      [content-full-end content-half-b-end content-third-c-end details-value-end]
+        var(--b2)
+      [full-bleed-end];
+  }
 
   @include at-least(w3) {
     grid-template-columns:
-      [full-bleed-start sidebar-start]
+      [full-bleed-start]
         calc(var(--width-sidebar-expanded) * 1rem)
-      [sidebar-end]
+      []
         var(--b2)
       [header-start]
         var(--a4)
@@ -64,9 +143,89 @@
         1fr
       [content-full-end content-half-b-end content-third-c-end details-value-end
        float-gutter-start]
-        var(--a1)
+        var(--b3)
       [float-gutter-end]
         var(--b2)
+      [full-bleed-end];
+  }
+
+  @include at-least(w4) {
+    grid-template-columns:
+      [full-bleed-start]
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        var(--b3)
+      [header-start]
+        var(--a4)
+      [header-end]
+        var(--b1)
+      [content-full-start content-half-a-start content-third-a-start details-key-start]
+        1fr
+      []
+        var(--b1)
+      []
+        1fr
+      [content-third-a-end details-key-end]
+        var(--b1)
+      [content-third-b-start details-value-start]
+        1fr
+      [content-half-a-end]
+        var(--b1)
+      [content-half-b-start]
+        1fr
+      [content-third-b-end]
+        var(--b1)
+      [content-third-c-start]
+        1fr
+      []
+        var(--b1)
+      []
+        1fr
+      [content-full-end content-half-b-end content-third-c-end details-value-end
+       float-gutter-start]
+        var(--b4)
+      [float-gutter-end]
+        var(--b3)
+      [full-bleed-end];
+  }
+
+  @include at-least(w5) {
+    grid-template-columns:
+      [full-bleed-start]
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        minmax(var(--b3),auto)
+      [header-start]
+        var(--a4)
+      [header-end]
+        var(--b2)
+      [content-full-start content-half-a-start content-third-a-start details-key-start]
+        minmax(auto,var(--a3))
+      []
+        var(--b1)
+      []
+        minmax(auto,var(--a3))
+      [content-third-a-end details-key-end]
+        var(--b2)
+      [content-third-b-start details-value-start]
+        minmax(auto,var(--a3))
+      [content-half-a-end]
+        var(--b2)
+      [content-half-b-start]
+        minmax(auto,var(--a3))
+      [content-third-b-end]
+        var(--b2)
+      [content-third-c-start]
+        minmax(auto,var(--a3))
+      []
+        var(--b2)
+      []
+        minmax(auto,var(--a3))
+      [content-full-end content-half-b-end content-third-c-end details-value-end
+       float-gutter-start]
+        var(--b5)
+      [float-gutter-end]
+        minmax(var(--b3),auto)
       [full-bleed-end];
   }
 }
@@ -90,11 +249,11 @@
 }
 
 .wrapper__inner {
-  flex: 0 0 auto;
-  max-width: 90rem;
+  flex: 1 1 100%;
   position: relative;
   transition: transform var(--timing-sidebar-slide-out);
   transform-origin: right var(--percent-scrolled);
+  width: 100%;
 
   .sidebar.js--expanded ~ .wrapper__outer & {
     // Use `scale3d` to avoid a rerender (since the contents are scaling down,
