@@ -1,5 +1,10 @@
+// This could be split into multiple files per template, but not sure
+// of the most efficient way to do that.
+
 @use "utilities" as *;
-@use "../../templates/shell/shell";
+@use "../../templates/_shell/shell";
+@use "../../templates/case-study/case-study";
+@use "../../templates/home/home";
 @use "../../components/navigation/navigation";
 @use "../../components/contact/contact";
 @use "../../components/footer/footer";
