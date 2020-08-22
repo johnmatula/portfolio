@@ -39,12 +39,10 @@
 
   {% include "src/components/navigation/_navigation.njk" %}
 
-  <main class="content">
-    <div class="structure">
-
-  {% block content %}
-  {% endblock %}
-
+  <main class="wrapper__outer">
+    <div class="wrapper__inner">
+      {% block content %}
+      {% endblock %}
     </div>
   </main>
 
