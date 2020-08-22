@@ -1,0 +1,24 @@
+{% extends "src/templates/_shell/_shell.njk" %}
+
+{% block titletag %}{{ title }}{% endblock %}
+
+{% block ogtitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="home">
+  <section class="section hero">
+    <h1 class="hero__title">{% block introduction %}{% endblock %}</h1>
+    <p class="hero__instructions">Scroll to learn about me</p>
+  </section>
+  <section class="section about">
+    {% block about %}{% endblock %}
+  </section>
+  <section class="section portfolio">
+    <div class="projects">{% block projects %}{% endblock %}</div>
+    <div class="more">{% block work %}{% endblock %}</div>
+  </section>
+  <section class="section final">
+    {% block final %}{% endblock %}
+  </section>
+</div>
+{% endblock %}

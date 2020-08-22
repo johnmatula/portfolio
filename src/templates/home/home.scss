@@ -1,0 +1,206 @@
+@use "utilities" as *;
+
+.home {
+  section {
+    @extend %layout-home-grid;
+  }
+
+  h1 {
+    font-weight: 600;
+    grid-column: mat;
+
+    strong {
+      font-weight: 900;
+    }
+  }
+
+  p {
+    @extend %typography-home-body;
+
+    grid-column: mat;
+
+    &.p--leading {
+      @extend %typography-home-introduction;
+    }
+  }
+
+  .p--body {
+
+  }
+
+  h2 {
+    font-weight: 900;
+    grid-column: mat;
+  }
+
+  .hero,
+  .portfolio {
+    background-color: var(--hue-shade-100);
+  }
+
+  .hero {
+    min-height: 44vh;
+
+    &__title {
+
+    }
+
+    &__instructions {
+
+    }
+  }
+
+  .portfolio {
+    @extend %layout-home-grid;
+
+    .projects {
+      grid-column: content-major;
+    }
+
+    .more {
+      grid-column: content-minor;
+    }
+  }
+}
+
+
+
+// HOME GRID
+//
+// Less intense than the case study grid, but still plenty involved.
+// (See that template for a longer writeup. TODO: Move that to the README)
+
+%layout-home-grid {
+  align-items: baseline;
+  display: grid;
+  //outline: 4px solid var(--hue-red-300);
+  outline-offset: -5px;
+  grid-template-columns:
+    []
+      var(--a1)
+    [content-major-start content-minor-start mat-start]
+      auto
+    [content-major-end content-minor-end mat-end]
+      var(--a1)
+    [];
+
+  @include at-least(w0) {
+    grid-template-columns:
+      []
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        var(--a1)
+      [content-major-start content-minor-start mat-start]
+        auto
+      [content-major-end content-minor-end mat-end]
+        var(--a1)
+      [];
+  }
+
+  @include at-least(w1) {
+    grid-template-columns:
+      []
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        var(--b1)
+      [content-major-start]
+        var(--b2) //
+      [mat-start]
+        2fr
+      [content-major-end]
+        var(--a1)
+      [content-minor-start]
+        1fr
+      [mat-end]
+        var(--b2) //
+      [content-minor-end]
+        var(--b1)
+      [];
+  }
+
+  @include at-least(w2) {
+    grid-template-columns:
+      []
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        var(--b2)
+      [content-major-start]
+        var(--b3) //
+      [mat-start]
+        2fr
+      [content-major-end]
+        var(--b1)
+      [content-minor-start]
+        1fr
+      [mat-end]
+        var(--b3) //
+      [content-minor-end]
+        var(--b2)
+      [];
+  }
+
+  @include at-least(w3) {
+    grid-template-columns:
+      []
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        var(--b2)
+      [content-major-start]
+        var(--a4) //
+      [mat-start]
+        2fr
+      [content-major-end]
+        var(--b1)
+      [content-minor-start]
+        1fr
+      [mat-end]
+        var(--a3) //
+      [content-minor-end]
+        var(--a4)
+      [];
+  }
+
+  @include at-least(w4) {
+    grid-template-columns:
+      []
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        var(--b3)
+      [content-major-start]
+        var(--b4) //
+      [mat-start]
+        2fr
+      [content-major-end]
+        var(--b1)
+      [content-minor-start]
+        1fr
+      [mat-end]
+        var(--b4) //
+      [content-minor-end]
+        var(--b3)
+      [];
+  }
+
+  @include at-least(w5) {
+    grid-template-columns:
+      []
+        calc(var(--width-sidebar-expanded) * 1rem)
+      []
+        minmax(var(--b3),auto)
+      [content-major-start]
+        var(--b4) //
+      [mat-start]
+        minmax(auto,var(--b5))
+      []
+        minmax(auto,var(--b5))
+      [content-major-end]
+        var(--b1)
+      [content-minor-start]
+        minmax(auto,var(--b5))
+      [mat-end]
+        var(--b4) //
+      [content-minor-end]
+        minmax(var(--b3),auto)
+      [];
+  }
+}
