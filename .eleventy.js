@@ -1,4 +1,5 @@
 module.exports = (function(eleventyConfig) {
+  eleventyConfig.setUseGitIgnore(false);
 
   eleventyConfig.addPassthroughCopy({ "src/supporting/generated/css": "css" });
   eleventyConfig.addPassthroughCopy({ "src/supporting/generated/js": "js" });
