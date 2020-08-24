@@ -7,7 +7,9 @@
 {% block content %}
 <div class="home">
   <section class="section hero">
-    <h1 class="hero__title">{% block introduction %}{% endblock %}</h1>
+    <div class="hero__titlewrap">
+      <h1 class="hero__title">{% block introduction %}{% endblock %}</h1>
+    </div>
     <p class="hero__instructions">Scroll to learn about me</p>
   </section>
   <section class="section about">
