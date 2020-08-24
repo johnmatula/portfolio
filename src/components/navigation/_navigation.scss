@@ -73,7 +73,7 @@
   }
 
   &__unfilled {
-    fill: rgba(0,0,0,.08);
+    fill: var(--translucent-shade-05);
   }
 
   &__filled {
@@ -84,9 +84,9 @@
     transition: stroke var(--timing-sidebar-fade-out);
 
     .js--ready & {
-      animation: jmline-draw 1.75s;
+      animation: jmline-draw var(--timing-logo);
       animation-fill-mode: forwards;
-      animation-delay: .5s;
+      animation-delay: var(--delay-logo);
     }
 
     .js--expanded & {
