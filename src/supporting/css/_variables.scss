@@ -104,11 +104,17 @@
 
 
   // TIMINGS
+  --timing-logo: 1.75s;
+  --timing-instructions-slide-in: .425s;
+  --timing-instructions-fade-in: .275s;
   --timing-sidebar-slide-in: .425s;
   --timing-sidebar-fade-in: .275s;
   --timing-sidebar-slide-out: .25s;
   --timing-sidebar-fade-out: .2s;
   --timing-link: .15s;
+
+  --delay-logo: .5s;
+  --delay-instructions: 1.375s;
 
   // SAFE-AREA ENVS
   // These values are redefined so that JavaScript can access them.
