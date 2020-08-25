@@ -22,10 +22,10 @@
   line-height: 1.44;
 }
 
-%typography-home-introduction {
+%typography-home-primary {
   font-family: $font-fraunces;
-  font-variation-settings: "opsz" 25, "SOFT" 25, "WONK" 0;
   font-size: var(--b0);
+  font-variation-settings: "opsz" 25, "SOFT" 25, "WONK" 0;
   font-weight: 350;
   letter-spacing: -.012rem;
   line-height: 1.6;
@@ -33,11 +33,25 @@
 
 %typography-home-body {
   font-family: $font-fraunces;
-  font-variation-settings: "opsz" 20, "SOFT" 35, "WONK" 0;
   font-size: var(--a0);
+  font-variation-settings: "opsz" 20, "SOFT" 35, "WONK" 0;
   font-weight: 380;
   letter-spacing: -.01rem;
   line-height: 1.8;
+}
+
+%typography-home-header {
+  font-size: var(--a1);
+  font-weight: 900;
+  letter-spacing: -.008rem;
+  line-height: 1.2;
+}
+
+%typography-home-final {
+  font-size: var(--a1);
+  font-weight: 400;
+  letter-spacing: -.04;
+  line-height: 1.5;
 }
 
 %typography-section-heading {
@@ -74,21 +88,33 @@
 
 %typography-body {
   font-family: $font-fraunces;
-  font-variation-settings: "opsz" 20, "SOFT" 35, "WONK" 1;
   font-size: var(--a0);
+  font-variation-settings: "opsz" 20, "SOFT" 35, "WONK" 0;
   font-weight: 350;
   letter-spacing: -.01rem;
   line-height: 1.5;
 }
 
 %typography-link-title {
+  font-size: var(--b0);
+  font-weight: 700;
+  letter-spacing: -.007rem;
+  line-height: 1.15;
+}
 
+%typography-link-description {
+  font-family: $font-fraunces;
+  font-variation-settings: "opsz"16, "SOFT" 35, "WONK" 0;
+  font-size: var(--a0);
+  font-weight: 320;
+  letter-spacing: -.005rem;
+  line-height: 1.4;
 }
 
 %typography-navigation {
   font-family: $font-jm;
-  font-weight: 400;
   font-size: var(--a0);
+  font-weight: 400;
   letter-spacing: -.015;
   line-height: 1;
 }
