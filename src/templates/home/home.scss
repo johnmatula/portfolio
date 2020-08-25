@@ -5,23 +5,11 @@
     @extend %layout-home-grid;
   }
 
-  p {
-    @extend %typography-home-body;
-
-    grid-column: mat;
-
-    &.p--leading {
-      @extend %typography-home-introduction;
-    }
-  }
-
-  .p--body {
-
-  }
-
   h2 {
+    @extend %typography-home-header;
     font-weight: 900;
     grid-column: mat;
+    margin-bottom: var(--a2);
   }
 
   .hero,
@@ -30,7 +18,7 @@
   }
 
   .hero {
-    margin-bottom: var(--a3);
+    margin-bottom: var(--a4);
 
     &__titlewrap {
       display: flex;
@@ -57,6 +45,7 @@
       @extend %typography-summary;
 
       color: var(--hue-shade-700);
+      grid-column: title;
       margin-bottom: calc(var(--b-1) * -1);
       opacity: 0;
       text-align: right;
@@ -70,15 +59,108 @@
     }
   }
 
+  .about {
+    margin-bottom: var(--a3);
+
+    p {
+      @extend %typography-home-body;
+
+      grid-column: mat;
+      margin-bottom: var(--a0);
+
+      &.p--leading {
+        @extend %typography-home-primary;
+        margin-bottom: var(--a1);
+      }
+    }
+  }
+
   .portfolio {
     @extend %layout-home-grid;
 
+    margin-bottom: var(--a3);
+    padding: var(--a3) 0;
+
     .projects {
       grid-column: content-major;
+
+      li {
+        margin-bottom: var(--a1);
+      }
+
+      li + li {
+        padding-top: var(--a1);
+      }
+
+      h3 {
+        @extend %typography-link-title;
+
+        padding-bottom: var(--b-1);
+      }
     }
 
     .more {
       grid-column: content-minor;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: var(--a0);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    li + li {
+      box-shadow: 0 0.5px 0 0 var(--translucent-shade-54) inset;
+      padding-top: var(--a0);
+    }
+
+    a {
+      background: none;
+      box-shadow: none;
+      color: var(--hue-blue-500);
+      display: block;
+
+      &:hover, &:focus {
+        color: var(--hue-blue-300);
+      }
+
+      &:active {
+        color: var(--hue-blue-700);
+      }
+    }
+
+    p {
+      @extend %typography-link-description;
+
+      color: var(--hue-shade-900);
+    }
+  }
+
+  .final {
+    margin-bottom: var(--a5);
+
+    p {
+      grid-column: mat;
+    }
+
+    &__primary {
+      @extend %typography-home-final;
+
+      margin-bottom: var(--a1);
+    }
+
+    &__supporting {
+      @extend %typography-home-primary;
     }
   }
 }
@@ -128,7 +210,7 @@
       [mat-start]
         2fr
       [content-major-end]
-        var(--a1)
+        var(--b1)
       [content-minor-start]
         1fr
       [mat-end title-end]
@@ -145,15 +227,15 @@
       []
         var(--b2)
       [content-major-start title-start]
-        var(--b3) //
+        var(--b2) //
       [mat-start]
         2fr
       [content-major-end]
-        var(--b1)
+        var(--b2)
       [content-minor-start]
         1fr
       [mat-end title-end]
-        var(--b3) //
+        var(--b2) //
       [content-minor-end]
         var(--b2)
       [];
@@ -170,13 +252,13 @@
       [mat-start]
         2fr
       [content-major-end]
-        var(--b1)
+        var(--b3)
       [content-minor-start]
         1fr
       [mat-end title-end]
-        var(--a3) //
+        var(--a4) //
       [content-minor-end]
-        var(--a4)
+        var(--b2)
       [];
   }
 
@@ -191,7 +273,7 @@
       [mat-start]
         2fr
       [content-major-end]
-        var(--b1)
+        var(--b3)
       [content-minor-start]
         1fr
       [mat-end title-end]
@@ -206,21 +288,19 @@
       []
         calc(var(--width-sidebar-expanded) * 1rem)
       []
-        minmax(var(--b3),auto)
+        minmax(var(--b4),auto)
       [content-major-start title-start]
         var(--b4) //
       [mat-start]
         minmax(auto,var(--b5))
-      []
-        minmax(auto,var(--b5))
       [content-major-end]
-        var(--b1)
+        var(--b4)
       [content-minor-start]
         minmax(auto,var(--b5))
       [mat-end title-end]
         var(--b4) //
       [content-minor-end]
-        minmax(var(--b3),auto)
+        minmax(var(--b4),auto)
       [];
   }
 }
