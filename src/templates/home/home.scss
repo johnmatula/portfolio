@@ -83,6 +83,11 @@
 
     .projects {
       grid-column: content-major;
+      margin-bottom: var(--a3);
+
+      @include at-least(w0) {
+        margin-bottom: 0;
+      }
 
       li {
         margin-bottom: var(--a1);
