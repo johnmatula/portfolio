@@ -35,12 +35,19 @@
 
     margin: 0 0 var(--a3);
 
-    > p:first-of-type::first-line, strong {
+    > p:first-of-type::first-line,
+    strong,
+    h3 + p::first-line {
       font-weight: 450;
     }
 
     > :last-child {
       margin-bottom: 0;
+    }
+
+    &--gallery {
+      background-color: var(--hue-shade-100);
+      padding: var(--a3) 0;
     }
   }
 
@@ -61,9 +68,10 @@
   }
 
   h3 {
-    grid-column: content-full;
+    @extend %typography-subheading;
 
-    margin: 0;
+    grid-column: content-full;
+    margin: var(--a1) 0 var(--a0);
   }
 
   p, ul {
@@ -94,7 +102,7 @@
     padding: 0;
 
     li {
-      margin: 0 0 var(--b0);
+      margin: 0 0 var(--a-1);
       position: relative;
 
       // I want a responsive bullet, but using rems on pseudo elements can
