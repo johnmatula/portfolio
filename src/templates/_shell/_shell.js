@@ -38,3 +38,7 @@ function updateEnvRemValues() {
     root.style.setProperty(env, remValue);
   })
 }
+
+window.addEventListener('load', () => {
+  document.body.classList.add('js--ready');
+})
