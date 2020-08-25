@@ -14,18 +14,18 @@ function sidebar() {
     closeSubmenus() {
       this.submenu = false
     },
-    listenForEscape() {
+    listenForCloseEvent() {
       // Use ES6 notation so that `this` refers to this component
       // (a proud moment that John remembered this differentiation)
-      window.addEventListener('keypress', (e) => {
-        if(e.code === 'Escape') {
+      window.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') {
           this.closeSubmenus()
         }
+      });
+
+      window.addEventListener('closeButtonClick', () => {
+        this.closeSubmenus();
       });
     }
   }
 }
-
-window.addEventListener("load", () => {
-  document.body.classList.add("js--ready");
-})
