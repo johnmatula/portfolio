@@ -35,3 +35,11 @@ a {
     transition: none;
   }
 }
+
+a.anchor:target {
+  display: block;
+  height: 0;
+  position: relative;
+  top: calc(var(--a4) * -1);
+  visibility: hidden;
+}
