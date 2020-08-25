@@ -22,24 +22,61 @@ Hey there!<br>I’m <strong>John Matula</strong>,<br>a product designer<br>and f
 <p>Professionally, I’ve been in some sort of UX design, graphic design, or frontend development role since 2012. I really enjoy seeing a project from all sides: its frontend and backend feasibility, its aesthetic quality, its business value.</p>
 
 <p>I’m currently a Principal UX Designer at Oracle CrowdTwist. I work on the UX of our loyalty engine platform, and I also use our platform to create custom websites for several brands’ rewards programs.</p>
-
-<p><a href="/process" class="button--pill link--no-underline">Read my Design Process</a></p>
 {% endblock %}
 
 
 {% block projects %}
 <h2>Case Studies</h2>
-<p>[this is a list of cards which we should pull from a component or nav or something?]</p>
+<ul>
+  <li>
+    <a class="link--smarthome" href="/projects/smarthome">
+      <h3>Smarthome</h3>
+      <p>My hobby project: a custom web app that powers my apartment’s lighting</p>
+    </a>
+  </li>
+  <li>
+    <a class="link--redesign" href="/projects/ux-redesign">
+      <h3>CrowdTwist UX Redesign</h3>
+      <p>Participatory design sessions that led to a comprehensive plan to improve our core offering</p>
+    </a>
+  </li>
+  <li>
+    <a class="link--frontend" href="/projects/frontend-academy">
+      <h3>Frontend Academy</h3>
+      <p>Lectures and quizzes that bolstered the frontend knowledge of the engineering team, serving you “professor realness”</p>
+    </a>
+  </li>
+  <li>
+    <a class="link--recsports" href="/projects/recsports">
+      <h3>Recreational Sports</h3>
+      <p>A fully-designed website and CMS experience, from frontend to backend, leading to an increase in memberships</p>
+    </a>
+  </li>
+</ul>
 {% endblock %}
 
 
 {% block work %}
 <h2>More Work</h2>
-<p>[this is a list of cards which we should pull from a component or nav or something?]</p>
+<ul>
+  <li><a href="/work/quarantina">Weekly Quarantine Count</a></li>
+  <li><a href="/work/withers">Chris Withers’s Portfolio</a></li>
+  <li><a href="/work/ascent">Ascent Rewards</a></li>
+  <li><a href="/work/subway-diagram">Subway Diagram Art</a></li>
+  <li><a href="/work/cab">Steakholder Rewards</a></li>
+  <li><a href="/work/lego">LEGO VIP Rewards</a></li>
+  <li><a href="/work/vitamix">Vitamix Rewards</a></li>
+  <li><a href="/work/sylvan">Sylvan Nation</a></li>
+  <li><a href="/work/year-in-the-city">Year in the City</a></li>
+  <li><a href="/work/conferences">Conference & Event Services</a></li>
+  <li><a href="/work/wedding">Matula-Rosine Wedding</a></li>
+  <li><a href="/work/dining-hub">Michigan Dining Digital Hub</a></li>
+</ul>
 {% endblock %}
 
 
 {% block final %}
 <h2>Let’s get in touch!</h2>
-<p>Right now, I’m not accepting new projects beyond quick consulations, but thank you for your interest!</p>
+<p class="final__primary">Email me at <a href="mailto:john@johnmatu.la">john@johnmatu.la</a> and download my <a href="/pdf/JohnMatula_resume.pdf">résumé</a>.</p>
+<p class="final__supporting">Right now, I’m not accepting new projects beyond quick consulations, but thank you for your interest!</p>
 {% endblock %}
