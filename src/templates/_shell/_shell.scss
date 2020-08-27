@@ -15,6 +15,10 @@ a {
   transition: background-color .125s, color .125s;
   text-decoration: none;
 
+  svg * {
+    transition: stroke .125s, fill .125s;
+  }
+
   &.link--no-underline {
     box-shadow: none;
   }
@@ -33,6 +37,10 @@ a {
     color: var(--hue-shade-100);
     background-color: var(--hue-red-700);
     transition: none;
+
+    svg * {
+      transition: none;
+    }
   }
 }
 
