@@ -81,32 +81,6 @@
     margin-bottom: var(--a3);
     padding: var(--a3) 0;
 
-    .projects {
-      grid-column: content-major;
-      margin-bottom: var(--a3);
-
-      @include at-least(w0) {
-        margin-bottom: 0;
-      }
-
-      li a {
-        padding-bottom: var(--a1);
-      }
-
-      li + li a {
-        padding-top: var(--a1);
-      }
-
-      h3 {
-        @extend %typography-link-title;
-
-        padding-bottom: var(--b-1);
-      }
-    }
-
-    .more {
-      grid-column: content-minor;
-    }
 
     ul {
       display: flex;
@@ -152,6 +126,57 @@
 
       color: var(--hue-shade-900);
     }
+
+    .projects {
+      grid-column: content-major;
+      margin-bottom: var(--a3);
+
+      @include at-least(w0) {
+        margin-bottom: 0;
+      }
+
+      li a {
+        padding-bottom: var(--a1);
+      }
+
+      li + li a {
+        padding-top: var(--a1);
+      }
+
+      a {
+        display: grid;
+        grid:
+          "project-icon project-title" auto
+          "project-icon project-description" 1fr
+          / min-content 1fr;
+      }
+
+      h3 {
+        @extend %typography-link-title;
+
+        grid-area: project-title;
+        padding-bottom: var(--b-1);
+      }
+
+      p {
+        grid-area: project-description;
+      }
+
+      svg {
+        grid-area: project-icon;
+        margin-right: var(--a0);
+        width: var(--b2);
+
+        * {
+          stroke: currentColor;
+        }
+      }
+    }
+
+    .more {
+      grid-column: content-minor;
+    }
+
   }
 
   .final {
