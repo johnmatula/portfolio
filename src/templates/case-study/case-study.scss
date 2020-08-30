@@ -1,70 +1,18 @@
 @use "utilities" as *;
 
 // I style generic tags in the `section` block to avoid class="" bloat.
-.case-study {
-  .hero {
-    @extend %layout-case-study;
+.case-study section {
+  @extend %layout-case-study;
+  @extend %shell-bulleted-list;
 
-    background-color: var(--hue-shade-100);
-    min-height: 44vh;
-
-    margin: 0 0 var(--a3);
-
-    &__visual {
-      grid-column: full-bleed;
-      min-height: 33vh;
-    }
-
-    &__title {
-      @extend %typography-title;
-
-      grid-column: content-full;
-      margin: 0 0 var(--b1);
-    }
-
-    &__summary {
-      @extend %typography-summary;
-
-      grid-column: content-full;
-      margin: 0 0 var(--a2);
-    }
+  > p:first-of-type::first-line,
+  strong,
+  h3 + p::first-line {
+    font-weight: 450;
   }
 
-  .section {
-    @extend %layout-case-study;
-
-    margin: 0 0 var(--a3);
-
-    > p:first-of-type::first-line,
-    strong,
-    h3 + p::first-line {
-      font-weight: 450;
-    }
-
-    > :last-child {
-      margin-bottom: 0;
-    }
-
-    &--gallery {
-      background-color: var(--hue-shade-100);
-      padding: var(--a3) 0;
-    }
-  }
-
-  .header {
-    grid-column: header;
-
-    h2 {
-      @extend %typography-section-heading;
-
-      margin: 0 0 var(--a-1);
-    }
-
-    &__parenthetical {
-      @extend %typography-supporting;
-
-      color: var(--hue-shade-700);
-    }
+  > :last-child {
+    margin-bottom: 0;
   }
 
   h3 {
@@ -81,62 +29,12 @@
     margin: 0 0 var(--b0);
   }
 
+  ul {
+    padding-left: var(--a1);
+  }
+
   .p__container {
     grid-column: content-full;
-
-    aside {
-      background: var(--hue-blue-100);
-      float: right;
-      margin: 0 calc(var(--a1) * -1) var(--a0) var(--a0);
-      min-height: var(--a4);
-      width: calc(33.3333% - (var(--a0) * 2 / 3) + var(--a1));
-
-      //clip-path: polygon(7rem 0, 0 10rem, 14rem 10rem);
-      //shape-outside: polygon(7rem 0, 0 10rem, 14rem 10rem); //note! negative margins affects percentages for shape outside
-    }
-  }
-
-  ul {
-    grid-column: content-full;
-    list-style: none;
-    padding: 0;
-
-    li {
-      margin: 0 0 var(--a-1);
-      position: relative;
-
-      // I want a responsive bullet, but using rems on pseudo elements can
-      // make them non-square (they get squished!). This uses a clip path
-      // on a pseudo element that spans the height of the list item, with
-      // an extra half-pixel for safety. (This is so fiddly...)
-      &::before {
-        background: var(--hue-shade-500);
-        clip-path: circle(calc((var(--a-2) / 2) - 0.5px) at 50% calc(var(--a0) * 1.5 / 2));
-        content: '';
-        display: block;
-        height: 100%;
-        margin: 0 calc(var(--b0) - var(--a-2)) 0 calc(var(--a0) * -1);
-        position: absolute;
-        width: var(--a-2);
-      }
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  .details__key {
-    @extend %typography-subheading;
-
-    grid-column: details-key;
-  }
-
-  .details__value,
-  .details__valuelist {
-    @extend %typography-details;
-
-    grid-column: details-value;
   }
 }
 
@@ -160,10 +58,14 @@
 // behemoth of named grid lines. (Is this the right way to do this? I suppose
 // only time will tell haha.)
 
+.grid--case-study {
+  @extend %layout-case-study;
+}
 
 %layout-case-study {
   align-items: baseline;
   display: grid;
+  margin: 0 0 var(--a3);
   //outline: 4px solid var(--hue-red-300);
   outline-offset: -5px;
   grid-template-columns:
