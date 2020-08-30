@@ -8,11 +8,15 @@ summary: I served “professor realness” to bolster the foundational frontend 
 opengraph: Learn more about the courses I led to bolster the frontend knowledge of our engineering team.
 ---
 
+{% from "src/components/aside/_aside.njk" import aside %}
+{% from "src/components/details/_details.njk" import details %}
+{% from "src/components/gallery/_gallery.njk" import gallery %}
+{% from "src/components/section-header/_section-header.njk" import sectionHeader %}
+{% from "src/components/related/_related.njk" import related %}
+{% from "src/components/retrospective/_retrospective.njk" import retrospective %}
 
 <section class="section">
-  <div class="header">
-    <h2>Motivation</h2>
-  </div>
+  {{ sectionHeader("Motivation") }}
 
   <p>Early in 2020, I received a request to quickly update our platform’s visual style to match the emerging design system of our new parent company. As a designer that knows his way around a frontend challenge, I agreed to evaluate how feasible it would be to get that update out the door.</p>
 
@@ -20,9 +24,7 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
 </section>
 
 <section class="section">
-  <div class="header">
-    <h2>Process</h2>
-  </div>
+  {{ sectionHeader("Process") }}
 
   <p>In order to most efficiently address gaps in knowledge, I paired up with an engineer to create an optimal curriculum for the team. I proposed a long list of topics and whittled it down to a list of ten topics on <a href="https://css-tricks.com/the-great-divide/">both sides of the great frontend divide</a>. We held one session per week, and each session was one hour long.</p>
 
@@ -46,41 +48,63 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
   <p>Overall, we made good progress on everyone’s understanding of frontend coding. When we compared our progress with a before-and-after quiz, we saw a marked improvement. Not bad for a ten-week crash course!</p>
 </section>
 
-<section class="section section--gallery">
-  <div class="header">
-    <h2>Previews</h2>
-  </div>
-</section>
+{{ gallery() }}
 
-<section class="section">
-  <div class="header">
-    <h2>Evaluation</h2>
-    <div class="header__parenthetical"><span class="a11y--hidden">(</span>What worked well&nbsp;and what I’d do differently<span class="a11y--hidden">)</span></div>
-  </div>
+{{
+  retrospective([
+    {
+      type: "good",
+      content: "a"
+    },
+    {
+      type: "good",
+      content: "a"
+    },
+    {
+      type: "bad",
+      content: "c"
+    }
+  ])
+}}
 
-  <ul class="retrospective">
-    <li>a.</li>
-    <li>aa</li>
-    <li>a.</li>
-    <li>.)</li>
-    <li>.</li>
-  </ul>
-</section>
+{{
+  details([
+    {
+      key: "Timeframe",
+      value: "May&hairsp;–&hairsp;July 2020"
+    },
+    {
+      key: "Skills in use",
+      value: "Frontend programming, presentation skills, education and lecturing"
+    },
+    {
+      key: "Tech specs",
+      value: [
+        "Ten presentations covering fundamentals of frontend programming, of which I made eight",
+        "Nine CodePen examples to illustrate some CSS concepts",
+        "A post-session exam to evaluate progress"
+      ]
+    },
+    {
+      key: "Status as of August 2020",
+      value: "We’re beyond the “crash course” phase and are keeping up a regular cadence of continued frontend programming education."
+    }
+  ])
+}}
 
-<section class="section section--details">
-  <div class="header">
-    <h2>Details</h2>
-  </div>
-  <h3 class="details__key">Timeframe</h3>
-  <p class="details__value">May&hairsp;–&hairsp;July 2020</p>
-  <h3 class="details__key">Skills in use</h3>
-  <p class="details__value">Frontend programming, presentation skills, education and lecturing</p>
-  <h3 class="details__key">Tech specs</h3>
-  <ul class="details__valuelist">
-    <li>Ten presentations covering fundamentals of frontend programming, of which I made eight</li>
-    <li>Nine CodePen examples to illustrate some CSS concepts</li>
-    <li>A post-session exam to evaluate progress</li>
-  </ul>
-  <h3 class="details__key">Status as of September&nbsp;2020</h3>
-  <p class="details__value">We’re beyond the “crash course” phase and are keeping up a regular cadence of continued frontend programming education.</p>
-</section>
+{{
+  related([
+    {
+      leader: "Here’s a fun one",
+      title: "Project Title",
+      description: "The great description I have",
+      url: "/foo"
+    },
+    {
+      leader: "Aaand a non-sequitur",
+      title: "Project Title",
+      description: "The great description I have",
+      url: "/foo"
+    }
+  ])
+}}

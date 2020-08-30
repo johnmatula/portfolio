@@ -7,7 +7,13 @@ summary: I led the development and design of this comprehensive website system. 
 
 opengraph: Learn more about the website I redesigned for Umich Rec Sports and its contribution to a 19-percent increase in new memberships.
 ---
-<section class="section">
+{% from "src/components/aside/_aside.njk" import aside %}
+{% from "src/components/details/_details.njk" import details %}
+{% from "src/components/gallery/_gallery.njk" import gallery %}
+{% from "src/components/related/_related.njk" import related %}
+{% from "src/components/retrospective/_retrospective.njk" import retrospective %}
+
+<section>
   <div class="header">
     <h2>Motivation</h2>
   </div>
@@ -15,7 +21,7 @@ opengraph: Learn more about the website I redesigned for Umich Rec Sports and it
   <p>The University of Michigan’s Recreational Sports department is a multifaceted group that operates workout facilities, holds exercise classes, and plans individualized programs for students and faculty. In other words: this group does a lot. Unfortunately, the group’s old site did them a disservice since all the information describing these programs and benefits was disorganized and unclear. What was clear: Rec Sports was ready for a new, easy-to-maintain site.</p>
 </section>
 
-<section class="section">
+<section>
   <div class="header">
     <h2>Process</h2>
   </div>
@@ -23,7 +29,7 @@ opengraph: Learn more about the website I redesigned for Umich Rec Sports and it
   <p>I started out this project by corralling the key stakeholders to discuss goals of the site, priorities that each subgroup of the Rec Sports, and possible directions. We also created key personas (following my <a href="">design process</a>) at that initial meeting so that the proposed design and content would stay focused. As our design meetings continued, I also tested my plans with real users to validate them.</p>
 
   <div class="p__container">
-    <aside>Test float right</aside>
+    {{ aside("blah", "blah") }}
     <p>For this project, I was both the lead UX designer and the lead frontend developer, so I constantly evaluated the feasibility and value of design decisions. A good example of this was a custom Google Calendar module that displays the schedule for group exercise classes. Though proposing this feature would mean custom development work for the dev team, the high priority and significant value it had provided the rationale for spending time on it. In a similar fashion, that’s how I prioritized modular components, zero-tap facility info, and an entirely-custom WordPress editor interface in the redesigned site, too.</p>
   </div>
 
