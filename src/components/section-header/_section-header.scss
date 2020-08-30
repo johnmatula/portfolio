@@ -1,0 +1,17 @@
+@use "utilities" as *;
+
+.header {
+  grid-column: header;
+
+  h2 {
+    @extend %typography-section-heading;
+
+    margin: 0 0 var(--a-1);
+  }
+
+  &__parenthetical {
+    @extend %typography-supporting;
+
+    color: var(--hue-shade-700);
+  }
+}

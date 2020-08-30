@@ -1,0 +1,19 @@
+{% from "src/components/section-header/_section-header.njk" import sectionHeader %}
+
+{% macro details(items, classList = "grid--case-study", header = "Details", parenthetical = "") %}
+  <div class="details {{ classList }}">
+    {{ sectionHeader(header, parenthetical) }}
+    {% for item in items %}
+      <h3 class="details__key">{{ item.key }}</h3>
+      {% if item.value | is_string %}
+        <p class="details__value">{{ item.value | safe }}</p>
+      {% else %}
+        <ul class="details__value-list">
+        {% for bullet in item.value %}
+          <li class="details__value-listitem">{{ bullet | safe }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endmacro %}

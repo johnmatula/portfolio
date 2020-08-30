@@ -1,0 +1,46 @@
+@use "utilities" as *;
+
+a.related__link {
+  background: none;
+  box-shadow: none;
+  color: var(--hue-blue-500);
+  display: block;
+
+  &:hover, &:focus {
+    color: var(--hue-blue-300);
+  }
+
+  &:active {
+    color: var(--hue-blue-700);
+  }
+}
+
+.related {
+  background-color: var(--hue-shade-100);
+  margin-bottom: 0;
+  padding: var(--a3) 0;
+
+  &__leader,
+  &__description {
+    color: var(--hue-shade-900);
+  }
+
+  &__leader {
+    @extend %typography-subheading;
+  }
+
+  &__description {
+    @extend %typography-link-description;
+
+  }
+
+  &__link {
+    &:nth-child(1) {
+      grid-column: content-half-a;
+    }
+
+    &:nth-child(2) {
+      grid-column: content-half-b;
+    }
+  }
+}

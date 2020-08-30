@@ -1,0 +1,18 @@
+@use "utilities" as *;
+
+.details {
+  @extend %shell-bulleted-list;
+
+  &__key {
+    @extend %typography-subheading;
+
+    grid-column: details-key;
+  }
+
+  &__value,
+  &__value-list {
+    @extend %typography-details;
+
+    grid-column: details-value;
+  }
+}

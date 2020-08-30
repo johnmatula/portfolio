@@ -1,0 +1,11 @@
+{% macro related(items, classList = "grid--case-study") %}
+<div class="related {{ classList }}">
+  {% for item in items %}
+  <a class="related__link" href="{{ item.url }}">
+    <p class="related__leader">{{ item.leader }}</p>
+    <h3 class="related__title">{{ item.title }}</h3>
+    <p>{{ item.description }}</p>
+  </a>
+  {% endfor %}
+</div>
+{% endmacro %}

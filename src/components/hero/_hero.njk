@@ -1,0 +1,7 @@
+{% macro hero(title, summary, visual = "", background = "", classList = []) %}
+  <div class="hero grid--case-study">
+    <div class="hero__visual">{{ visual }}</div>
+    <h1 class="hero__title">{{ title }}</h1>
+    <p class="hero__summary">{{ summary }}</p>
+  </div>
+{% endmacro %}

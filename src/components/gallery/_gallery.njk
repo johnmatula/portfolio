@@ -1,0 +1,7 @@
+{% from "src/components/section-header/_section-header.njk" import sectionHeader %}
+
+{% macro gallery(items, classList = "grid--case-study", header = "Previews", parenthetical = "") %}
+<div class="gallery {{ classList }}">
+  {{ sectionHeader(header, parenthetical) }}
+</div>
+{% endmacro %}

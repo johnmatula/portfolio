@@ -1,0 +1,12 @@
+{% from "src/components/section-header/_section-header.njk" import sectionHeader %}
+
+{% macro retrospective(items, classList = "grid--case-study", header = "Evaluation", parenthetical = "What worked well and what I’d do differently") %}
+  <div class="retrospective {{ classList }}">
+    {{ sectionHeader(header, parenthetical) }}
+    <ul class="retrospective__list">
+    {% for item in items %}
+      <li class="retrospective__listitem retrospective__listitem--{{item.rating}}">{{ item.content | safe }}</li>
+    {% endfor %}
+    </ul>
+  </div>
+{% endmacro %}

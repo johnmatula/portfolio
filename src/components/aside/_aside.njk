@@ -1,0 +1,6 @@
+{% macro aside(image, description, alt, classList = []) %}
+<aside class="aside">
+  <img class="aside__visual" src="{{ image }}" alt="{{ alt }}">
+  <p class="aside__caption">{{ description }}</p>
+</aside>
+{% endmacro %}

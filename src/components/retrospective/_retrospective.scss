@@ -1,0 +1,19 @@
+@use "utilities" as *;
+
+.retrospective {
+  @extend %shell-bulleted-list; // Re-evaluate
+
+  &__list {
+    grid-column: content-full;
+  }
+
+  &__listitem {
+    &--good {
+
+    }
+
+    &--bad {
+
+    }
+  }
+}

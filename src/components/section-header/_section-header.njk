@@ -1,0 +1,8 @@
+{% macro sectionHeader(header, parenthetical = "", classList = []) %}
+<div class="header">
+  <h2 class="header__heading">{{ header }}</h2>
+  {% if parenthetical !== "" %}
+  <p class="header__parenthetical"><span class="a11y--hidden">(</span>{{ parenthetical }}<span class="a11y--hidden">)</span></p>
+  {% endif %}
+</div>
+{% endmacro %}
