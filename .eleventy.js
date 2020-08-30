@@ -7,7 +7,11 @@ module.exports = (function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/supporting/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy("src/img");
 
-  eleventyConfig.addLayoutAlias('case-study','../templates/case-study/case-study.njk');
+  eleventyConfig.addNunjucksFilter("is_string", function(obj) {
+    return typeof obj === "string";
+  });
+
+  eleventyConfig.addLayoutAlias("case-study", "../templates/case-study/case-study.njk");
 
   return {
     dir: {
