@@ -17,6 +17,7 @@ a {
 
   svg * {
     transition: stroke .125s, fill .125s;
+    vector-effect: non-scaling-stroke;
   }
 
   &.link--no-underline {
