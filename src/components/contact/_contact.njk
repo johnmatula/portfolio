@@ -1,6 +1,8 @@
 <div class="contact" x-data="contact()">
   <div class="contact__close">
-    <button @click="sendSidebarCloseEvent()" aria-label="Close sidebar">XX</button>
+    <button @click="sendSidebarCloseEvent()" aria-label="Close sidebar">
+      {% include "src/supporting/img/x.svg" %}
+    </button>
   </div>
   <h2 class="contact__header">Contact me</h2>
   <p class="contact__tie-in">Hi</p>

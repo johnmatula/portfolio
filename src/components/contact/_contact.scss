@@ -36,11 +36,14 @@
     top: 0;
 
     button {
+      align-items: center;
       background: none;
       border: 0;
       color: var(--hue-shade-100);
       cursor: pointer;
+      display: flex;
       height: calc(var(--height-logo) + var(--b-1) + var(--b-1));
+      justify-content: flex-end;
       margin: 0;
       padding: var(--b-1) var(--a0);
       width: calc(var(--width-logo) + var(--a0) + var(--a0));
@@ -48,6 +51,25 @@
       @include at-least(w0) {
         height: calc(var(--height-logo) + var(--a1) + var(--a1));
         padding: var(--a1) var(--a0);
+      }
+
+      svg {
+        height: var(--height-logo);
+
+        * {
+          stroke: var(--hue-red-100);
+          transition: stroke .125s;
+          vector-effect: non-scaling-stroke;
+        }
+      }
+
+      &:hover svg *, &:focus svg * {
+        stroke: var(--hue-shade-100);
+      }
+
+      &:active svg * {
+        stroke: var(--hue-red-300);
+        transition: none;
       }
     }
   }
