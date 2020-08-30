@@ -86,24 +86,16 @@
       display: flex;
       flex-direction: column;
       list-style: none;
-      margin: 0;
+      margin: calc(var(--a0) * -1) 0;
       padding: 0;
     }
 
     li a {
-      padding-bottom: var(--a0);
-    }
-
-    li:last-child a {
-      padding-bottom: 0;
+      padding: var(--a0) 0;
     }
 
     li + li {
       box-shadow: 0 0.5px 0 0 var(--translucent-shade-54) inset;
-
-      a {
-        padding-top: var(--a0);
-      }
     }
 
     a {
@@ -135,12 +127,12 @@
         margin-bottom: 0;
       }
 
-      li a {
-        padding-bottom: var(--a1);
+      ul {
+        margin: calc(var(--a1) * -1) 0;
       }
 
-      li + li a {
-        padding-top: var(--a1);
+      li a {
+        padding: var(--a1) 0;
       }
 
       a {
