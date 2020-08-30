@@ -2,9 +2,18 @@
 // of the most efficient way to do that.
 
 @use "utilities" as *;
+
 @use "../../templates/_shell/shell";
 @use "../../templates/case-study/case-study";
 @use "../../templates/home/home";
+
 @use "../../components/navigation/navigation";
 @use "../../components/contact/contact";
 @use "../../components/footer/footer";
+@use "../../components/aside/aside";
+@use "../../components/details/details";
+@use "../../components/gallery/gallery";
+@use "../../components/hero/hero";
+@use "../../components/retrospective/retrospective";
+@use "../../components/related/related";
+@use "../../components/section-header/section-header";
