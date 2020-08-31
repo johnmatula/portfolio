@@ -22,11 +22,6 @@
   }
 
 
-  --padding-link-decoration: .1rem;
-  --width-logo: 2rem;
-  --height-logo: 1.75rem;
-
-
   // HUES
   //
   // The brand palette. To adhere to WCAG AA, these combinations are OK:
@@ -74,6 +69,8 @@
   // refers to the power at which the scale (1.618, ϕ, ugh I know) is raised.
   // That factor is then multiplied to a or b to get the rem value.
 
+  --b6: 22.428rem;
+  --a6: 17.942rem;
   --b5: 13.861rem;
   --a5: 11.089rem;
   --b4: 8.567rem;
@@ -90,6 +87,41 @@
   --a-1: .618rem;
   --b-2: .477rem;
   --a-2: .382rem;
+
+
+  // SEMANTIC SIZINGS
+  --padding-link-decoration: .1rem;
+  --gap-grid-major: var(--a0);
+  --gap-grid-minor: var(--a0);
+  --width-float-gutter: 1fr;
+  --width-logo: 2rem;
+  --height-logo: 1.75rem;
+
+  @include at-least(w0) {
+    --gap-grid-major: var(--a1);
+  }
+
+  @include at-least(w1) {
+  }
+
+  @include at-least(w2) {
+    --gap-grid-major: var(--b0);
+  }
+
+  @include at-least(w3) {
+    --gap-grid-major: var(--b1);
+    --gap-grid-minor: var(--b0);
+  }
+
+  @include at-least(w4) {
+    --gap-grid-major: var(--a2);
+    --gap-grid-minor: var(--a1);
+    --width-float-gutter: 2fr;
+  }
+
+  @include at-least(w5) {
+    --width-float-gutter: 4fr;
+  }
 
 
   // Z-INDEX VALUES
@@ -116,6 +148,7 @@
 
   --delay-logo: .5s;
   --delay-instructions: 1.375s;
+
 
   // SAFE-AREA ENVS
   // These values are redefined so that JavaScript can access them.
