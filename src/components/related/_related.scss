@@ -29,6 +29,10 @@ a.related__link {
     @extend %typography-subheading;
   }
 
+  &__title {
+
+  }
+
   &__description {
     @extend %typography-link-description;
 
