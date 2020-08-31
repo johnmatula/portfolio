@@ -4,6 +4,9 @@
   <div class="details {{ classList }}">
     {{ sectionHeader(header, parenthetical) }}
     {% for item in items %}
+      {% if loop.first !== true %}
+      <hr class="details__separator">
+      {% endif %}
       <h3 class="details__key">{{ item.key }}</h3>
       {% if item.value | is_string %}
         <p class="details__value">{{ item.value | safe }}</p>

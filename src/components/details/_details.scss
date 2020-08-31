@@ -14,5 +14,15 @@
     @extend %typography-details;
 
     grid-column: details-value;
+    margin: 0;
+  }
+
+  &__separator {
+    border: 0;
+    background-color: var(--hue-shade-300);
+    grid-column: content-full;
+    height: 1px;
+    margin: var(--a0) 0;
+    transform: scaleY(.5);
   }
 }
