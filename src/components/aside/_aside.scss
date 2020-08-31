@@ -3,9 +3,9 @@
 aside {
   background: var(--hue-blue-100);
   float: right;
-  margin: 0 calc(var(--a1) * -1) var(--a0) var(--a0);
+  margin: 0 calc((((100% - (var(--padding-grid-gap) * 5)) / 7) * 3 + (var(--padding-grid-gap) * 1)) * -1) 0 var(--padding-grid-gap);
   min-height: var(--a4);
-  width: calc(33.3333% - (var(--a0) * 2 / 3) + var(--a1));
+  width: calc(((100% - (var(--padding-grid-gap) * 5)) / 7) * 4 + (var(--padding-grid-gap) * 2));
   //clip-path: polygon(7rem 0, 0 10rem, 14rem 10rem);
   //shape-outside: polygon(7rem 0, 0 10rem, 14rem 10rem); //note! negative margins affects percentages for shape outside
 }
