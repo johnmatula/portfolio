@@ -1,7 +1,12 @@
 @use "utilities" as *;
 
 .header {
+  // I’m using a magic number to ensure that the header content runs parallel
+  // to the content. However, it can’t be outrageously high because Firefox
+  // will actually create any extra rows (so it’s sluggish with too many).
+  align-self: stretch;
   grid-column: header;
+  grid-row: 1 / 9;
 
   h2 {
     @extend %typography-section-heading;
