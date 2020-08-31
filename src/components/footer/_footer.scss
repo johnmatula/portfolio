@@ -9,7 +9,7 @@
   z-index: var(--z-sidebar-footer);
 
   @include at-least(h0) {
-    @include at-least(w0) {
+    @include at-least(w1) {
       display: block;
     }
   }

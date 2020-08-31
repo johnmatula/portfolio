@@ -11,7 +11,7 @@
   min-height: 100vh;
   z-index: 0;
 
-  @include at-least(w0) {
+  @include at-least(w1) {
     margin: 0 0 0 calc(var(--width-sidebar-difference) * -1rem);
     padding: 0; //need env safe????
     width: calc(100% + (var(--width-sidebar-difference) * 1rem));
@@ -32,7 +32,7 @@
     transform: translateY(calc(var(--height-navbar-difference) * 1rem));
     transition: transform var(--timing-sidebar-slide-in);
 
-    @include at-least(w0) {
+    @include at-least(w1) {
       transform: translateX(0) scale3d(var(--scale-nav), var(--scale-nav), .00001);
     }
   }

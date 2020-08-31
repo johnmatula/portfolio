@@ -44,7 +44,7 @@
     width: calc(var(--width-logo) + var(--a0) + var(--a0));
     z-index: var(--z-sidebar-logo);
 
-    @include at-least(w0) {
+    @include at-least(w1) {
       height: calc(var(--height-logo) + var(--a1) + var(--a1));
       padding: var(--a1) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
       width: calc(var(--width-sidebar-collapsed) * 1rem);
@@ -67,7 +67,7 @@
     margin: var(--b-1) var(--a0) var(--b-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
     width: var(--width-logo);
 
-    @include at-least(w0) {
+    @include at-least(w1) {
       margin: var(--a1) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
     }
   }
@@ -142,7 +142,7 @@
   width: 100%;
   z-index: var(--z-sidebar);
 
-  @include at-least(w0) {
+  @include at-least(w1) {
     align-items: flex-start;
     flex-direction: column;
     height: auto;
@@ -157,7 +157,7 @@
     transform: scaleX(1);
     transition: height 0s 0s;
 
-    @include at-least(w0) {
+    @include at-least(w1) {
       height: auto;
       transition: width 0s 0s;
       width: calc(var(--width-sidebar-expanded) * 1rem);
@@ -173,7 +173,7 @@
       transform: translateX(0) translateY(0);
       transition: transform var(--timing-sidebar-slide-in);
 
-      @include at-least(w0) {
+      @include at-least(w1) {
         transform: translateX(calc(var(--width-sidebar-expanded) * 1rem - .5px)) scaleX(0.5);
       }
     }
@@ -196,7 +196,7 @@
     transition: transform var(--timing-sidebar-slide-out);
     z-index: var(--z-backdrop);
 
-    @include at-least(w0) {
+    @include at-least(w1) {
       background-color: var(--translucent-shade-54);
       box-shadow: none;
       content: '';
@@ -223,7 +223,7 @@
     transition: transform var(--timing-sidebar-slide-out), opacity var(--timing-sidebar-fade-out);
     z-index: var(--z-backdrop);
 
-    @include at-least(w0) {
+    @include at-least(w1) {
       transform: scaleX(var(--scale-sidebar-collapsed));
     }
   }
@@ -238,7 +238,7 @@
   transition: opacity var(--timing-sidebar-fade-out), visibility 0s 0s;
   visibility: visible;
 
-  @include at-least(w0) {
+  @include at-least(w1) {
     display: block;
     width: calc(var(--width-sidebar-collapsed) * 1rem);
   }
@@ -257,7 +257,7 @@
     padding: 0;
     width: 100%;
 
-    @include at-least(w0) {
+    @include at-least(w1) {
       display: block;
       width: auto;
     }
@@ -275,7 +275,7 @@
     &--w0 {
       display: none;
 
-      @include at-least(w0) {
+      @include at-least(w1) {
         display: block;
       }
     }
@@ -333,7 +333,7 @@
         transform: scaleY(calc(1 / var(--scale-navbar-collapsed)));
         transition: opacity var(--timing-link), transform var(--timing-sidebar-slide-in);
 
-        @include at-least(w0) {
+        @include at-least(w1) {
           transform: scaleX(calc(1 / var(--scale-sidebar-collapsed)));
         }
       }
