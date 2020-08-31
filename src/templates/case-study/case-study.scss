@@ -49,8 +49,8 @@
 // behavior that comes with `-start` and `-end` naming along with
 // `grid-column`.
 //
-// There are 14 lines defined in total. At small breakpoints, lines are
-// “collapsed” and start to “split apart” at wider breakpoints. This makes
+// There are 18 lines (17 cols) defined in total. At small breakpoints, lines
+// are “collapsed” and start to “split apart” at wider breakpoints. This makes
 // positioning trivial by simply defining a `grid-area` and watching all the
 // elements get laid out as expected across all breakpoints.
 //
@@ -66,35 +66,43 @@
   align-items: baseline;
   display: grid;
   margin: 0 0 var(--a3);
-  //outline: 4px solid var(--hue-red-300);
-  outline-offset: -5px;
   grid-template-columns:
     [full-bleed-start]
-      var(--b0)
-    [header-start content-full-start content-half-a-start content-half-b-start content-third-a-start content-third-b-start content-third-c-start details-key-start]
+      var(--gap-grid-major)
+    [header-start content-full-start content-half-a-start content-half-b-start details-key-start details-value-start]
       1fr
-    [details-key-end]
-      var(--a0)
-    [details-value-start]
-      3fr
-    [content-full-end content-half-a-end content-half-b-end content-third-a-end content-third-b-end content-third-c-end details-value-end]
-      var(--b0)
+    [header-end content-full-end content-half-a-end content-half-b-end details-key-end details-value-end]
+      var(--gap-grid-major)
     [full-bleed-end];
 
   @include at-least(w0) {
     grid-template-columns:
       [full-bleed-start]
-        calc(var(--width-sidebar-expanded) * 1rem)
+        var(--gap-grid-major)
+      [header-start content-full-start content-half-a-start details-key-start]
+        1fr
       []
-        var(--a1)
-      [header-start content-full-start content-half-a-start content-half-b-start content-third-a-start content-third-b-start content-third-c-start details-key-start]
+        var(--gap-grid-minor)
+      []
         1fr
       [details-key-end]
-        var(--a0)
+        var(--gap-grid-minor)
       [details-value-start]
-        2fr
-      [content-full-end content-half-a-end content-half-b-end content-third-a-end content-third-b-end content-third-c-end details-value-end]
-        var(--b0)
+        1fr
+      [content-half-a-end]
+        var(--gap-grid-minor)
+      [content-half-b-start]
+        1fr
+      []
+        var(--gap-grid-minor)
+      []
+        1fr
+      []
+        var(--gap-grid-minor)
+      []
+        1fr
+      [content-full-end content-half-b-end details-value-end]
+        var(--gap-grid-major)
       [full-bleed-end];
   }
 
@@ -103,15 +111,31 @@
       [full-bleed-start]
         calc(var(--width-sidebar-expanded) * 1rem)
       []
-        var(--b1)
-      [header-start content-full-start content-half-a-start content-half-b-start content-third-a-start content-third-b-start content-third-c-start details-key-start]
+        var(--gap-grid-major)
+      [header-start content-full-start content-half-a-start details-key-start]
+        1fr
+      []
+        var(--gap-grid-minor)
+      []
         1fr
       [details-key-end]
-        var(--b1)
+        var(--gap-grid-minor)
       [details-value-start]
-        2fr
-      [content-full-end content-half-a-end content-half-b-end content-third-a-end content-third-b-end content-third-c-end details-value-end]
-        var(--b1)
+        1fr
+      [content-half-a-end]
+        var(--gap-grid-minor)
+      [content-half-b-start]
+        1fr
+      []
+        var(--gap-grid-minor)
+      []
+        1fr
+      []
+        var(--gap-grid-minor)
+      []
+        1fr
+      [content-full-end content-half-b-end details-value-end]
+        var(--gap-grid-major)
       [full-bleed-end];
   }
 
@@ -120,35 +144,35 @@
       [full-bleed-start]
         calc(var(--width-sidebar-expanded) * 1rem)
       []
-        var(--b2)
+        var(--gap-grid-major)
       [header-start]
         var(--a4)
       [header-end]
-        var(--b1)
-      [content-full-start content-half-a-start content-third-a-start details-key-start]
+        var(--gap-grid-major)
+      [content-full-start content-half-a-start details-key-start]
         1fr
       []
-        var(--b1)
+        var(--gap-grid-minor)
       []
         1fr
-      [content-third-a-end details-key-end]
-        var(--b1)
-      [content-third-b-start details-value-start]
+      [details-key-end]
+        var(--gap-grid-minor)
+      [details-value-start]
         1fr
       [content-half-a-end]
-        var(--b1)
+        var(--gap-grid-minor)
       [content-half-b-start]
         1fr
-      [content-third-b-end]
-        var(--b1)
-      [content-third-c-start]
+      []
+        var(--gap-grid-minor)
+      []
         1fr
       []
-        var(--a2)
+        var(--gap-grid-minor)
       []
         1fr
       [content-full-end content-half-b-end content-third-c-end details-value-end]
-        var(--b2)
+        var(--gap-grid-major)
       [full-bleed-end];
   }
 
@@ -157,78 +181,39 @@
       [full-bleed-start]
         calc(var(--width-sidebar-expanded) * 1rem)
       []
-        var(--b2)
+        var(--gap-grid-major)
       [header-start]
         var(--a4)
       [header-end]
-        var(--b1)
-      [content-full-start content-half-a-start content-third-a-start details-key-start]
+        var(--gap-grid-major)
+      [content-full-start content-half-a-start details-key-start]
         1fr
       []
-        var(--b1)
+        var(--gap-grid-minor)
       []
         1fr
-      [content-third-a-end details-key-end]
-        var(--b1)
-      [content-third-b-start details-value-start]
+      [details-key-end]
+        var(--gap-grid-minor)
+      [details-value-start]
         1fr
       [content-half-a-end]
-        var(--b1)
+        var(--gap-grid-minor)
       [content-half-b-start]
         1fr
-      [content-third-b-end]
-        var(--b1)
-      [content-third-c-start]
-        1fr
       []
-        var(--b1)
+        var(--gap-grid-minor)
       []
         1fr
-      [content-full-end content-half-b-end content-third-c-end details-value-end
-       float-gutter-start]
-        var(--b3)
-      [float-gutter-end]
-        var(--b2)
-      [full-bleed-end];
-  }
-
-  @include at-least(w4) {
-    grid-template-columns:
-      [full-bleed-start]
-        calc(var(--width-sidebar-expanded) * 1rem)
       []
-        var(--b3)
-      [header-start]
-        var(--a4)
-      [header-end]
-        var(--b1)
-      [content-full-start content-half-a-start content-third-a-start details-key-start]
-        1fr
-      []
-        var(--b1)
+        var(--gap-grid-minor)
       []
         1fr
-      [content-third-a-end details-key-end]
-        var(--b1)
-      [content-third-b-start details-value-start]
-        1fr
-      [content-half-a-end]
-        var(--b1)
-      [content-half-b-start]
-        1fr
-      [content-third-b-end]
-        var(--b1)
-      [content-third-c-start]
-        1fr
+      [content-full-end content-half-b-end content-third-c-end details-value-end]
+        var(--gap-grid-minor)
       []
-        var(--b1)
+        var(--width-float-gutter)
       []
-        1fr
-      [content-full-end content-half-b-end content-third-c-end details-value-end
-       float-gutter-start]
-        var(--b4)
-      [float-gutter-end]
-        var(--b3)
+        var(--gap-grid-major)
       [full-bleed-end];
   }
 
@@ -237,38 +222,37 @@
       [full-bleed-start]
         calc(var(--width-sidebar-expanded) * 1rem)
       []
-        minmax(var(--b3),auto)
+        minmax(var(--gap-grid-major),auto)
       [header-start]
         var(--a4)
       [header-end]
-        var(--b2)
-      [content-full-start content-half-a-start content-third-a-start details-key-start]
-        minmax(auto,var(--a3))
+        var(--gap-grid-major)
+      [content-full-start content-half-a-start details-key-start]
+        minmax(auto,var(--b3))
       []
-        var(--b1)
+        var(--gap-grid-minor)
       []
-        minmax(auto,var(--a3))
-      [content-third-a-end details-key-end]
-        var(--b2)
-      [content-third-b-start details-value-start]
-        minmax(auto,var(--a3))
+        minmax(auto,var(--b3))
+      [details-key-end]
+        var(--gap-grid-minor)
+      [details-value-start]
+        minmax(auto,var(--b3))
       [content-half-a-end]
-        var(--b2)
+        var(--gap-grid-minor)
       [content-half-b-start]
-        minmax(auto,var(--a3))
-      [content-third-b-end]
-        var(--b2)
-      [content-third-c-start]
-        minmax(auto,var(--a3))
+        minmax(auto,var(--b3))
       []
-        var(--b2)
+        var(--gap-grid-minor)
       []
-        minmax(auto,var(--a3))
-      [content-full-end content-half-b-end content-third-c-end details-value-end
-       float-gutter-start]
-        var(--b5)
-      [float-gutter-end]
-        minmax(var(--b3),auto)
+        minmax(auto,var(--b3))
+      []
+        var(--gap-grid-minor)
+      []
+        minmax(auto,var(--b3))
+      [content-full-end content-half-b-end content-third-c-end details-value-end]
+        repeat(4, minmax(auto,var(--a3)))
+      []
+        minmax(var(--gap-grid-major),auto)
       [full-bleed-end];
   }
 }
