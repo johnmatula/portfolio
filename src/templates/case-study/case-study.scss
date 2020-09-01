@@ -252,7 +252,7 @@
       [content-full-end content-half-b-end content-third-c-end details-value-end]
         var(--gap-grid-minor)
       []
-        repeat(4, minmax(auto,var(--a3)))
+        repeat(4, minmax(auto,var(--b3)))
       []
         minmax(var(--gap-grid-major),auto)
       [full-bleed-end];
