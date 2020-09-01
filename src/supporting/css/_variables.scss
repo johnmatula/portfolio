@@ -98,24 +98,26 @@
   --height-logo: 1.75rem;
 
   @include at-least(w0) {
-    --gap-grid-major: var(--a1);
-  }
-
-  @include at-least(w1) {
-  }
-
-  @include at-least(w2) {
     --gap-grid-major: var(--b0);
   }
 
-  @include at-least(w3) {
-    --gap-grid-major: var(--b1);
+  @include at-least(w1) {
+    --gap-grid-major: var(--a1);
     --gap-grid-minor: var(--b0);
   }
 
-  @include at-least(w4) {
+  @include at-least(w2) {
+    --gap-grid-major: var(--b1);
+  }
+
+  @include at-least(w3) {
     --gap-grid-major: var(--a2);
     --gap-grid-minor: var(--a1);
+  }
+
+  @include at-least(w4) {
+    --gap-grid-major: var(--b2);
+    --gap-grid-minor: var(--b1);
     --width-float-gutter: 2fr;
   }
 
