@@ -68,17 +68,17 @@
   margin: 0 0 var(--a3);
   grid-template-columns:
     [full-bleed-start]
-      var(--gap-grid-major)
+      calc(var(--gap-grid-major) + env(safe-area-inset-left))
     [header-start content-full-start content-half-a-start content-half-b-start details-key-start details-value-start]
       1fr
     [header-end content-full-end content-half-a-end content-half-b-end details-key-end details-value-end]
-      var(--gap-grid-major)
+      calc(var(--gap-grid-major) + env(safe-area-inset-right))
     [full-bleed-end];
 
   @include at-least(w0) {
     grid-template-columns:
       [full-bleed-start]
-        var(--gap-grid-major)
+        calc(var(--gap-grid-major) + env(safe-area-inset-left))
       [header-start content-full-start content-half-a-start details-key-start]
         1fr
       []
@@ -102,7 +102,7 @@
       []
         1fr
       [content-full-end content-half-b-end details-value-end]
-        var(--gap-grid-major)
+        calc(var(--gap-grid-major) + env(safe-area-inset-right))
       [full-bleed-end];
   }
 
@@ -135,7 +135,7 @@
       []
         1fr
       [content-full-end content-half-b-end details-value-end]
-        var(--gap-grid-major)
+        calc(var(--gap-grid-major) + env(safe-area-inset-right))
       [full-bleed-end];
   }
 
@@ -172,7 +172,7 @@
       []
         1fr
       [content-full-end content-half-b-end content-third-c-end details-value-end]
-        var(--gap-grid-major)
+        calc(var(--gap-grid-major) + env(safe-area-inset-right))
       [full-bleed-end];
   }
 
@@ -213,7 +213,7 @@
       []
         var(--width-float-gutter)
       []
-        var(--gap-grid-major)
+        calc(var(--gap-grid-major) + env(safe-area-inset-right))
       [full-bleed-end];
   }
 
@@ -254,7 +254,7 @@
       []
         repeat(4, minmax(auto,var(--b3)))
       []
-        minmax(var(--gap-grid-major),auto)
+        minmax(calc(var(--gap-grid-major) + var(safe-area-inset-right)),auto)
       [full-bleed-end];
   }
 }
