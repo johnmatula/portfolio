@@ -27,10 +27,28 @@ a.related__link {
 
   &__leader {
     @extend %typography-subheading;
+
+    margin-bottom: var(--a-1);
+    padding-bottom: var(--a-1);
+    position: relative;
+
+    &::after {
+      background-color: var(--hue-shade-500);
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      transform: scaleY(.5);
+    }
   }
 
   &__title {
+    @extend %typography-link-title;
 
+    margin-bottom: var(--a-1);
   }
 
   &__description {
