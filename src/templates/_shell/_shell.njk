@@ -27,6 +27,11 @@
 
 </head>
 <body>
+  <script>
+    if(document.referrer.indexOf(window.location.origin) === -1) {
+      document.body.classList.add('js--direct-link');
+    }
+  </script>
   <!--<noscript>
     <iframe
       src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"

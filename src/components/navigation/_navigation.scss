@@ -83,10 +83,16 @@
     stroke: var(--hue-red-300);
     transition: stroke var(--timing-sidebar-fade-out);
 
-    .js--ready & {
+    // Only animate direct links.
+    .js--ready.js--direct-link & {
       animation: jmline-draw var(--timing-logo);
-      animation-fill-mode: forwards;
+      animation-fill-mode: both;
       animation-delay: var(--delay-logo);
+    }
+
+    // Otherwise, snap to the filled-in state immediately.
+    .js--ready & {
+      stroke-dashoffset: 0;
     }
 
     .js--expanded & {
