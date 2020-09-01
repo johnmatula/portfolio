@@ -33,7 +33,7 @@
     padding-left: var(--a1);
   }
 
-  .p__container {
+  .section__container, .p__container {
     grid-column: content-full;
   }
 }
