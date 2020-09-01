@@ -8,16 +8,15 @@
 // The negative margins follow the same pattern, pulling however many
 // proportional columns plus fixed widths the offset occupies.
 
-aside {
-  background: var(--hue-blue-100);
+.aside {
   display: block;
   min-height: var(--a4);
-  margin: 0 calc(((100% - (var(--gap-grid-minor) * 5)) / 6) + var(--gap-grid-minor)) var(--a0);
+  margin: 0 calc(((100% - (var(--gap-grid-minor) * 5)) / 6) + var(--gap-grid-minor)) var(--gap-grid-minor);
 
   @include at-least(w1) {
     float: right;
-    margin: 0 0 0 var(--gap-grid-minor);
-    width: calc(((100% - (var(--gap-grid-minor) * 5)) / 6 * 2) + (var(--gap-grid-minor)));
+    margin: 0 0 var(--gap-grid-minor) var(--gap-grid-minor);
+    width: calc(((100% - (var(--gap-grid-minor) * 5)) / 6 * 3) + (var(--gap-grid-minor) * 2));
   }
 
   @include at-least(w3) {
@@ -33,6 +32,17 @@ aside {
   @include at-least(w5) {
     margin-right: calc(-1 * (((100% - (var(--gap-grid-minor) * 5)) / 6 * 4) + var(--gap-grid-minor)));
     width: calc(((100% - (var(--gap-grid-minor) * 5)) / 6 * 4));
+  }
+
+  &__visual {
+
+  }
+
+  p.aside__caption {
+    @extend %typography-supporting;
+
+    color: var(--hue-shade-700);
+    margin: var(--a-1) 0 0;
   }
 }
 
