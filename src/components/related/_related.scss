@@ -29,7 +29,7 @@ a.related__link {
     position: relative;
 
     &::after {
-      background-color: var(--hue-shade-500);
+      background-color: var(--stroke-separator);
       bottom: 0;
       content: "";
       display: block;
@@ -50,7 +50,7 @@ a.related__link {
   &__description {
     @extend %typography-link-description;
 
-    color: var(--color-text-primary);
+    color: var(--color-text-content);
   }
 
   &__link {
