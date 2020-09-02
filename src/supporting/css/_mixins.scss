@@ -25,6 +25,12 @@ $at-least-breakpoints: (
   }
 }
 
+@mixin is-theme($theme) {
+  @media (prefers-color-scheme: $theme) {
+    @content;
+  }
+}
+
 // Font utilities
 @mixin font($font-weight, $font-size, $line-height, $letter-spacing: null, $font-family: null) {
   @if ($font-family) {
