@@ -1,4 +1,5 @@
 @use 'mixins' as *;
+@use "sass:color";
 
 :root {
   // ROOT EM HEIGHT BASES
@@ -29,17 +30,18 @@
   //  •  Shades 0, 100, 300 can be used with any 700, 900, or 1000 hue.
   //  •  Shade 500 can be used with any other Shade.
 
-  --hue-red-100: #f06242;
-  --hue-red-300: #ed431d;
-  --hue-red-500: #bf2908;
-  --hue-red-700: #9d2207;
-  --hue-red-900: #761a05;
+  --hue-red-100: #f05f42;
+  --hue-red-300: #ed3f1d;
+  --hue-red-500: #bf2608;
+  --hue-red-700: #9d2007;
+  --hue-red-900: #761805;
 
-  --hue-blue-100: #25b6bb;
-  --hue-blue-300: #1e9599;
-  --hue-blue-500: #146467;
-  --hue-blue-700: #0a4547;
-  --hue-blue-900: #0a3233;
+  --hue-blue-0: #55d2dd;
+  --hue-blue-100: #25afbb;
+  --hue-blue-300: #1e8f99;
+  --hue-blue-500: #145f66;
+  --hue-blue-700: #0a4247;
+  --hue-blue-900: #083236;
 
   --hue-shade-0: #fff;
   --hue-shade-100: #f6f5f3;
@@ -47,20 +49,82 @@
   --hue-shade-500: #74706d;
   --hue-shade-700: #4a4745;
   --hue-shade-900: #171512;
-  --hue-shade-1000: #000;
+  --hue-shade-1000: #0f0f0b;
 
 
   // TRANSLUCENT HUES
   //
   // Translucent shades are based on Shade 900.
   // Translucent red is based on Red 500.
-  --translucent-red-20: rgba(191,41,8,.2);
+  --translucent-red-0: rgba(191,38,8,0);
+  --translucent-red-20: rgba(191,38,8,.2);
+  --translucent-red-36: rgba(191,38,8,.36);
 
-  --translucent-shade-05: rgba(23,21,18,.05);
+  --translucent-shade-5: rgba(23,21,18,.05);
   --translucent-shade-54: rgba(23,21,18,.54);
+  --translucent-shade-93: rgba(23,21,18,.93);
 
+  --translucent-white-10: rgba(255,255,255,.1);
+  --translucent-white-30: rgba(255,255,255,.3);
   --translucent-white-96: rgba(255,255,255,.96);
 
+
+  // SEMANTIC COLORS
+  --color-text-primary: var(--hue-shade-900);
+  --color-text-secondary: var(--hue-shade-700);
+  --color-text-content: var(--hue-shade-900);
+  --color-body-link: var(--hue-red-500);
+  --color-body-link-hover: var(--hue-shade-100);
+  --color-body-link-active: var(--hue-shade-300);
+  --color-submenu: var(--hue-shade-100);
+  --color-project-link: var(--hue-blue-500);
+  --color-project-link-hover: var(--hue-blue-300);
+  --color-project-link-active: var(--hue-blue-700);
+
+  --fill-page-primary: var(--hue-shade-0);
+  --fill-page-secondary: var(--hue-shade-100);
+  --fill-bullet: var(--hue-shade-500);
+  --fill-body-link: var(--translucent-red-0);
+  --fill-body-link-hover: var(--hue-red-500);
+  --fill-body-link-active: var(--hue-red-700);
+  --fill-navbar: var(--translucent-white-96);
+  --fill-submenu-expanded: var(--hue-red-500);
+
+  --stroke-logo-filled: var(--hue-red-300);
+  --stroke-logo-filled-active: var(--hue-red-700);
+  --stroke-logo-filled-inverted: var(--hue-shade-100);
+  --stroke-logo-unfilled: var(--translucent-shade-5);
+  --stroke-separator: var(--translucent-shade-54);
+  --stroke-navbar-separator: var(--translucent-shade-54);
+  --stroke-body-link: var(--translucent-red-20);
+
+  @include is-theme(dark) {
+    --color-text-primary: var(--hue-shade-100);
+    --color-text-secondary: var(--hue-shade-500);
+    --color-text-content: var(--hue-shade-300);
+    --color-body-link: var(--hue-red-300);
+    --color-body-link-hover: var(--hue-shade-100);
+    --color-body-link-active: var(--hue-shade-0);
+    --color-project-link: var(--hue-blue-300);
+    --color-project-link-hover: var(--hue-blue-100);
+    --color-project-link-active: var(--hue-blue-0);
+
+    --fill-page-primary: var(--hue-shade-900);
+    --fill-page-secondary: var(--hue-shade-1000);
+    --fill-bullet: var(--hue-shade-500);
+    --fill-body-link: var(--translucent-red-0);
+    --fill-body-link-hover: var(--hue-red-700);
+    --fill-body-link-active: var(--hue-red-500);
+    --fill-navbar: var(--translucent-shade-93);
+    --fill-submenu-expanded: var(--hue-red-700);
+
+    --stroke-logo-filled: var(--hue-red-500);
+    --stroke-logo-filled-active: var(--hue-red-300);
+    --stroke-logo-unfilled: var(--translucent-white-10);
+    --stroke-separator: var(--translucent-white-30);
+    --stroke-navbar-separator: var(--translucent-white-30);
+    --stroke-body-link: var(--translucent-red-36);
+  }
 
 
   // TYPE RAMP
@@ -158,6 +222,18 @@
   --env-safe-right-pixels: env(safe-area-inset-right, 0px);
   --env-safe-bottom-pixels: env(safe-area-inset-bottom, 0px);
   --env-safe-left-pixels: env(safe-area-inset-left, 0px);
+
+
+  // OPTICAL SIZING
+  --optical-a: 16;
+  --optical-b: 20;
+  --optical-c: 25;
+
+  @include is-theme(dark) {
+    --optical-a: 8;
+    --optical-b: 10;
+    --optical-c: 13;
+  }
 }
 
 
