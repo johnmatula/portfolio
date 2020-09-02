@@ -2,7 +2,7 @@
 
 .contact {
   bottom: 0;
-  color: var(--hue-shade-0);
+  color: var(--color-submenu);
   contain: size layout;
   height: calc(var(--height-navbar-expanded) * 1rem);
   left: 0;
@@ -39,7 +39,7 @@
       align-items: center;
       background: none;
       border: 0;
-      color: var(--hue-shade-100);
+      color: var(--color-submenu);
       cursor: pointer;
       display: flex;
       height: calc(var(--height-logo) + var(--b-1) + var(--b-1));

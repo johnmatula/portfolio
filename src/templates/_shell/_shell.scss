@@ -5,11 +5,11 @@
 // and active. For some extra offset, apply padding and negative margins,
 // and then have those decorations cloned for wrapped link lines.
 a {
-  box-shadow: 0 calc(-1 * var(--padding-link-decoration)) 0 0 var(--translucent-red-20) inset;
+  box-shadow: 0 calc(-1 * var(--padding-link-decoration)) 0 0 var(--stroke-body-link) inset;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
-  background-color: rgba(213,47,10,0);
-  color: var(--hue-red-500);
+  background-color: var(--fill-body-link);
+  color: var(--color-body-link);
   margin: 0 calc(-1 * var(--padding-link-decoration));
   padding: 0 var(--padding-link-decoration);
   transition: background-color .125s, color .125s;
@@ -25,18 +25,18 @@ a {
   }
 
   &:hover, &:focus {
-    background-color: var(--hue-red-500);
-    color: var(--hue-shade-0);
+    background-color: var(--fill-body-link-hover);
+    color: var(--color-body-link-hover);
   }
 
   &:focus-visible {
-    outline: 1px solid var(--hue-red-700);
+    outline: 1px solid var(--fill-body-link-hover);
   }
 
   // Ever tried click-n-dragging in Safari? The color isn’t inherited. Ugh.
   &:active {
-    color: var(--hue-shade-100);
-    background-color: var(--hue-red-700);
+    color: var(--color-body-link-active);
+    background-color: var(--fill-body-link-active);
     transition: none;
 
     svg * {

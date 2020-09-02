@@ -57,7 +57,7 @@
     }
 
     &:active ~ .logo__svg .logo__filled {
-      stroke: var(--hue-red-700);
+      stroke: var(--stroke-logo-filled-active);
       transition: none;
     }
   }
@@ -73,14 +73,14 @@
   }
 
   &__unfilled {
-    fill: var(--translucent-shade-05);
+    fill: var(--stroke-logo-unfilled);
   }
 
   &__filled {
     animation: none;
     stroke-dasharray: 215.0285;
     stroke-dashoffset: 215.0285;
-    stroke: var(--hue-red-300);
+    stroke: var(--stroke-logo-filled);
     transition: stroke var(--timing-sidebar-fade-out);
 
     // Only animate direct links.
@@ -96,7 +96,7 @@
     }
 
     .js--expanded & {
-      stroke: var(--hue-shade-100);
+      stroke: var(--stroke-logo-filled-inverted);
       transition: stroke var(--timing-sidebar-fade-in);
     }
   }
@@ -185,9 +185,10 @@
     }
   }
 
+  // Navbar background (for mobile) or sidebar separator rule (for wider)
   &::before {
-    background-color: var(--translucent-white-96);
-    box-shadow: 0 -0.5px 0 0 var(--translucent-shade-54) inset;
+    background-color: var(--fill-navbar);
+    box-shadow: 0 -0.5px 0 0 var(--stroke-navbar-separator) inset;
     bottom: 0;
     content: '';
     contain: strict;
@@ -203,7 +204,7 @@
     z-index: var(--z-backdrop);
 
     @include at-least(w1) {
-      background-color: var(--translucent-shade-54);
+      background-color: var(--stroke-navbar-separator);
       box-shadow: none;
       content: '';
       height: auto;
@@ -213,8 +214,9 @@
     }
   }
 
+  // Expanded submenu background
   &::after {
-    background: var(--hue-red-500);
+    background: var(--fill-submenu-expanded);
     bottom: 0;
     contain: strict;
     content: '';

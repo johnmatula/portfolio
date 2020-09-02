@@ -54,7 +54,7 @@
       // on a pseudo element that spans the height of the list item, with
       // an extra half-pixel for safety. (This is so fiddly...)
       &::before {
-        background: var(--hue-shade-500);
+        background: var(--fill-bullet);
         clip-path: circle(calc((var(--a-2) / 2) - 0.5px) at 50% calc(var(--a0) * 1.5 / 2));
         content: '\200B'; // otherwise VoiceOver breaks!
         display: block;

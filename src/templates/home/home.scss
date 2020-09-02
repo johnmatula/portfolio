@@ -7,6 +7,8 @@
 
   h2 {
     @extend %typography-home-header;
+
+    color: var(--color-text-primary);
     font-weight: 900;
     grid-column: mat;
     margin-bottom: var(--a2);
@@ -14,7 +16,7 @@
 
   .hero,
   .portfolio {
-    background-color: var(--hue-shade-100);
+    background-color: var(--fill-page-secondary);
   }
 
   .hero {
@@ -44,7 +46,7 @@
     &__instructions {
       @extend %typography-summary;
 
-      color: var(--hue-shade-700);
+      color: var(--color-text-secondary);
       grid-column: title;
       margin-bottom: calc(var(--b-1) * -1);
       opacity: 0;
@@ -70,6 +72,8 @@
 
       &.p--leading {
         @extend %typography-home-primary;
+
+        color: var(--color-text-primary);
         margin-bottom: var(--a1);
       }
     }
@@ -95,28 +99,28 @@
     }
 
     li + li {
-      box-shadow: 0 0.5px 0 0 var(--translucent-shade-54) inset;
+      box-shadow: 0 0.5px 0 0 var(--stroke-separator) inset;
     }
 
     a {
       background: none;
       box-shadow: none;
-      color: var(--hue-blue-500);
+      color: var(--color-project-link);
       display: block;
 
       &:hover, &:focus {
-        color: var(--hue-blue-300);
+        color: var(--color-project-link-hover);
       }
 
       &:active {
-        color: var(--hue-blue-700);
+        color: var(--color-project-link-active);
       }
     }
 
     p {
       @extend %typography-link-description;
 
-      color: var(--hue-shade-900);
+      color: var(--color-text-primary);
     }
 
     .projects {

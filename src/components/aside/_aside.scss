@@ -41,7 +41,7 @@
   p.aside__caption {
     @extend %typography-supporting;
 
-    color: var(--hue-shade-700);
+    color: var(--color-text-secondary);
     margin: var(--a-1) 0 0;
   }
 }

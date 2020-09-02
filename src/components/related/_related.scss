@@ -3,31 +3,27 @@
 a.related__link {
   background: none;
   box-shadow: none;
-  color: var(--hue-blue-500);
+  color: var(--color-project-link);
   display: block;
 
   &:hover, &:focus {
-    color: var(--hue-blue-300);
+    color: var(--color-project-link-hover);
   }
 
   &:active {
-    color: var(--hue-blue-700);
+    color: var(--color-project-link-active);
   }
 }
 
 .related {
-  background-color: var(--hue-shade-100);
+  background-color: var(--fill-page-secondary);
   margin-bottom: 0;
   padding: var(--a3) 0;
-
-  &__leader,
-  &__description {
-    color: var(--hue-shade-900);
-  }
 
   &__leader {
     @extend %typography-subheading;
 
+    color: var(--color-text-content);
     margin-bottom: var(--a-1);
     padding-bottom: var(--a-1);
     position: relative;
@@ -54,6 +50,7 @@ a.related__link {
   &__description {
     @extend %typography-link-description;
 
+    color: var(--color-text-primary);
   }
 
   &__link {

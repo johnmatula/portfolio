@@ -6,6 +6,7 @@
 
 html {
   box-sizing: border-box;
+  color: var(--color-text-content);
   font-family: $font-jm;
   font-size: calc(var(--rem-base) * 1px);
   line-height: 1.15;
@@ -17,7 +18,7 @@ html {
 }
 
 body {
-  background: var(--hue-shade-0);
+  background: var(--fill-page-primary);
   letter-spacing: -.02em;
   margin: 0;
 }

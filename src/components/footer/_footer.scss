@@ -1,7 +1,7 @@
 @use "utilities" as *;
 
 .footer {
-  color: var(--hue-shade-700);
+  color: var(--color-text-secondary);
   display: none;
   position: relative;
   transition: color var(--timing-sidebar-fade-out);
@@ -27,7 +27,7 @@
 
     background: none;
     box-shadow: none;
-    color: var(--hue-shade-700);
+    color: var(--color-text-secondary);
     display: block;
     margin: 0;
     padding: var(--a-1) var(--a0) var(--a-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
@@ -38,7 +38,7 @@
     }
 
     .js--expanded & {
-      color: var(--hue-shade-100);
+      color: var(--color-submenu);
       transition: color var(--timing-sidebar-fade-in);
 
       &:hover, &:focus {
@@ -63,7 +63,7 @@
     }
 
     .js--expanded & {
-      color: var(--hue-shade-100);
+      color: var(--color-submenu);
       transition: color var(--timing-sidebar-fade-in);
     }
   }

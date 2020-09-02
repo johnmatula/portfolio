@@ -11,12 +11,13 @@
   h2 {
     @extend %typography-section-heading;
 
+    color: var(--color-text-primary);
     margin: 0 0 var(--a-1);
   }
 
   &__parenthetical {
     @extend %typography-supporting;
 
-    color: var(--hue-shade-700);
+    color: var(--color-text-secondary);
   }
 }

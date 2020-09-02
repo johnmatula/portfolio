@@ -1,7 +1,8 @@
 @use "utilities" as *;
 
 .hero {
-  background-color: var(--hue-shade-100);
+  background-color: var(--fill-page-secondary);
+  color: var(--color-text-primary);
   min-height: 44vh;
 
   margin: 0 0 var(--a3);
