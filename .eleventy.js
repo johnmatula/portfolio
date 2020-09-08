@@ -5,7 +5,7 @@ module.exports = (function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/supporting/generated/js": "js" });
   eleventyConfig.addPassthroughCopy({ "src/supporting/vendor-js": "js" });
   eleventyConfig.addPassthroughCopy({ "src/supporting/fonts": "fonts" });
-  eleventyConfig.addPassthroughCopy("src/img");
+  eleventyConfig.addPassthroughCopy({ "src/supporting/img": "img" });
 
   eleventyConfig.addNunjucksFilter("is_string", function(obj) {
     return typeof obj === "string";
