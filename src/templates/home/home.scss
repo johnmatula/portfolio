@@ -63,18 +63,132 @@
 
   .about {
     margin-bottom: var(--a3);
+  }
 
-    p {
-      @extend %typography-home-body;
+  &__intro-container {
+    grid-column: mat;
+  }
 
-      grid-column: mat;
-      margin-bottom: var(--a0);
+  &__leading {
+    @extend %typography-home-primary;
 
-      &.p--leading {
-        @extend %typography-home-primary;
+    color: var(--color-text-primary);
+    margin-bottom: var(--a1);
+  }
 
-        color: var(--color-text-primary);
-        margin-bottom: var(--a1);
+  &__about {
+    @extend %typography-home-body;
+
+    margin-bottom: var(--a0);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__paragraph {
+
+  }
+
+  // For shape-outside effects, it seems like the most reliable option
+  // is using an SVG option rather than path() or ellipsis() functions in
+  // CSS: SVG seems to work better with negative margins.
+  &__float {
+
+    // The circular ??
+    &--para-one {
+      float: left;
+      shape-outside: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Ccircle cx='1' cy='1' r='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+      shape-margin: var(--a0);
+      margin-left: calc(var(--gap-grid-home) * -1);
+      margin-right: var(--gap-grid-home);
+      width: 40%;
+
+      @include at-least(w0) {
+        margin-left: calc(-1 * (((100% - var(--gap-grid-home)) * 1 / 5) + var(--gap-grid-home) + var(--a-1) ));
+        width: calc((100% - var(--gap-grid-home)) * 2 / 5 + var(--gap-grid-home));
+      }
+
+      @include at-least(w2) {
+        margin-left: calc(-1 * (((100% - var(--gap-grid-home)) * 2 / 5) + var(--gap-grid-home) + var(--a-1) ));
+        width: calc((100% - var(--gap-grid-home)) * 3 / 5 + var(--gap-grid-home));
+      }
+
+      @include at-least(w3) {
+        margin-left: calc(-1 * (((100% - var(--gap-grid-home)) * 3 / 8)));
+        width: calc((100% - var(--gap-grid-home)) * 4 / 8 + var(--gap-grid-home));
+      }
+
+      @include at-least(w5) {
+        margin-left: calc(-1 * var(--a5));
+        width: var(--b5);
+      }
+
+      svg * {
+        fill: currentColor;opacity: .25;
+      }
+    }
+
+    // The rectangular ??
+    &--para-two {
+      float: right;
+      margin-left: var(--gap-grid-home);
+      margin-right: calc(var(--gap-grid-home) * -1);
+      shape-margin: var(--a0);
+      shape-outside: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 4'%3E%3Cpath fill-rule='evenodd' d='M.626 0l4.318.761L4.373 4 .055 3.239z'/%3E%3C/svg%3E");
+      width: 50%;
+
+      @include at-least(w0) {
+        margin-right: calc(-1 * ((100% - var(--gap-grid-home)) * 1 / 5));
+        width: calc((100% - var(--gap-grid-home)) * 3 / 5);
+      }
+
+      @include at-least(w2) {
+        margin-right: calc(-1 * ((100% - var(--gap-grid-home)) * 2 / 5));
+        width: calc((100% - var(--gap-grid-home)) * 4 / 5);
+      }
+
+      @include at-least(w3) {
+        margin-right: calc(-1 * ((100% - var(--gap-grid-home)) * 3 / 8));
+        width: calc((100% - var(--gap-grid-home)) * 5 / 8);
+      }
+
+      @include at-least(w5) {
+        margin-right: calc(-1 * var(--a5));
+        width: calc(var(--a5) + var(--a3));
+      }
+
+      svg * {
+        fill: currentColor;opacity: .25;
+      }
+    }
+
+    // The current work arrow
+    &--para-last {
+      float: right;
+      margin-left: var(--gap-grid-home);
+      margin-right: calc(var(--gap-grid-home) * -1);
+      opacity: .5;
+      shape-margin: var(--a0);
+      shape-outside: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 164 136'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2' d='M77.184 131.306l19.629-25.882-31.43-21.291 96.035-13.497-4.354-30.983-96.175 13.516L85.212 23.9 59.37 4.552 4.76 76.856z'%3E%3C/path%3E%3C/svg%3E");
+      width: 33%;
+
+      @include at-least(w0) {
+        margin-right: calc(-1 * (100% - var(--gap-grid-home)) / 5);
+        width: calc((100% - var(--gap-grid-home)) * 2 / 5 + var(--gap-grid-home));
+      }
+
+      @include at-least(w3) {
+        width: calc((100% - var(--gap-grid-home)) * 2 / 8 + var(--gap-grid-home));
+      }
+
+      @include at-least(w5) {
+        width: var(--a4);
+      }
+
+      svg * {
+        stroke: currentColor;
+        vector-effect: non-scaling-stroke;
       }
     }
   }
@@ -176,9 +290,9 @@
   }
 
   .final {
-    margin-bottom: var(--a5);
+    margin-bottom: var(--b5);
 
-    p {
+    &__content {
       grid-column: mat;
     }
 
@@ -190,6 +304,25 @@
 
     &__supporting {
       @extend %typography-home-primary;
+    }
+
+    &__corner {
+      bottom: 0;
+      position: absolute;
+      right: 0;
+      width: var(--b5);
+
+      @include at-least(w0) {
+        width: var(--a6);
+      }
+
+      @include at-least(w5) {
+        width: 25%;
+      }
+
+      svg * {
+        fill: currentColor;opacity: .25;
+      }
     }
   }
 }
@@ -208,23 +341,33 @@
   outline-offset: -5px;
   grid-template-columns:
     []
-      var(--a0)
-    [content-major-start content-minor-start mat-start title-start]
+      calc(var(--gap-grid-home) + env(safe-area-inset-left))
+    [content-major-start content-minor-start title-start]
+      var(--width-home-mat)
+    [mat-start]
       auto
-    [content-major-end content-minor-end mat-end title-end]
-      var(--a0)
+    [mat-end]
+      var(--width-home-mat)
+    [content-major-end content-minor-end title-end]
+      calc(var(--gap-grid-home) + env(safe-area-inset-right))
     [];
 
   @include at-least(w0) {
     grid-template-columns:
       []
-        calc(var(--width-sidebar-expanded) * 1rem)
-      []
-        var(--a1)
-      [content-major-start content-minor-start mat-start title-start]
-        auto
-      [content-major-end content-minor-end mat-end title-end]
-        var(--a1)
+        calc(var(--gap-grid-home) + env(safe-area-inset-left))
+      [content-major-start title-start]
+        var(--width-home-mat)
+      [mat-start]
+        3fr
+      [content-major-end title-start]
+        var(--gap-grid-home)
+      [content-minor-start]
+        2fr
+      [mat-end title-end]
+        var(--width-home-mat)
+      [content-minor-end]
+        calc(var(--gap-grid-home) + env(safe-area-inset-right))
       [];
   }
 
@@ -233,40 +376,19 @@
       []
         calc(var(--width-sidebar-expanded) * 1rem)
       []
-        var(--b1)
+        var(--gap-grid-home)
       [content-major-start title-start]
-        var(--b2) //
+        var(--width-home-mat)
       [mat-start]
-        2fr
+        3fr
       [content-major-end]
-        var(--b1)
+        var(--gap-grid-home)
       [content-minor-start]
-        1fr
-      [mat-end title-end]
-        var(--b2) //
-      [content-minor-end]
-        var(--b1)
-      [];
-  }
-
-  @include at-least(w2) {
-    grid-template-columns:
-      []
-        calc(var(--width-sidebar-expanded) * 1rem)
-      []
-        var(--b2)
-      [content-major-start title-start]
-        var(--b2) //
-      [mat-start]
         2fr
-      [content-major-end]
-        var(--b2)
-      [content-minor-start]
-        1fr
       [mat-end title-end]
-        var(--b2) //
+        var(--width-home-mat)
       [content-minor-end]
-        var(--b2)
+        calc(var(--gap-grid-home) + env(safe-area-inset-right))
       [];
   }
 
@@ -275,40 +397,49 @@
       []
         calc(var(--width-sidebar-expanded) * 1rem)
       []
-        var(--b2)
-      [content-major-start title-start]
-        var(--a4) //
-      [mat-start]
-        2fr
-      [content-major-end]
-        var(--b3)
-      [content-minor-start]
         1fr
+      []
+        var(--gap-grid-home)
+      [content-major-start title-start]
+        var(--width-home-mat)
+      [mat-start]
+        5fr
+      [content-major-end]
+        var(--gap-grid-home)
+      [content-minor-start]
+        3fr
       [mat-end title-end]
-        var(--a4) //
+        var(--width-home-mat)
       [content-minor-end]
-        var(--b2)
+        1fr
+      []
+        calc(var(--gap-grid-home) + env(safe-area-inset-right))
       [];
   }
 
-  @include at-least(w4) {
+
+  @include at-least(w5) {
     grid-template-columns:
       []
         calc(var(--width-sidebar-expanded) * 1rem)
       []
-        var(--b3)
+        minmax(var(--b4),auto)
+      []
+        var(--gap-grid-home)
       [content-major-start title-start]
-        var(--b4) //
+        var(--width-home-mat)
       [mat-start]
-        2fr
+        5fr
       [content-major-end]
-        var(--b3)
+        var(--gap-grid-home)
       [content-minor-start]
-        1fr
+        3fr
       [mat-end title-end]
-        var(--b4) //
+        var(--width-home-mat)
       [content-minor-end]
-        var(--b3)
+        minmax(var(--b4),auto)
+      []
+        calc(var(--gap-grid-home) + env(safe-area-inset-right))
       [];
   }
 
@@ -317,19 +448,21 @@
       []
         calc(var(--width-sidebar-expanded) * 1rem)
       []
-        minmax(var(--b4),auto)
+        minmax(var(--gap-grid-home),auto)
       [content-major-start title-start]
-        var(--b4) //
+        var(--width-home-mat)
       [mat-start]
-        minmax(auto,var(--b5))
+        minmax(auto,var(--a5))
+      []
+        minmax(auto,var(--a5))
       [content-major-end]
-        var(--b4)
+        var(--gap-grid-home)
       [content-minor-start]
-        minmax(auto,var(--b5))
+        minmax(auto,var(--a5))
       [mat-end title-end]
-        var(--b4) //
+        var(--width-home-mat)
       [content-minor-end]
-        minmax(var(--b4),auto)
+        minmax(var(--gap-grid-home),auto)
       [];
   }
 }
