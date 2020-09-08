@@ -157,36 +157,46 @@
   --padding-link-decoration: .1rem;
   --gap-grid-major: var(--a0);
   --gap-grid-minor: var(--a0);
+  --gap-grid-home: var(--a0);
   --width-float-gutter: 1fr;
+  --width-home-mat: var(--b0);
   --width-logo: 2rem;
   --height-logo: 1.75rem;
 
   @include at-least(w0) {
     --gap-grid-major: var(--b0);
+    --gap-grid-home: var(--b0);
+    --width-home-mat: 1fr;
   }
 
   @include at-least(w1) {
     --gap-grid-major: var(--a1);
     --gap-grid-minor: var(--b0);
+    --gap-grid-home: var(--b1);
   }
 
   @include at-least(w2) {
     --gap-grid-major: var(--b1);
+    --width-home-mat: 2fr;
   }
 
   @include at-least(w3) {
     --gap-grid-major: var(--a2);
     --gap-grid-minor: var(--a1);
+    --gap-grid-home: var(--b2);
   }
 
   @include at-least(w4) {
     --gap-grid-major: var(--b2);
     --gap-grid-minor: var(--b1);
+    --width-home-mat: 3fr;
     --width-float-gutter: 2fr;
   }
 
   @include at-least(w5) {
     --width-float-gutter: 4fr;
+    --width-home-mat: var(--b4);
+    --gap-grid-home: var(--b3);
   }
 
 
