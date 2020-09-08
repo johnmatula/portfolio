@@ -76,6 +76,7 @@
   --color-body-link: var(--hue-red-500);
   --color-body-link-hover: var(--hue-shade-100);
   --color-body-link-active: var(--hue-shade-300);
+  --color-nav-link: var(--hue-blue-500);
   --color-submenu: var(--hue-shade-100);
   --color-project-link: var(--hue-blue-500);
   --color-project-link-hover: var(--hue-blue-300);
@@ -100,11 +101,12 @@
 
   @include is-theme(dark) {
     --color-text-primary: var(--hue-shade-100);
-    --color-text-secondary: var(--hue-shade-500);
-    --color-text-content: var(--hue-shade-300);
+    --color-text-secondary: var(--hue-shade-300);
+    --color-text-content: var(--hue-shade-100);
     --color-body-link: var(--hue-red-300);
     --color-body-link-hover: var(--hue-shade-100);
     --color-body-link-active: var(--hue-shade-0);
+    --color-nav-link: var(--hue-shade-0);
     --color-project-link: var(--hue-blue-300);
     --color-project-link-hover: var(--hue-blue-100);
     --color-project-link-active: var(--hue-blue-0);
