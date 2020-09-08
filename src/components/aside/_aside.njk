@@ -1,8 +1,8 @@
 {% macro aside(image, alt, description, classList = []) %}
-<aside class="aside">
+<figure class="aside">
   <img class="aside__visual" src="{{ image }}" alt="{{ alt }}">
   {% if description != "" %}
-    <p class="aside__caption">{{ description }}</p>
+    <figcaption class="aside__caption">{{ description }}</figcaption>
   {% endif %}
-</aside>
+</figure>
 {% endmacro %}

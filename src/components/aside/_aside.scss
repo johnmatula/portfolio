@@ -38,7 +38,7 @@
 
   }
 
-  p.aside__caption {
+  &__caption {
     @extend %typography-supporting;
 
     color: var(--color-text-secondary);
