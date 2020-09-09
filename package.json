@@ -8,7 +8,7 @@
     "build:js": "babel src/components src/templates --out-file src/supporting/generated/js/main.js --source-maps --ignore 'src/supporting/**/*.js'",
     "watch:eleventy": "eleventy --serve",
     "watch:sass": "npm run build:sass -- --watch",
-    "watch:js": "watch 'npm run build:js' src/components",
+    "watch:js": "watch 'npm run build:js' src/components src/templates",
     "start": "npm-run-all build:sass build:js --parallel watch:eleventy watch:sass watch:js"
   },
   "repository": {
