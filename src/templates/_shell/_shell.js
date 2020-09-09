@@ -11,12 +11,19 @@ window.addEventListener("resize", () => {
 var lastKnownScrollPosition = 0;
 var ticking = false;
 
+// Apply the dynamic transform origin of the scrolled element
+// through a CSS class placed at the top of the shell template.
+// This avoids repainting via custom property updating.
 window.addEventListener('scroll', function(e) {
   lastKnownScrollPosition = window.scrollY;
 
   if (!ticking) {
     window.requestAnimationFrame(function() {
-      root.style.setProperty('--scroll-y', lastKnownScrollPosition);
+
+      document.getElementById('js--scale').innerHTML = `.sidebar.js--expanded ~ .wrapper__outer .wrapper__inner {
+        transform-origin: right ${ window.scrollY }px;
+      }`;
+
       ticking = false;
     });
 

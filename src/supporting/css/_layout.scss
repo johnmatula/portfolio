@@ -21,16 +21,21 @@
 .wrapper__inner {
   flex: 1 1 100%;
   position: relative;
-  transition: transform var(--timing-sidebar-slide-out);
-  transform-origin: right var(--percent-scrolled);
+  transition: transform var(--timing-sidebar-slide-out), transform-origin 0s var(--timing-sidebar-slide-out);
+  transform-origin: right 0;
+  transform: none;
   width: 100%;
 
   .sidebar.js--expanded ~ .wrapper__outer & {
     // Use `scale3d` to avoid a rerender (since the contents are scaling down,
     // it’s not necessary). Doing so requires a tiny z-axis scale so that
     // content doesn’t flash away in Chrome and Firefox (rendering bug?).
+    //
+    // Transform origin is set by JavaScript to avoid incurring unnecessary
+    // repaints via custom properties. (Just rewriting a CSS class via JS
+    // turns out to be more reliable in avoiding the dreaded repaints.)
     transform: translateY(calc(var(--height-navbar-difference) * 1rem));
-    transition: transform var(--timing-sidebar-slide-in);
+    transition: transform var(--timing-sidebar-slide-in), transform-origin 0s 0s;
 
     @include at-least(w1) {
       transform: translateX(0) scale3d(var(--scale-nav), var(--scale-nav), .00001);

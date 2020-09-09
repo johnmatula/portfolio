@@ -22,8 +22,6 @@
   --width-sidebar-difference: calc(var(--width-sidebar-expanded) - var(--width-sidebar-collapsed));
   --width-content: calc((var(--width-page) / var(--rem-base)) - var(--width-sidebar-collapsed));
   --scale-nav: calc((var(--width-content) - var(--width-sidebar-difference)) / (var(--width-content)));
-
-  --percent-scrolled: calc((var(--scroll-y) / var(--rem-base)) * 1rem);
 }
 
 // A mask is applied over a single stroke (think like a neon tube lol) so

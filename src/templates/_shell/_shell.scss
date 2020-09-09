@@ -5,6 +5,7 @@
 // and active. For some extra offset, apply padding and negative margins,
 // and then have those decorations cloned for wrapped link lines.
 a {
+  //display: none !important;
   box-shadow: 0 calc(-1 * var(--padding-link-decoration)) 0 0 var(--stroke-body-link) inset;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
