@@ -7,7 +7,8 @@
 
   > p:first-of-type::first-line,
   strong,
-  h3 + p::first-line {
+  h3 + p::first-line,
+  > .section__contents > p:first-of-type::first-line {
     font-weight: 450;
   }
 
