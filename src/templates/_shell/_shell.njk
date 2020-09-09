@@ -25,6 +25,11 @@
 
   <title>{% block titletag %}{% endblock %}</title>
 
+  <style id="js--scale">
+    .sidebar.js--expanded~.wrapper__outer .wrapper__inner {
+      transform-origin: right 0;
+    }
+  </style>
 </head>
 <body>
   <script>
@@ -32,11 +37,6 @@
       document.body.classList.add('js--direct-link');
     }
   </script>
-  <style id="js--scale">
-    .sidebar.js--expanded~.wrapper__outer .wrapper__inner {
-      transform-origin: right 0;
-    }
-  </style>
   <!--<noscript>
     <iframe
       src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
