@@ -1,0 +1,55 @@
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+	<!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+	<div class="pswp__bg">
+	</div>
+	<!-- Slides wrapper with overflow:hidden. -->
+	<div class="pswp__scroll-wrap">
+		<!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+		<div class="pswp__container">
+			<div class="pswp__item">
+			</div>
+			<div class="pswp__item">
+			</div>
+			<div class="pswp__item">
+			</div>
+		</div>
+		<!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+		<div class="pswp__ui pswp__ui--hidden">
+			<div class="pswp__top-bar">
+				<!--  Controls are self-explanatory. Order can be changed. -->
+				<div class="pswp__counter">
+				</div>
+				<button class="pswp__button pswp__button--close" title="Close (Esc)">Close</button>
+				<button class="pswp__button pswp__button--share" title="Share">Share</button>
+				<button class="pswp__button pswp__button--fs" title="Toggle fullscreen">Fullscreen</button>
+				<button class="pswp__button pswp__button--zoom" title="Zoom in/out">Zoom in or out</button>
+				<!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+				<!-- element will get class pswp__preloader--active when preloader is running -->
+				<div class="pswp__preloader">
+          <svg class="pswp__jvm-svg" xmlns="http://www.w3.org/2000/svg" viewBox="10 15 40 34"><mask id="cutout"><path fill="#fff" d="M22 45a4 4 0 01-4 4h-8v-4h6a1 1 0 001-1V15h5v30zm14 4h-5V20a1 1 0 00-1-1h-6v-4h8a4 4 0 014 4v30zm14 0h-5V20a1 1 0 00-1-1h-6v-4h8a4 4 0 014 4v30z"/></mask><path mask="url(#cutout)" class="pswp__jvm-svg-unfilled" d="M10 15h40v34H10z"/><path class="pswp__jvm-svg-filled" fill="none" mask="url(#cutout)" stroke-width="6" stroke-miterlimit="10" d="M19.5 11v34c0 1.1-.9 2-2 2H6l14-30h11.5c1.1 0 2 .9 2 2v34l.5-36h11.5c1.1 0 2 .9 2 2v34"/></svg>
+
+					<!-- <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div> -->
+				</div>
+			</div>
+			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+				<div class="pswp__share-tooltip">
+				</div>
+			</div>
+			<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">Prev</button>
+			<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">Next</button>
+			<div class="pswp__caption">
+				<div class="pswp__caption__center">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
