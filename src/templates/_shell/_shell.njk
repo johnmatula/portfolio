@@ -14,6 +14,7 @@
   <meta property="og:description" content="{{ opengraph }}">
   <script type="module" src="/js/alpine.min.js"></script>
   <script nomodule src="/js/alpine-ie11.min.js" defer></script>
+
   <!--<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -21,6 +22,7 @@
   })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>-->
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/fonts.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/css/photoswipe.css" media="print" onload="this.media='all'">
   <link rel="preload" href="/fonts/fraunces.20200818.woff2" as="font" type="font/woff2" crossorigin>
 
   <title>{% block titletag %}{% endblock %}</title>
@@ -53,9 +55,52 @@
     <div class="wrapper__inner">
       {% block content %}
       {% endblock %}
+
+
+
+      <!-- Testing! -->
+      <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery" data-pswp-uid="1">
+
+          <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+            <a href="https://farm3.staticflickr.com/2567/5697107145_a4c2eaa0cd_o.jpg" itemprop="contentUrl" data-size="1024x1024">
+                <img src="https://farm3.staticflickr.com/2567/5697107145_3c27ff3cd1_m.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+                                                <figcaption itemprop="caption description">Image caption  1</figcaption>
+
+          </figure>
+
+          <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+            <a href="https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg" itemprop="contentUrl" data-size="964x1024">
+                <img src="https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_m.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+            <figcaption itemprop="caption description">Image caption 2</figcaption>
+          </figure>
+
+          <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+            <a href="https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg" itemprop="contentUrl" data-size="1024x683">
+                <img src="https://farm7.staticflickr.com/6175/6176698785_7dee72237e_m.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+            <figcaption itemprop="caption description">Image caption 3</figcaption>
+          </figure>
+
+          <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+            <a href="https://farm6.staticflickr.com/5023/5578283926_822e5e5791_b.jpg" itemprop="contentUrl" data-size="1024x768">
+                <img src="https://farm6.staticflickr.com/5023/5578283926_822e5e5791_m.jpg" itemprop="thumbnail" alt="Image description" />
+            </a>
+            <figcaption itemprop="caption description">Image caption 4</figcaption>
+          </figure>
+
+
+        </div>
+
+
     </div>
   </main>
 
+  {% include "src/components/photoswipe/_photoswipe.njk" %}
+
+  <script src="/js/photoswipe.min.js" defer></script>
+  <script src="/js/photoswipe-ui-default.min.js" defer></script>
   <script src="/js/main.js"></script>
 </body>
 </html>
