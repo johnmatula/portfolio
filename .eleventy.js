@@ -1,4 +1,13 @@
+const cacheBuster = require('@mightyplow/eleventy-plugin-cache-buster');
+
 module.exports = (function(eleventyConfig) {
+  const cacheBusterOptions = {
+    createResourceHash(outputDirectory, url, target) {
+      return Date.now();
+    }
+  };
+  eleventyConfig.addPlugin(cacheBuster(cacheBusterOptions));
+
   eleventyConfig.setUseGitIgnore(false);
 
   eleventyConfig.addPassthroughCopy({ "src/supporting/generated/css": "css" });

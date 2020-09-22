@@ -9,7 +9,7 @@
     "watch:eleventy": "eleventy --serve",
     "watch:sass": "npm run build:sass -- --watch",
     "watch:js": "watch 'npm run build:js' src/components src/templates",
-    "start": "npm-run-all build:sass build:js --parallel watch:eleventy watch:sass watch:js"
+    "start": "npm-run-all build:sass build:js --parallel watch:sass watch:js watch:eleventy"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "@babel/core": "^7.11.1",
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
+    "@mightyplow/eleventy-plugin-cache-buster": "^1.1.3",
     "autoprefixer": "^9.8.6",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^7.1.1",
