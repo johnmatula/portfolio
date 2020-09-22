@@ -5,12 +5,13 @@
   @extend %layout-case-study;
   @extend %shell-bulleted-list;
 
-  > p:first-of-type::first-line,
-  strong,
-  h3 + p::first-line,
-  > .section__contents > p:first-of-type::first-line {
-    font-weight: 450;
-  }
+  // This causes some repainting nightmares in Safari. Boo.
+//  > p:first-of-type::first-line,
+//  strong,
+//  h3 + p::first-line,
+//  > .section__contents > p:first-of-type::first-line {
+//    font-weight: 450;
+//  }
 
   > :last-child {
     margin-bottom: 0;
@@ -172,7 +173,7 @@
         var(--gap-grid-minor)
       []
         1fr
-      [content-full-end content-half-b-end content-third-c-end details-value-end]
+      [content-full-end content-half-b-end details-value-end]
         calc(var(--gap-grid-major) + env(safe-area-inset-right))
       [full-bleed-end];
   }
@@ -209,7 +210,7 @@
         var(--gap-grid-minor)
       []
         1fr
-      [content-full-end content-half-b-end content-third-c-end details-value-end]
+      [content-full-end content-half-b-end details-value-end]
         var(--gap-grid-minor)
       []
         var(--width-float-gutter)
@@ -250,12 +251,12 @@
         var(--gap-grid-minor)
       []
         minmax(auto,var(--b3))
-      [content-full-end content-half-b-end content-third-c-end details-value-end]
+      [content-full-end content-half-b-end details-value-end]
         var(--gap-grid-minor)
       []
         repeat(4, minmax(auto,var(--b3)))
       []
-        minmax(calc(var(--gap-grid-major) + var(safe-area-inset-right)),auto)
+        minmax(calc(var(--gap-grid-major) + env(safe-area-inset-right)),auto)
       [full-bleed-end];
   }
 }

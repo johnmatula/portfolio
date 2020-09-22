@@ -3,4 +3,9 @@
 .gallery {
   background-color: var(--fill-page-secondary);
   padding: var(--a3) 0;
+
+  &__thumbs {
+  outline: 1px solid red;
+    grid-column: content-full;
+  }
 }

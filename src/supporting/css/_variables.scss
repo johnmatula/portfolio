@@ -1,10 +1,13 @@
 @use 'mixins' as *;
-@use "sass:color";
 
 :root {
   // ROOT EM HEIGHT BASES
 
   --rem-base: 16;
+
+  @include at-least(w0) {
+    --rem-base: 17;
+  }
 
   @include at-least(w1) {
     --rem-base: 18;
@@ -48,6 +51,7 @@
   --hue-shade-300: #bab8b5;
   --hue-shade-500: #74706d;
   --hue-shade-700: #4a4745;
+  --hue-shade-800: #201f1d;
   --hue-shade-900: #171512;
   --hue-shade-1000: #0f0f0b;
 
@@ -100,7 +104,7 @@
   --stroke-body-link: var(--translucent-red-20);
 
   @include is-theme(dark) {
-    --color-text-primary: var(--hue-shade-100);
+    --color-text-primary: var(--hue-shade-0);
     --color-text-secondary: var(--hue-shade-300);
     --color-text-content: var(--hue-shade-100);
     --color-body-link: var(--hue-red-300);
@@ -111,8 +115,8 @@
     --color-project-link-hover: var(--hue-blue-100);
     --color-project-link-active: var(--hue-blue-0);
 
-    --fill-page-primary: var(--hue-shade-900);
-    --fill-page-secondary: var(--hue-shade-1000);
+    --fill-page-primary: var(--hue-shade-800);
+    --fill-page-secondary: var(--hue-shade-900);
     --fill-bullet: var(--hue-shade-500);
     --fill-body-link: var(--translucent-red-0);
     --fill-body-link-hover: var(--hue-red-700);
@@ -133,7 +137,7 @@
   //
   // Two ramps are used at a basis of 1 (a) and 1.25 (b). The numeral
   // refers to the power at which the scale (1.618, ϕ, ugh I know) is raised.
-  // That factor is then multiplied to a or b to get the rem value.
+  // That factor is then multiplied to a0 or b0 to get the rem value.
 
   --b6: 22.428rem;
   --a6: 17.942rem;

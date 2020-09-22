@@ -61,8 +61,11 @@
     }
   }
 
+  // Shape-outside causes painting funkiness in Safari.
+  // Forcing its own compositing layer reduces the area that gets repainted.
   .about {
     margin-bottom: var(--a3);
+    will-change: opacity;
   }
 
   &__intro-container {

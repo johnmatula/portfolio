@@ -3,5 +3,10 @@
 {% macro gallery(items, classList = "grid--case-study", header = "Previews", parenthetical = "") %}
 <div class="gallery {{ classList }}">
   {{ sectionHeader(header, parenthetical) }}
+  <ul class="gallery__thumbs">
+    {% for item in items %}
+    <li>hi??</li>
+    {% endfor %}
+  </ul>
 </div>
 {% endmacro %}
