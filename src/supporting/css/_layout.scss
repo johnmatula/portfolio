@@ -21,9 +21,9 @@
 .wrapper__inner {
   flex: 1 1 100%;
   position: relative;
-  transition: transform var(--timing-sidebar-slide-out), transform-origin 0s var(--timing-sidebar-slide-out);
+  transition: transform var(--timing-sidebar-slide-out);
   transform-origin: right 0;
-  transform: none;
+  transform: scale3d(1,1,.00001);
   width: 100%;
 
   .sidebar.js--expanded ~ .wrapper__outer & {
@@ -35,7 +35,7 @@
     // repaints via custom properties. (Just rewriting a CSS class via JS
     // turns out to be more reliable in avoiding the dreaded repaints.)
     transform: translateY(calc(var(--height-navbar-difference) * 1rem));
-    transition: transform var(--timing-sidebar-slide-in), transform-origin 0s 0s;
+    transition: transform var(--timing-sidebar-slide-in);
 
     @include at-least(w1) {
       transform: translateX(0) scale3d(var(--scale-nav), var(--scale-nav), .00001);

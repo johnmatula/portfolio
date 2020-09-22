@@ -19,11 +19,7 @@ window.addEventListener('scroll', function(e) {
 
   if (!ticking) {
     window.requestAnimationFrame(function() {
-
-      document.getElementById('js--scale').innerHTML = `.sidebar.js--expanded ~ .wrapper__outer .wrapper__inner {
-        transform-origin: right ${ window.scrollY }px;
-      }`;
-
+      document.querySelector('.wrapper__inner').style = `transform-origin: right ${ lastKnownScrollPosition }px`;
       ticking = false;
     });
 
