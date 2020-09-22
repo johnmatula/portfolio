@@ -48,7 +48,23 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
   <p>Overall, we made good progress on everyone’s understanding of frontend coding. When we compared our progress with a before-and-after quiz, we saw a marked improvement. Not bad for a ten-week crash course!</p>
 </section>
 
-{{ gallery() }}
+{{ gallery([
+    {
+      thumb: "/dist/img/larr.svg",
+      full: "/dist/img/larr.svg",
+      alt: "Leftwards arrow",
+      description: "Testing the image here.",
+      credit: "Jahn Matola"
+    },
+    {
+      thumb: "/dist/img/broken.svg",
+      full: "/dist/img/broken.svg",
+      alt: "Wow real neat",
+      description: "Another test!",
+      credit: "Debbie Softhead"
+    }
+  ])
+}}
 
 {{
   retrospective([
