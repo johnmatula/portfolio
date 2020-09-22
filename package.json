@@ -4,12 +4,13 @@
   "description": "John’s personal portfolio site.",
   "main": "index.js",
   "scripts": {
+    "clean:dist": "rm -rf dist",
     "build:sass": "sass --style=compressed --load-path=src/supporting/css src/components:src/supporting/generated/css src/supporting/css:src/supporting/generated/css src/templates:src/supporting/generated/css",
     "build:js": "babel src/components src/templates --out-file src/supporting/generated/js/main.js --source-maps --ignore 'src/supporting/**/*.js'",
     "watch:eleventy": "eleventy --serve",
     "watch:sass": "npm run build:sass -- --watch",
     "watch:js": "watch 'npm run build:js' src/components src/templates",
-    "start": "npm-run-all build:sass build:js --parallel watch:sass watch:js watch:eleventy"
+    "start": "npm run clean:dist && npm-run-all build:sass build:js --parallel watch:eleventy watch:sass watch:js"
   },
   "repository": {
     "type": "git",

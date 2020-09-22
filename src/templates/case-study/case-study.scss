@@ -38,6 +38,10 @@
   .section__contents, .p__container {
     grid-column: content-full;
   }
+
+  &.section {
+    @extend %link-body;
+  }
 }
 
 

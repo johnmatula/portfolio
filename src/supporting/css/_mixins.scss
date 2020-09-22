@@ -45,15 +45,15 @@ $at-least-breakpoints: (
   line-height: $line-height / $base-font-size * 1rem;
 }
 
-
+// Like any other hidden class you see, except that I had to remove
+// the clip-path because it triggered repaints in Safari.
 .a11y--hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
   width: 1px;
+  margin: -1px -1px 0 0;
 }
 
 .a11y--no-text {

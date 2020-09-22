@@ -61,6 +61,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
   // triggers when user clicks on thumbnail
   var onThumbnailsClick = function(e) {
+    console.log("oh look");
     e = e || window.event;
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
 
@@ -68,8 +69,10 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
     // find root element of slide
     var clickedListItem = closest(eTarget, function(el) {
-      return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+      return (el.tagName && el.tagName.toLowerCase() === 'figure');
     });
+
+    console.log(clickedListItem)
 
     if(!clickedListItem) {
       return;
@@ -146,7 +149,14 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
       // define gallery index (for URL)
       galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 
+      showHideOpacity: true,
+
       getThumbBoundsFn: function(index) {
+        if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          console.log(window)
+          return null;
+        }
+
         // See Options -> getThumbBoundsFn section of documentation for more info
         var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
         pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
