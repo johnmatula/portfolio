@@ -6,7 +6,13 @@
   // will actually create any extra rows (so it’s sluggish with too many).
   align-self: stretch;
   grid-column: header;
-  grid-row: 1 / 9;
+  grid-row: 1 / 20;
+  // TODO: nudge with negative margin to manually align baselines
+
+  &__contents {
+    position: sticky;
+    top: var(--a1);
+  }
 
   h2 {
     @extend %typography-section-heading;
