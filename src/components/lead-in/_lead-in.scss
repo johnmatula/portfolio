@@ -1,11 +1,14 @@
 @use "utilities" as *;
 
+// Slightly reduce the font size, dependent on the paragraph’s font size.
+// The weight axis of Fraunces seems to affect the x-height ever so slightly.
+
 .lead-in {
   font-size: .975em;
   font-weight: 775;
   letter-spacing: .125px;
 
   @include is-theme(dark) {
-    font-weight: 875;
+    font-weight: 850;
   }
 }
