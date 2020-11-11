@@ -5,10 +5,44 @@
   padding: var(--a3) 0;
 
   &__thumbs {
-  outline: 1px solid red;
+    align-items: stretch;
+    display: grid;
+    grid-auto-flow: dense;
     grid-column: content-full;
+    grid-gap: var(--gap-grid-minor);
+    grid-template-columns: repeat(6, 1fr);
+    justify-content: stretch;
   }
 
-  figure {
+  .responsive {
+    align-items: stretch;
+    display: flex;
+    justify-content: stretch;
+  }
+
+  .responsive__link,
+  .responsive__picture {
+    align-items: stretch;
+    display: flex;
+    flex: 1 1 100%;
+    justify-content: stretch;
+  }
+
+  .responsive__img {
+    flex: 1 1 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .responsive--thirdwide {
+    grid-column: span 2;
+  }
+
+  .responsive--halfwide {
+    grid-column: span 3;
+  }
+
+  .responsive--doublehigh {
+    grid-row: span 2;
   }
 }
