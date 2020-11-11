@@ -65,10 +65,12 @@
   --translucent-red-36: rgba(191,38,8,.36);
 
   --translucent-shade-5: rgba(23,21,18,.05);
+  --translucent-shade-24: rgba(23,21,18,.24);
   --translucent-shade-54: rgba(23,21,18,.54);
   --translucent-shade-93: rgba(23,21,18,.93);
 
   --translucent-white-10: rgba(255,255,255,.1);
+  --translucent-white-20: rgba(255,255,255,.2);
   --translucent-white-30: rgba(255,255,255,.3);
   --translucent-white-96: rgba(255,255,255,.96);
 
@@ -93,6 +95,8 @@
   --fill-body-link-hover: var(--hue-red-500);
   --fill-body-link-active: var(--hue-red-700);
   --fill-navbar: var(--translucent-white-96);
+  --fill-photoswipe: var(--translucent-white-96);
+  --fill-hud: rgba(246,245,243,.90);
   --fill-submenu-expanded: var(--hue-red-500);
 
   --stroke-logo-filled: var(--hue-red-300);
@@ -101,6 +105,7 @@
   --stroke-logo-unfilled: var(--translucent-shade-5);
   --stroke-separator: var(--translucent-shade-54);
   --stroke-navbar-separator: var(--translucent-shade-54);
+  --stroke-hud: var(--translucent-shade-24);
   --stroke-body-link: var(--translucent-red-20);
 
   @include is-theme(dark) {
@@ -122,6 +127,8 @@
     --fill-body-link-hover: var(--hue-red-700);
     --fill-body-link-active: var(--hue-red-500);
     --fill-navbar: var(--translucent-shade-93);
+    --fill-photoswipe: var(--translucent-shade-93);
+    --fill-hud: rgba(32,31,29,.86);
     --fill-submenu-expanded: var(--hue-red-700);
 
     --stroke-logo-filled: var(--hue-red-500);
@@ -129,6 +136,7 @@
     --stroke-logo-unfilled: var(--translucent-white-10);
     --stroke-separator: var(--translucent-white-30);
     --stroke-navbar-separator: var(--translucent-white-30);
+    --stroke-hud: var(--translucent-white-20);
     --stroke-body-link: var(--translucent-red-36);
   }
 
@@ -206,30 +214,6 @@
   }
 
 
-  // Z-INDEX VALUES
-  //
-  // Collected in one spot to avoid random too-many-nines.
-  // (Stacking contexts should also be considered when positioning.)
-  --z-backdrop: -1;
-  --z-sidebar: 10;
-  --z-sidebar-contact: 11;
-  --z-sidebar-logo: 12;
-  --z-sidebar-close: 13;
-  --z-sidebar-footer: 14;
-
-
-  // TIMINGS
-  --timing-logo: 1.75s;
-  --timing-instructions-slide-in: .425s;
-  --timing-instructions-fade-in: .275s;
-  --timing-sidebar-slide-in: .425s;
-  --timing-sidebar-fade-in: .275s;
-  --timing-sidebar-slide-out: .25s;
-  --timing-sidebar-fade-out: .2s;
-  --timing-link: .15s;
-
-  --delay-logo: .5s;
-  --delay-instructions: 1.375s;
 
 
   // SAFE-AREA ENVS
@@ -251,6 +235,40 @@
     --optical-c: 13;
   }
 }
+
+// Z-INDEX VALUES
+//
+// Collected in one spot to avoid random too-many-nines.
+// (Stacking contexts should also be considered when positioning.)
+$z-backdrop: -1;
+$z-base: 1;
+$z-sidebar: 10;
+$z-sidebar-contact: 11;
+$z-sidebar-logo: 12;
+$z-sidebar-close: 13;
+$z-sidebar-footer: 14;
+$z-photoswipe: 50;
+$z-photoswipe-ui: 100;
+
+
+// TIMINGS AND EASINGS
+$timing-logo: 1.75s;
+$timing-instructions-slide-in: .425s;
+$timing-instructions-fade-in: .275s;
+$timing-sidebar-slide-in: .425s;
+$timing-sidebar-fade-in: .275s;
+$timing-sidebar-slide-out: .25s;
+$timing-sidebar-fade-out: .2s;
+$timing-photoswipe-display-in: .375s;
+$timing-photoswipe-display-out: .2s;
+$timing-photoswipe-fade-in: .275s;
+$timing-photoswipe-fade-out: .2s;
+$timing-photoswipe-controls-fade-in: .2s;
+$timing-photoswipe-controls-fade-out: .425s;
+$timing-link: .15s;
+
+$delay-logo: .5s;
+$delay-instructions: 1.375s;
 
 
 // FONT STACKS
