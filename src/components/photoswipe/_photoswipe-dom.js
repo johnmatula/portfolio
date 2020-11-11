@@ -2,12 +2,15 @@
 
 // John’s comment: right now, this will simply scoop up all images and
 // place them into a single gallery instance.
+//
+// TODO: Make less broad so that clicks arent wasted
 
 var initPhotoSwipeFromDOM = function(gallerySelector) {
 
   // parse slide data (url, title, size ...) from DOM elements
   // (children of gallerySelector)
   var parseThumbnailElements = function(el) {
+    console.log(el);
     var thumbElements = el.querySelectorAll("figure"),
     numNodes = thumbElements.length,
     items = [],
@@ -44,7 +47,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
       if(linkEl.children.length > 0) {
         // <img> thumbnail element, retrieving thumbnail url
-        item.msrc = linkEl.children[0].getAttribute('src');
+        item.msrc = linkEl.querySelector('img').getAttribute('src');
       }
 
       item.el = figureEl; // save link to element for getThumbBoundsFn
@@ -61,10 +64,6 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
   // triggers when user clicks on thumbnail
   var onThumbnailsClick = function(e) {
-    console.log("oh look");
-    e = e || window.event;
-    e.preventDefault ? e.preventDefault() : e.returnValue = false;
-
     var eTarget = e.target || e.srcElement;
 
     // find root element of slide
@@ -72,11 +71,13 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
       return (el.tagName && el.tagName.toLowerCase() === 'figure');
     });
 
-    console.log(clickedListItem)
-
     if(!clickedListItem) {
       return;
     }
+
+
+    e = e || window.event;
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
 
     // find index of clicked item by looping through all child nodes
     // alternatively, you may define index via data- attribute
@@ -149,6 +150,8 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
       // define gallery index (for URL)
       galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 
+      barsSize: {top:0, bottom:0},
+
       showHideOpacity: true,
 
       getThumbBoundsFn: function(index) {
@@ -166,12 +169,17 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
       },
 
       shareEl: false,
+      fullscreenEl: false,
+      captionEl: false,
+      counterEl: false,
+      showAnimationDuration: 375,
+      hideAnimationDuration: 200,
 
       // TODO: Remove dev-only properties...
-timeToIdle: 499999000,
+timeToIdle: 3000,
 
 // Same as above, but this timer applies when mouse leaves the window
-timeToIdleOutside: 1999999000,
+timeToIdleOutside: 0,
 
     };
 
@@ -219,6 +227,7 @@ timeToIdleOutside: 1999999000,
   // Parse URL and open gallery if it contains #&pid=3&gid=1, only after load
   var hashData = photoswipeParseHash()
   if(hashData.pid && hashData.gid) {
+    console.log(galleryElements);
     openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
   }
 };

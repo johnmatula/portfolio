@@ -21,12 +21,24 @@
 		<div class="pswp__ui pswp__ui--hidden">
 			<div class="pswp__top-bar">
 				<!--  Controls are self-explanatory. Order can be changed. -->
-				<div class="pswp__counter">
-				</div>
-				<button class="pswp__button pswp__button--close" title="Close (Esc)">Close</button>
-				<button class="pswp__button pswp__button--share" title="Share">Share</button>
-				<button class="pswp__button pswp__button--fs" title="Toggle fullscreen">Fullscreen</button>
-				<button class="pswp__button pswp__button--zoom" title="Zoom in/out">Zoom in or out</button>
+				<div class="pswp__counter"></div>
+  			<button class="pswp__button pswp__button--arrow--left" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g fill="none" fill-rule="evenodd" stroke="#000" stroke-width="4"><path d="M16 28L4 16 16 4M4 16h26"/></g></svg>
+        </button>
+  			<button class="pswp__button pswp__button--arrow--right" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g fill="none" fill-rule="evenodd" stroke="#000" stroke-width="4"><path d="M2 16h26M16 28l12-12L16 4"/></g></svg>
+        </button>
+				<button class="pswp__button pswp__button--zoom" aria-label="Zoom in or out">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="pswp__button__svg-enlarge"><g fill="none" fill-rule="evenodd" stroke="#000" stroke-width="4"><path d="M16 5h11v11M16 27H5V16"/></g></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="pswp__button__svg-reduce"><g fill="none" fill-rule="evenodd" stroke="#000" stroke-width="4"><path d="M3 19h10v10M29 13H19V3"/></g></svg>
+        </button>
+				<button class="pswp__button pswp__button--close" title="Close (Esc)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g fill="none" fill-rule="evenodd" stroke="#000" stroke-width="4"><path d="M3 29L29 3M3 3l26 26"/></g></svg>
+        </button>
+
+
+
+
 				<!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
 				<!-- element will get class pswp__preloader--active when preloader is running -->
 				<div class="pswp__preloader">
@@ -40,12 +52,6 @@
           </div> -->
 				</div>
 			</div>
-			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-				<div class="pswp__share-tooltip">
-				</div>
-			</div>
-			<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">Prev</button>
-			<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">Next</button>
 			<div class="pswp__caption">
 				<div class="pswp__caption__center">
 				</div>
