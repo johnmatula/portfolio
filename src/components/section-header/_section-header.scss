@@ -10,8 +10,10 @@
   // TODO: nudge with negative margin to manually align baselines
 
   &__contents {
-    position: sticky;
-    top: var(--a1);
+    @include at-least(w2) {
+      position: sticky;
+      top: var(--a1);
+    }
   }
 
   h2 {
