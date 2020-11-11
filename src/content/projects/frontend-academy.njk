@@ -10,7 +10,7 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
 
 {% from "src/components/aside/_aside.njk" import aside %}
 {% from "src/components/details/_details.njk" import details %}
-{% from "src/components/gallery/_gallery.njk" import gallery %}
+{% from "src/components/gallery/_gallery.njk" import galleryStart, galleryEnd %}
 {% from "src/components/section-header/_section-header.njk" import sectionHeader %}
 {% from "src/components/related/_related.njk" import related %}
 {% from "src/components/retrospective/_retrospective.njk" import retrospective %}
@@ -47,16 +47,24 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
 
   <p>Overall, we made good progress on everyone’s understanding of frontend coding. When we compared our progress with a before-and-after quiz, we saw a marked improvement. Not bad for a ten-week crash course!</p>
 
-  {% responsiveImage "./src/supporting/images/sample.jpg", "A cool thing" %}
-
-  ??
 </section>
 
 
+{{ galleryStart() }}
+{% responsiveImage "./src/supporting/images/sample.jpg", "A cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/wowow.png", "A cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
+{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
+{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
+{% responsiveImage "./src/supporting/images/sample.jpg", "The second cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/wowow.png", "The second cool thing", "responsive--halfwide responsive--doublehigh" %}
+{% responsiveImage "./src/supporting/images/sample.jpg", "The second cool thing", "responsive--halfwide" %}
+{{ galleryEnd() }}
 
-<!--{{ gallery([
+<!--
+
     {
-      blah: {% responsiveImage "./src/supporting/images/sample.jpg", "A cool thing" %},
+      blah: "d",
       thumb: "/dist/img/larr.svg",
       full: "/dist/img/larr.svg",
       alt: "Leftwards arrow",
@@ -64,7 +72,7 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
       credit: "Jahn Matola"
     },
     {
-      blah: {% responsiveImage "./src/supporting/images/sample.jpg", "A cool thing" %},
+      blah: "a",
       thumb: "/dist/img/broken.svg",
       full: "/dist/img/broken.svg",
       alt: "Wow real neat",
@@ -72,7 +80,9 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
       credit: "Debbie Softhead"
     }
   ])
-}} -->
+
+ -->
+
 
 {{
   retrospective([
