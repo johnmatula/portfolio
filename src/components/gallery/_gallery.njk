@@ -1,6 +1,22 @@
 {% from "src/components/section-header/_section-header.njk" import sectionHeader %}
 
-{% macro gallery(items, classList = "grid--case-study", header = "Previews", parenthetical = "") %}
+{% macro galleryStart(classList = "grid--case-study", header = "Previews", parenthetical = "") %}
+<div class="gallery {{classList}}">
+  {{ sectionHeader(header, parenthetical) }}
+  <div class="gallery__thumbs">
+{% endmacro %}
+
+<!-- Nunjucks macros can’t handle asynchronous calls. Ugh. -->
+<!-- For now, I’m using wrapping tags to sidestep the limitation. -->
+
+{% macro galleryEnd() %}
+  </div>
+</div>
+{% endmacro %}
+
+
+<!--
+macro gallery(items, classList = "grid--case-study", header = "Previews", parenthetical = "")
 <div class="gallery {{ classList }}">
   {{ sectionHeader(header, parenthetical) }}
   <div class="gallery__thumbs">
@@ -15,7 +31,6 @@
 
   </div>
 
-<!--
 
       <!- - Testing! - ->
       <div class="gallery__thumbs" itemscope itemtype="http://schema.org/ImageGallery" data-pswp-uid="1">
@@ -43,5 +58,3 @@
 
         </div>
 -->
-</div>
-{% endmacro %}
