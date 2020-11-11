@@ -31,6 +31,12 @@ $at-least-breakpoints: (
   }
 }
 
+@mixin no-motion() {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
 // Font utilities
 @mixin font($font-weight, $font-size, $line-height, $letter-spacing: null, $font-family: null) {
   @if ($font-family) {
