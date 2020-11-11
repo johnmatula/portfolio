@@ -1,19 +1,47 @@
 @use "utilities" as *;
 
 .retrospective {
-  @extend %shell-bulleted-list; // Re-evaluate
-
   &__list {
     grid-column: content-full;
+    list-style: none;
   }
 
-  &__listitem {
-    &--good {
+  &__summary {
+    @extend %typography-details;
 
-    }
+    align-items: baseline;
+    display: block;
+    font-weight: 600;
+  }
 
-    &--bad {
+  &__icon {
+    display: inline-block;
+    height: .75em;
+    margin-right: var(--a-2);
+    vertical-align: baseline;
+    width: .75em;
+  }
 
-    }
+  &__stroke {
+    fill: none;
+    stroke: var(--color-text-secondary);
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+  }
+
+  &__content {
+    @extend %typography-link-description;
+
+    display: block;
+    margin-top: var(--a-2);
+  }
+
+  &__separator {
+    border: 0;
+    background-color: var(--stroke-separator);
+    grid-column: content-full;
+    height: 1px;
+    margin: var(--a0) 0;
+    transform: scaleY(.5);
   }
 }

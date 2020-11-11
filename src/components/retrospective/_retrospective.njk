@@ -5,7 +5,25 @@
     {{ sectionHeader(header, parenthetical) }}
     <ul class="retrospective__list">
     {% for item in items %}
-      <li class="retrospective__listitem retrospective__listitem--{{item.rating}}">{{ item.content | safe }}</li>
+      {% if loop.first !== true %}
+      <hr class="retrospective__separator">
+      {% endif %}
+
+      <li class="retrospective__listitem">
+        <span class="retrospective__summary">
+          {% if item.rating == "good" %}
+            <svg aria-label="Something good…" class="retrospective__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="retrospective__stroke" d="M2 7.5L6.5 12 15 3.5"/></svg>
+          {% elseif item.rating == "eh" %}
+            <svg aria-label="A general remark…" class="retrospective__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="retrospective__stroke" d="M2 8h12"/></svg>
+          {% elseif item.rating == "bad" %}
+            <svg aria-label="Something not-so-good…" class="retrospective__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path class="retrospective__stroke" d="M3 3l10 10M13 3L3 13"/></svg>
+          {% endif %}
+          {{ item.summary | safe }}
+        </span>
+        <span class="retrospective__content">
+          {{ item.content | safe }}
+        </span>
+      </li>
     {% endfor %}
     </ul>
   </div>
