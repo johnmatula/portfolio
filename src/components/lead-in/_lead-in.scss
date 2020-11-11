@@ -1,0 +1,11 @@
+@use "utilities" as *;
+
+.lead-in {
+  font-size: .975em;
+  font-weight: 775;
+  letter-spacing: .125px;
+
+  @include is-theme(dark) {
+    font-weight: 875;
+  }
+}
