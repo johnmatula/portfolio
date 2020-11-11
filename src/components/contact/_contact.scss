@@ -12,9 +12,9 @@
   right: 0;
   top: 0;
   transform: translateY(calc(var(--height-navbar-difference) * -1rem));
-  transition: opacity var(--timing-sidebar-fade-out), transform var(--timing-sidebar-slide-out), visibility 0s var(--timing-sidebar-fade-out);
+  transition: opacity $timing-sidebar-fade-out, transform $timing-sidebar-slide-out, visibility 0s $timing-sidebar-fade-out;
   visibility: hidden;
-  z-index: var(--z-sidebar-contact);
+  z-index: $z-sidebar-contact;
 
   @include at-least(w1) {
     transform: translateX(calc(var(--width-sidebar-difference) * -1rem));
@@ -25,7 +25,7 @@
   .js--expanded & {
     opacity: 1;
     transform: translateX(0) translateY(0);
-    transition: opacity var(--timing-sidebar-fade-in), transform var(--timing-sidebar-slide-in), visibility 0s 0s;
+    transition: opacity $timing-sidebar-fade-in, transform $timing-sidebar-slide-in, visibility 0s 0s;
     visibility: visible;
   }
 
@@ -33,7 +33,7 @@
     display: flex;
     right: 0;
     position: absolute;
-    top: 0;
+    top: calc(var(--env-safe-top) * 1rem);
 
     button {
       align-items: center;

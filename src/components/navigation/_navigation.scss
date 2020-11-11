@@ -10,8 +10,8 @@
   --env-safe-left: 0;
 
   // Sizes
-  --height-navbar-expanded: 11.089;
-  --height-navbar-collapsed: 3.272;
+  --height-navbar-expanded: calc(11.089 + var(--env-safe-top));
+  --height-navbar-collapsed: calc(3.272 + var(--env-safe-top));
   --height-navbar-difference: calc(var(--height-navbar-expanded) - var(--height-navbar-collapsed));
   --scale-navbar-collapsed: calc(var(--height-navbar-collapsed) / var(--height-navbar-expanded));
 
@@ -37,14 +37,14 @@
     display: block;
     flex: 0 0 auto;
     height: calc(var(--height-logo) + var(--b-1) + var(--b-1));
-    padding: var(--b-1) var(--a0) var(--b-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+    padding: calc(var(--b-1) + (var(--env-safe-top) * 1rem)) var(--a0) var(--b-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
     position: absolute;
     width: calc(var(--width-logo) + var(--a0) + var(--a0));
-    z-index: var(--z-sidebar-logo);
+    z-index: $z-sidebar-logo;
 
     @include at-least(w1) {
       height: calc(var(--height-logo) + var(--a1) + var(--a1));
-      padding: var(--a1) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+      padding: calc(var(--a1) + (var(--env-safe-top) * 1rem)) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
       width: calc(var(--width-sidebar-collapsed) * 1rem);
     }
 
@@ -62,11 +62,11 @@
 
   &__svg {
     flex: 0 0 var(--width-logo);
-    margin: var(--b-1) var(--a0) var(--b-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+    margin: calc(var(--b-1) + (var(--env-safe-top) * 1rem)) var(--a0) var(--b-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
     width: var(--width-logo);
 
     @include at-least(w1) {
-      margin: var(--a1) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+      margin: calc(var(--a1) + (var(--env-safe-top) * 1rem)) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
     }
   }
 
@@ -84,13 +84,13 @@
     stroke-dasharray: 215.0285;
     stroke-dashoffset: 215.0285;
     stroke: var(--stroke-logo-filled);
-    transition: stroke var(--timing-sidebar-fade-out);
+    transition: stroke $timing-sidebar-fade-out;
 
     // Only animate direct links.
     .js--ready.js--direct-link & {
-      animation: jmline-draw var(--timing-logo);
+      animation: jmline-draw $timing-logo;
       animation-fill-mode: both;
-      animation-delay: var(--delay-logo);
+      animation-delay: $delay-logo;
     }
 
     // Otherwise, snap to the filled-in state immediately.
@@ -100,7 +100,7 @@
 
     .js--expanded & {
       stroke: var(--stroke-logo-filled-inverted);
-      transition: stroke var(--timing-sidebar-fade-in);
+      transition: stroke $timing-sidebar-fade-in;
     }
   }
 }
@@ -147,9 +147,9 @@
   left: 0;
   position: fixed;
   top: 0;
-  transition: height 0s var(--timing-sidebar-slide-out);
+  transition: height 0s $timing-sidebar-slide-out;
   width: 100%;
-  z-index: var(--z-sidebar);
+  z-index: $z-sidebar;
 
   @include at-least(w1) {
     align-items: flex-start;
@@ -157,7 +157,7 @@
     height: auto;
     min-height: 100vh;
     min-height: -webkit-fill-available;
-    transition: width 0s var(--timing-sidebar-slide-out);
+    transition: width 0s $timing-sidebar-slide-out;
     width: calc(var(--width-sidebar-collapsed) * 1rem);
   }
 
@@ -175,12 +175,12 @@
     &::after {
       opacity: 1;
       transform: scaleX(1) scaleY(1);
-      transition: transform var(--timing-sidebar-slide-in), opacity var(--timing-sidebar-fade-in);
+      transition: transform $timing-sidebar-slide-in, opacity $timing-sidebar-fade-in;
     }
 
     &::before {
       transform: translateX(0) translateY(0);
-      transition: transform var(--timing-sidebar-slide-in);
+      transition: transform $timing-sidebar-slide-in;
 
       @include at-least(w1) {
         transform: translateX(calc(var(--width-sidebar-expanded) * 1rem - .5px)) scaleX(0.5);
@@ -203,8 +203,8 @@
     top: 0;
     transform: translateY(calc(var(--height-navbar-difference) * -1rem));
     transform-origin: top left;
-    transition: transform var(--timing-sidebar-slide-out);
-    z-index: var(--z-backdrop);
+    transition: transform $timing-sidebar-slide-out;
+    z-index: $z-backdrop;
 
     @include at-least(w1) {
       background-color: var(--stroke-navbar-separator);
@@ -231,8 +231,8 @@
     top: 0;
     transform: scaleY(var(--scale-navbar-collapsed));
     transform-origin: top left;
-    transition: transform var(--timing-sidebar-slide-out), opacity var(--timing-sidebar-fade-out);
-    z-index: var(--z-backdrop);
+    transition: transform $timing-sidebar-slide-out, opacity $timing-sidebar-fade-out;
+    z-index: $z-backdrop;
 
     @include at-least(w1) {
       transform: scaleX(var(--scale-sidebar-collapsed));
@@ -246,7 +246,7 @@
   height: calc(var(--height-navbar-collapsed) * 1rem);
   opacity: 1;
   position: relative; // otherwise Safari has a jumping bug during transition
-  transition: opacity var(--timing-sidebar-fade-out), visibility 0s 0s;
+  transition: opacity $timing-sidebar-fade-out, visibility 0s 0s;
   visibility: visible;
 
   @include at-least(w1) {
@@ -256,7 +256,7 @@
 
   .js--expanded & {
     opacity: 0;
-    transition: opacity var(--timing-sidebar-fade-in), visibility 0s var(--timing-sidebar-fade-in);
+    transition: opacity $timing-sidebar-fade-in, visibility 0s $timing-sidebar-fade-in;
     visibility: hidden;
   }
 
@@ -304,7 +304,7 @@
     flex: 1 1 100%;
     line-height: 1rem;
     margin: 0;
-    padding: var(--b-1) var(--a0) var(--b-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+    padding: calc(var(--b-1) + (var(--env-safe-top) * 1rem)) var(--a0) var(--b-1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
     position: relative;
     text-align: left;
     text-decoration: none;
@@ -336,13 +336,13 @@
       position: absolute;
       transform: scaleX(1) scaleY(1);
       transform-origin: top left;
-      transition: opacity var(--timing-link), transform var(--timing-sidebar-slide-out);
+      transition: opacity $timing-link, transform $timing-sidebar-slide-out;
       top: 0;
-      z-index: -1;
+      z-index: $z-backdrop;
 
       .js--expanded & {
         transform: scaleY(calc(1 / var(--scale-navbar-collapsed)));
-        transition: opacity var(--timing-link), transform var(--timing-sidebar-slide-in);
+        transition: opacity $timing-link, transform $timing-sidebar-slide-in;
 
         @include at-least(w1) {
           transform: scaleX(calc(1 / var(--scale-sidebar-collapsed)));
@@ -359,7 +359,7 @@
     &:active {
       &::after {
         opacity: .35;
-        transition: transform var(--timing-sidebar-slide-in);
+        transition: transform $timing-sidebar-slide-in;
       }
     }
   }
@@ -371,7 +371,7 @@
     position: relative;
     transform: translateX(-5rem);
     transition: opacity .25s, transform .35s;
-    z-index: 1;
+    z-index: $z-base;
 
     &--logo {
       font-size: 1.25rem;

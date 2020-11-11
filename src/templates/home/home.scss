@@ -52,7 +52,7 @@
       opacity: 0;
       text-align: right;
       transform: translateY(var(--a0));
-      transition: transform var(--timing-instructions-slide-in) var(--delay-instructions), opacity var(--timing-instructions-fade-in) var(--delay-instructions);
+      transition: transform $timing-instructions-slide-in $delay-instructions, opacity $timing-instructions-fade-in $delay-instructions;
 
       .js--ready & {
         opacity: 1;

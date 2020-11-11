@@ -4,9 +4,9 @@
   color: var(--color-text-secondary);
   display: none;
   position: relative;
-  transition: color var(--timing-sidebar-fade-out);
+  transition: color $timing-sidebar-fade-out;
   width: calc(var(--width-sidebar-collapsed) * 1rem);
-  z-index: var(--z-sidebar-footer);
+  z-index: $z-sidebar-footer;
 
   @include at-least(h0) {
     @include at-least(w1) {
@@ -39,10 +39,10 @@
 
     .js--expanded & {
       color: var(--color-submenu);
-      transition: color var(--timing-sidebar-fade-in);
+      transition: color $timing-sidebar-fade-in;
 
       &:hover, &:focus {
-        transition: color var(--timing-link), background-color var(--timing-link);
+        transition: color $timing-link, background-color $timing-link;
       }
 
       &:active {
@@ -56,7 +56,7 @@
 
     margin: 0;
     padding: var(--a-1) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
-    transition: color var(--timing-sidebar-fade-out);
+    transition: color $timing-sidebar-fade-out;
 
     @include at-least(w3) {
       padding-top: var(--b-2);
@@ -64,7 +64,7 @@
 
     .js--expanded & {
       color: var(--color-submenu);
-      transition: color var(--timing-sidebar-fade-in);
+      transition: color $timing-sidebar-fade-in;
     }
   }
 }
