@@ -11,6 +11,7 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
 {% from "src/components/aside/_aside.njk" import aside %}
 {% from "src/components/details/_details.njk" import details %}
 {% from "src/components/gallery/_gallery.njk" import galleryStart, galleryEnd %}
+{% from "src/components/lead-in/_lead-in.njk" import leadIn %}
 {% from "src/components/section-header/_section-header.njk" import sectionHeader %}
 {% from "src/components/related/_related.njk" import related %}
 {% from "src/components/retrospective/_retrospective.njk" import retrospective %}
@@ -18,7 +19,7 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
 <section class="section">
   {{ sectionHeader("Motivation") }}
 
-  <p>Early in 2020, I received a request to quickly update our platform’s visual style to match the emerging design system of our new parent company. As a designer that knows his way around a frontend challenge, I agreed to evaluate how feasible it would be to get that update out the door.</p>
+  <p>{{ leadIn("Early in 2020,") }} I received a request to quickly update our platform’s visual style to match the emerging design system of our new parent company. As a designer that knows his way around a frontend challenge, I agreed to evaluate how feasible it would be to get that update out the door.</p>
 
   <p>When I took a closer look at our frontend codebase, I noticed some aging code and discouraged practices. Now, this wasn’t too surprising to me: any longstanding platform will have some sort of cruft as its features are rapidly developed. Still, I saw an opportunity to address inline styles, no-longer-necessary CSS prefixes, and high selector specificities. Seeing some of these discouraged practices crop up in newer features got me thinking about the best way to go about cleaning things up. Should I attempt to overhaul the code myself, or could I be more effective by bringing engineers’ frontend practices up to speed in order to level everyone’s understanding up?</p>
 </section>
@@ -26,7 +27,7 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
 <section class="section">
   {{ sectionHeader("Process") }}
 
-  <p>In order to most efficiently address gaps in knowledge, I paired up with an engineer to create an optimal curriculum for the team. I proposed a long list of topics and whittled it down to a list of ten topics on <a href="https://css-tricks.com/the-great-divide/">both sides of the great frontend divide</a>. We held one session per week, and each session was one hour long.</p>
+  <p>{{ leadIn("In order to most efficiently") }} address gaps in knowledge, I paired up with an engineer to create an optimal curriculum for the team. I proposed a long list of topics and whittled it down to a list of ten topics on <a href="https://css-tricks.com/the-great-divide/">both sides of the great frontend divide</a>. We held one session per week, and each session was one hour long.</p>
 
   <p>Out of the list of ten topics, I put together and delivered slides for these eight:</p>
 
@@ -61,49 +62,31 @@ opengraph: Learn more about the courses I led to bolster the frontend knowledge 
 {% responsiveImage "./src/supporting/images/sample.jpg", "The second cool thing", "responsive--halfwide" %}
 {{ galleryEnd() }}
 
-<!--
-
-    {
-      blah: "d",
-      thumb: "/dist/img/larr.svg",
-      full: "/dist/img/larr.svg",
-      alt: "Leftwards arrow",
-      description: "Testing the image here.",
-      credit: "Jahn Matola"
-    },
-    {
-      blah: "a",
-      thumb: "/dist/img/broken.svg",
-      full: "/dist/img/broken.svg",
-      alt: "Wow real neat",
-      description: "Another test!",
-      credit: "Debbie Softhead"
-    }
-  ])
-
- -->
-
-
 {{
   retrospective([
     {
-      type: "good",
+      rating: "good",
+      summary: "Blah.",
       content: "a"
     },
     {
-      type: "good",
+      rating: "good",
+      summary: "Balh. Lorem ipsum dolor set amet. Quisquae ad hoc lorem set amet I can’t come up with Lorem Ipsum text on the fly. Oh dera.",
       content: "a"
     },
     {
-      type: "bad",
+      rating: "eh",
+      summary: "Balh. Lorem ipsum.",
       content: "c"
     },
     {
-      type: "bad",
+      rating: "bad",
+      summary: "Balh. Lorem ipsum.",
       content: "c"
     },
     {
-      type: "bad",
+      rating: "bad",
+      summary: "Balh. Lorem ipsum.",
       content: "c"
     }
   ])
