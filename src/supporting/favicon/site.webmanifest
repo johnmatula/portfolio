@@ -1,0 +1,14 @@
+{
+  "name": "John Matula",
+  "short_name": "John Matula",
+  "icons": [
+    {
+      "src": "/android-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#EB3A13",
+  "background_color": "#EB3A13",
+  "display": "standalone"
+}
