@@ -15,19 +15,42 @@
   <script type="module" src="/js/alpine.min.js"></script>
   <script nomodule src="/js/alpine-ie11.min.js" defer></script>
 
-  <!--<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>-->
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/fonts.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/css/photoswipe.css" media="print" onload="this.media='all'">
   <link rel="preload" href="/fonts/fraunces.20200818.woff2" as="font" type="font/woff2" crossorigin>
 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-tab.svg" color="#EB3A13">
+  <meta name="apple-mobile-web-app-title" content="John Matula">
+  <meta name="application-name" content="John Matula">
+  <meta name="msapplication-TileColor" content="#EB3A13">
+  <meta name="theme-color" content="#EB3A13">
+
   <title>{% block titletag %}{% endblock %}</title>
 
-
+  <!-- TODO: Adjust ID based on sandbox (2) vs production (1) -->
+  <!-- Matomo -->
+  <script async type="text/javascript">
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//analytics.johnmatu.la/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '2']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
 </head>
 <body>
   <script>
@@ -35,15 +58,6 @@
       document.body.classList.add('js--direct-link');
     }
   </script>
-  <!--<noscript>
-    <iframe
-      src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-      height="0"
-      width="0"
-      style="display:none;visibility:hidden">
-    </iframe>
-  </noscript>
-  -->
 
   {% include "src/components/navigation/_navigation.njk" %}
 
