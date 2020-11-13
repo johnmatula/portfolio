@@ -10,8 +10,7 @@
     @extend %typography-details;
 
     align-items: baseline;
-    display: block;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   &__icon {
@@ -30,9 +29,8 @@
   }
 
   &__content {
-    @extend %typography-link-description;
+    @extend %typography-retrospective-content;
 
-    display: block;
     margin-top: var(--a-2);
   }
 
@@ -41,7 +39,11 @@
     background-color: var(--stroke-separator);
     grid-column: content-full;
     height: 1px;
-    margin: var(--a0) 0;
+    margin: var(--b0) 0;
     transform: scaleY(.5);
+
+    @include at-least(w1) {
+      margin: var(--a0) 0;
+    }
   }
 }
