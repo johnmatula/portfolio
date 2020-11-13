@@ -3,8 +3,10 @@
 .footer {
   color: var(--color-text-secondary);
   display: none;
+  opacity: 1;
   position: relative;
-  transition: color $timing-sidebar-fade-out;
+  visibility: visible;
+  transition: visibility 0s 0s, opacity $timing-sidebar-fade-out;
   width: calc(var(--width-sidebar-collapsed) * 1rem);
   z-index: $z-sidebar-footer;
 
@@ -16,6 +18,12 @@
 
   @include at-least(w3) {
     font-size: var(--a-1);
+  }
+
+  .js--expanded & {
+    opacity: 0;
+    transition: visibility 0s $timing-sidebar-fade-in, opacity $timing-sidebar-fade-in;
+    visibility: none;
   }
 
   &__links {
@@ -35,19 +43,6 @@
     @include at-least(w3) {
       padding-bottom: var(--b-2);
       padding-top: var(--b-2);
-    }
-
-    .js--expanded & {
-      color: var(--color-submenu);
-      transition: color $timing-sidebar-fade-in;
-
-      &:hover, &:focus {
-        transition: color $timing-link, background-color $timing-link;
-      }
-
-      &:active {
-        transition: none;
-      }
     }
   }
 
