@@ -4,6 +4,25 @@
       {% include "src/supporting/inline-svg/x.svg" %}
     </button>
   </div>
-  <h2 class="contact__header">Contact me</h2>
-  <p class="contact__tie-in">Hi</p>
+  <div class="contact__content">
+    <h2 class="contact__header">{% if contactHeader %}{{ contactHeader}}{% else %}Let’s get in&nbsp;touch!{% endif %}</h2>
+    <p class="contact__description">Email me at john@johnmatu.la.</p>
+    <ul class="contact__links">
+      <li class="contact__linkitem">
+        <a class="contact__link" href="mailto:john@johnmatu.la">email</a>
+      </li>
+      <li class="contact__linkitem">
+        <a class="contact__link" href="###TODO:YA">résumé</a>
+      </li>
+      <li class="contact__linkitem">
+        <a class="contact__link" href="https://www.linkedin.com/in/johnmatula/">LinkedIn</a>
+      </li>
+      <li class="contact__linkitem">
+        <a class="contact__link" href="https://github.com/johnmatula">GitHub</a>
+      </li>
+      <li class="contact__linkitem">
+        <a class="contact__link" href="https://www.instagram.com/matulaspatula/">Instagram</a>
+      </li>
+    </ul>
+  </div>
 </div>

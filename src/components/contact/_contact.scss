@@ -6,8 +6,9 @@
   contain: size layout;
   height: calc(var(--height-navbar-expanded) * 1rem);
   left: 0;
+  overflow: hidden;
   opacity: 0;
-  padding: calc((var(--height-navbar-collapsed) * 1rem) + var(--b-1)) var(--a0) var(--a0) calc(var(--a0) + (var(--env-safe-left) * 1rem));
+  max-height: 100vh;
   position: absolute;
   right: 0;
   top: 0;
@@ -17,8 +18,10 @@
   z-index: $z-sidebar-contact;
 
   @include at-least(w1) {
+    height: 100vh;
+    overflow: hidden;
+    padding: var(--a2) 0 0 calc((var(--env-safe-left) * 1rem));
     transform: translateX(calc(var(--width-sidebar-difference) * -1rem));
-    padding: var(--a4) var(--a0) var(--a4) calc(var(--a0) + (var(--env-safe-left) * 1rem));
     width: calc(var(--width-sidebar-expanded) * 1rem);
   }
 
@@ -32,7 +35,7 @@
   &__close {
     display: flex;
     right: 0;
-    position: absolute;
+    position: fixed;
     top: calc(var(--env-safe-top) * 1rem);
 
     button {
@@ -72,5 +75,64 @@
         transition: none;
       }
     }
+  }
+
+  &__content {
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--b-1) 0 var(--a0) calc(var(--env-safe-left) * 1rem);
+    position: fixed;
+    right: 0;
+    top: calc((var(--height-navbar-collapsed) * 1rem));
+
+    @include at-least(w1) {
+      top: calc(var(--height-logo) + var(--a1) + var(--a1));
+      padding-top: var(--a1);
+    }
+  }
+
+  &__header {
+    padding: 0 var(--a0) var(--a0);
+  }
+
+  &__description {
+    @extend %typography-retrospective-content;
+
+    padding: 0 var(--a0) var(--a1);
+  }
+
+  &__links {
+    @extend %typography-details;
+
+    font-weight: 600;
+    list-style: none;
+    margin: 0;
+  }
+
+  &__linkitem {
+    position: relative;
+  }
+
+  .contact__linkitem + .contact__linkitem::before {
+    background: var(--stroke-separator);
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 1px;
+    left: var(--a0);
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__link {
+    color: white; // TODO: help meee
+    display: flex;
+    height: var(--a2);
+    padding: var(--a-1) var(--a0);
   }
 }
