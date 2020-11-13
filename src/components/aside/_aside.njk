@@ -1,6 +1,11 @@
-{% macro aside(image, alt, description, classList = []) %}
-<figure class="aside">
-  <img class="aside__visual" src="{{ image }}" alt="{{ alt }}">
+{% macro asideStart(classList = []) %}
+<figure class="aside {{ classList }}">
+{% endmacro %}
+
+<!-- Nunjucks macros can’t handle asynchronous calls. Ugh. -->
+<!-- For now, I’m using wrapping tags to sidestep the limitation. -->
+
+{% macro asideEnd(description = "") %}
   {% if description != "" %}
     <figcaption class="aside__caption">{{ description }}</figcaption>
   {% endif %}
