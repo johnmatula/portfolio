@@ -9,10 +9,14 @@
 
 %typography-title {
   font-family: $font-jm;
-  font-size: var(--a2);
+  font-size: var(--b1);
   font-weight: 700;
   letter-spacing: -.06rem;
   line-height: 1.115;
+
+  @include at-least(w1) {
+    font-size: var(--a2);
+  }
 }
 
 %typography-summary {
@@ -84,6 +88,15 @@
   font-weight: 400;
   letter-spacing: -.005rem;
   line-height: 1.375;
+}
+
+%typography-retrospective-content {
+  font-family: $font-fraunces;
+  font-variation-settings: "opsz" var(--optical-b), "SOFT" 35, "WONK" 0;
+  font-size: var(--a0);
+  font-weight: 320;
+  letter-spacing: -.005rem;
+  line-height: 1.4;
 }
 
 %typography-body {
