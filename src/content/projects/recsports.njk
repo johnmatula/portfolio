@@ -7,7 +7,7 @@ summary: I led the development and design of this comprehensive website system. 
 
 opengraph: Learn more about the website I redesigned for Umich Rec Sports and its contribution to a 19-percent increase in new memberships.
 ---
-{% from "src/components/aside/_aside.njk" import aside %}
+{% from "src/components/aside/_aside.njk" import asideStart, asideEnd %}
 {% from "src/components/details/_details.njk" import details %}
 {% from "src/components/gallery/_gallery.njk" import galleryStart, galleryEnd %}
 {% from "src/components/related/_related.njk" import related %}
@@ -29,7 +29,9 @@ opengraph: Learn more about the website I redesigned for Umich Rec Sports and it
   <div class="section__contents">
     <p>I started out this project by corralling the key stakeholders to discuss goals of the site, priorities that each subgroup of the Rec Sports, and possible directions. We also created key personas (following my <a href="">design process</a>) at that initial meeting so that the proposed design and content would stay focused. As our design meetings continued, I also tested my plans with real users to validate them.</p>
 
-    {{ aside("https://johnmatu.la/wp-content/uploads/template_herolandscape-recsports.jpg", "blahh", "A good example of this was a custom Google Calendar module that displays the schedule for group exercise classes, with rationale for spending time on it.") }}
+    {{ asideStart() }}
+    {% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing", "", "div" %}
+    {{ asideEnd("A good example of this was a custom Google Calendar module that displays the schedule for group exercise classes, with rationale for spending time on it.") }}
     <p>For this project, I was both the lead UX designer and the lead frontend developer, so I constantly evaluated the feasibility and value of design decisions. A good example of this was a custom Google Calendar module that displays the schedule for group exercise classes. Though proposing this feature would mean custom development work for the dev team, the high priority and significant value it had provided the rationale for spending time on it. In a similar fashion, that’s how I prioritized modular components, zero-tap facility info, and an entirely-custom WordPress editor interface in the redesigned site, too.</p>
 
 
