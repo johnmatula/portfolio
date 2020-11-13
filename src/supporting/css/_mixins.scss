@@ -37,6 +37,11 @@ $at-least-breakpoints: (
   }
 }
 
+@mixin backdrop-filter($filter) {
+  -webkit-backdrop-filter: $filter;
+  backdrop-filter: $filter;
+}
+
 // Font utilities
 @mixin font($font-weight, $font-size, $line-height, $letter-spacing: null, $font-family: null) {
   @if ($font-family) {
