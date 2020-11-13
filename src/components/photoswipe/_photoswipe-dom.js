@@ -11,7 +11,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
   // (children of gallerySelector)
   var parseThumbnailElements = function(el) {
     console.log(el);
-    var thumbElements = el.querySelectorAll("figure"),
+    var thumbElements = el.querySelectorAll(".responsive"),
     numNodes = thumbElements.length,
     items = [],
     figureEl,
@@ -21,7 +21,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
     for(var i = 0; i < numNodes; i++) {
 
-      figureEl = thumbElements[i]; // <figure> element
+      figureEl = thumbElements[i]; // all .responsive elements
 
       // include only element nodes
       if(figureEl.nodeType !== 1) {
