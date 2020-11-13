@@ -20,12 +20,19 @@
     @extend %typography-section-heading;
 
     color: var(--color-text-primary);
-    margin: 0 0 var(--a-1);
+    margin: 0 0 var(--a0);
+
+    // Magic number (well, kinda, it’s the difference in text line heights,
+    // just without calc()) to line up body copy and header
+    @include at-least(w2) {
+      margin-top: -.125em;
+    }
   }
 
   &__parenthetical {
     @extend %typography-supporting;
 
     color: var(--color-text-secondary);
+    margin: calc(-1 * var(--a-1)) 0 var(--a0);
   }
 }
