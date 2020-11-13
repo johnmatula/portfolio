@@ -3,10 +3,10 @@
 :root {
   // ROOT EM HEIGHT BASES
 
-  --rem-base: 16;
+  --rem-base: 17;
 
   @include at-least(w0) {
-    --rem-base: 17;
+    --rem-base: 17.5;
   }
 
   @include at-least(w1) {
@@ -94,9 +94,9 @@
   --fill-body-link: var(--translucent-red-0);
   --fill-body-link-hover: var(--hue-red-500);
   --fill-body-link-active: var(--hue-red-700);
-  --fill-navbar: var(--translucent-white-96);
+  --fill-navbar: rgba(246,245,243,.90); // TODO!
   --fill-photoswipe: var(--translucent-white-96);
-  --fill-hud: rgba(246,245,243,.90);
+  --fill-hud: rgba(246,245,243,.90); // TODO!
   --fill-submenu-expanded: var(--hue-red-500);
 
   --stroke-logo-filled: var(--hue-red-300);
@@ -128,7 +128,7 @@
     --fill-body-link-active: var(--hue-red-500);
     --fill-navbar: var(--translucent-shade-93);
     --fill-photoswipe: var(--translucent-shade-93);
-    --fill-hud: rgba(32,31,29,.86);
+    --fill-hud: rgba(32,31,29,.86); // TODO!
     --fill-submenu-expanded: var(--hue-red-700);
 
     --stroke-logo-filled: var(--hue-red-500);
@@ -139,6 +139,10 @@
     --stroke-hud: var(--translucent-white-20);
     --stroke-body-link: var(--translucent-red-36);
   }
+
+
+  // BACKDROP FILTERS
+  --backdrop-filter-panel: saturate(180%) blur(20px);
 
 
   // TYPE RAMP
@@ -242,11 +246,12 @@
 // (Stacking contexts should also be considered when positioning.)
 $z-backdrop: -1;
 $z-base: 1;
+$z-sidebar-footer: 5;
 $z-sidebar: 10;
 $z-sidebar-contact: 11;
-$z-sidebar-logo: 12;
-$z-sidebar-close: 13;
-$z-sidebar-footer: 14;
+$z-sidebar-safety-panel: 12;
+$z-sidebar-logo: 13;
+$z-sidebar-close: 14;
 $z-photoswipe: 50;
 $z-photoswipe-ui: 100;
 
