@@ -296,6 +296,8 @@
   }
 
   .final {
+    @extend %link-body;
+
     margin-bottom: var(--b5);
 
     &__content {
@@ -343,7 +345,6 @@
 %layout-home-grid {
   align-items: baseline;
   display: grid;
-  //outline: 4px solid var(--hue-red-300);
   outline-offset: -5px;
   grid-template-columns:
     []
