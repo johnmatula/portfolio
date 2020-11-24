@@ -29,6 +29,8 @@ a.related__link {
     position: relative;
 
     &::after {
+      @include hairline(horizontal);
+
       background-color: var(--stroke-separator);
       bottom: 0;
       content: "";
@@ -37,7 +39,6 @@ a.related__link {
       left: 0;
       position: absolute;
       right: 0;
-      transform: scaleY(.5);
     }
   }
 

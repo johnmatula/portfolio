@@ -188,7 +188,7 @@
       transition: transform $timing-sidebar-slide-in;
 
       @include at-least(w1) {
-        transform: translateX(calc(var(--width-sidebar-expanded) * 1rem - .5px)) scaleX(0.5);
+        transform: translateX(calc(var(--width-sidebar-expanded) * 1rem - 1px)) scaleX(var(--hairline-scale));
       }
     }
   }
@@ -198,7 +198,7 @@
     @include backdrop-filter(var(--backdrop-filter-panel));
 
     background-color: var(--fill-navbar);
-    box-shadow: 0 -0.5px 0 0 var(--stroke-navbar-separator) inset;
+    box-shadow: 0 calc(-1 * var(--hairline)) 0 0 var(--stroke-navbar-separator) inset;
     bottom: 0;
     content: '';
     contain: strict;
@@ -221,7 +221,7 @@
       content: '';
       height: auto;
       right: unset;
-      transform: translateX(calc(var(--width-sidebar-collapsed) * 1rem - .5px)) scaleX(0.5);
+      transform: translateX(calc(var(--width-sidebar-collapsed) * 1rem - 1px)) scaleX(var(--hairline-scale));
       width: 1px;
     }
   }
@@ -352,6 +352,12 @@
       transition: opacity $timing-link, transform $timing-sidebar-slide-out;
       top: 0;
       z-index: $z-backdrop;
+
+      // Prevent highlight from bleeding past the hairline on HiDPI displays.
+      // (Persnickety to the max.)
+      @include at-least(w1) {
+        right: calc(1px - var(--hairline));
+      }
 
       .js--expanded & {
         transform: scaleY(calc(1 / var(--scale-navbar-collapsed)));

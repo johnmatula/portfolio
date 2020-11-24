@@ -1,5 +1,7 @@
 @use 'mixins' as *;
 
+//
+
 :root {
   // ROOT EM HEIGHT BASES
 
@@ -218,6 +220,25 @@
   }
 
 
+  // HAIRLINE
+  // This custom property value is used wherever hairlines are used
+  // (in box shadows, pseudo content, and so on). A truly one-physical-pixel
+  // line depends on the display density. (Life is short. Why not be extra?)
+  //
+  // This should not be used in conjunction with the hairline() mixin.
+  // Instead, stick to one or the other, depending on the strategy needed.
+  --hairline: 1px;
+  --hairline-scale: 1;
+
+  @include has-pixel-density(1.5) {
+    --hairline: .5px;
+    --hairline-scale: .5;
+  }
+
+  @include has-pixel-density(2.5) {
+    --hairline: .333px;
+    --hairline-scale: .333;
+  }
 
 
   // SAFE-AREA ENVS

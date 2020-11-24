@@ -42,6 +42,33 @@ $at-least-breakpoints: (
   backdrop-filter: $filter;
 }
 
+@mixin hairline($direction) {
+  $scale: -1;
+
+  @if $direction == horizontal {
+    $scale: Y;
+  } @else if $direction == vertical {
+    $scale: X;
+  } @else {
+    @warn "Specify the hairline direction with a “horizontal” or “vertical” keyword.";
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 1.5) {
+    transform: scale#{$scale}(.5);
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 2.5) {
+    transform: scale#{$scale}(.333);
+  }
+}
+
+@mixin has-pixel-density($density) {
+  @media (-webkit-min-device-pixel-ratio: $density) {
+    @content;
+  }
+}
+
+
 // Font utilities
 @mixin font($font-weight, $font-size, $line-height, $letter-spacing: null, $font-family: null) {
   @if ($font-family) {

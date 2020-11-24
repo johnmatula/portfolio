@@ -6,11 +6,13 @@
     list-style: none;
   }
 
+  // Mixing typefaces “inline” requires a line height with units.
   &__summary {
-    @extend %typography-details;
+    @extend %typography-body;
 
     align-items: baseline;
-    font-weight: 700;
+    font-weight: 499;
+    line-height: 1.5rem;
   }
 
   &__icon {
@@ -25,22 +27,23 @@
     fill: none;
     stroke: var(--color-text-secondary);
     stroke-width: 2;
-    vector-effect: non-scaling-stroke;
   }
 
   &__content {
-    @extend %typography-retrospective-content;
+    @extend %typography-details;
 
+    line-height: 1.5rem;
     margin-top: var(--a-2);
   }
 
   &__separator {
+    @include hairline(horizontal);
+
     border: 0;
     background-color: var(--stroke-separator);
     grid-column: content-full;
     height: 1px;
     margin: var(--b0) 0;
-    transform: scaleY(.5);
 
     @include at-least(w1) {
       margin: var(--a0) 0;

@@ -31,12 +31,13 @@
   }
 
   &__separator {
+    @include hairline(horizontal);
+
     border: 0;
     background-color: var(--stroke-separator);
     grid-column: content-full;
     height: 1px;
     margin: var(--b0) 0;
-    transform: scaleY(.5);
 
     @include at-least(w1) {
       margin: var(--a0) 0;
