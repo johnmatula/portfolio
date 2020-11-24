@@ -68,6 +68,10 @@
     @include at-least(w1) {
       margin: calc(var(--a1) + (var(--env-safe-top) * 1rem)) var(--a0) var(--a1) calc(var(--a0) + (var(--env-safe-left) * 1rem));
     }
+
+    * {
+      vector-effect: none;
+    }
   }
 
   &__unfilled,
