@@ -81,7 +81,6 @@
   svg g {
     stroke: var(--color-text-primary);
     stroke-width: 2px;
-    vector-effect: non-scaling-stroke;
   }
 }
 
@@ -266,8 +265,9 @@
 }
 
 // The HUD (styled as a top bar by default) for all controls.
+// (The hairline strategy can’t be used here because of Chrome.)
 .pswp__top-bar {
-	bottom: calc(var(--b1) + env(safe-area-inset-bottom, 0px));
+	bottom: calc(var(--a2) + env(safe-area-inset-bottom, 0px));
   border-radius: 3px;
   box-shadow: 0 0 0 1px var(--stroke-hud);
   display: flex;
