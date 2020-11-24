@@ -94,6 +94,10 @@ img {
 
 svg {
   display: block;
+
+  * {
+    vector-effect: non-scaling-stroke;
+  }
 }
 
 button,
