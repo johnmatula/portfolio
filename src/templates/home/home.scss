@@ -217,7 +217,7 @@
     }
 
     li + li {
-      box-shadow: 0 0.5px 0 0 var(--stroke-separator) inset;
+      box-shadow: 0 var(--hairline) 0 0 var(--stroke-separator) inset;
     }
 
     a {
@@ -225,6 +225,7 @@
       box-shadow: none;
       color: var(--color-project-link);
       display: block;
+      transition: background-color $timing-link, color $timing-link;
 
       &:hover, &:focus {
         color: var(--color-project-link-hover);
@@ -232,6 +233,7 @@
 
       &:active {
         color: var(--color-project-link-active);
+        transition: none;
       }
     }
 
