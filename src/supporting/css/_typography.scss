@@ -158,12 +158,11 @@
     color: var(--color-body-link);
     margin: 0 calc(-1 * var(--padding-link-decoration));
     padding: 0 var(--padding-link-decoration);
-    transition: background-color .125s, color .125s;
+    transition: background-color $timing-link, color $timing-link;
     text-decoration: none;
 
     svg * {
-      transition: stroke .125s, fill .125s;
-      vector-effect: non-scaling-stroke;
+      transition: stroke $timing-link, fill $timing-link;
     }
 
     &.link--no-underline {
