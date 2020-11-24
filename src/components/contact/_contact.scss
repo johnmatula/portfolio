@@ -61,8 +61,7 @@
 
         * {
           stroke: var(--hue-red-100);
-          transition: stroke .125s;
-          vector-effect: non-scaling-stroke;
+          transition: stroke $timing-link;
         }
       }
 
@@ -117,6 +116,8 @@
   }
 
   .contact__linkitem + .contact__linkitem::before {
+    @include hairline(horizontal);
+
     background: var(--stroke-separator);
     bottom: 0;
     content: '';
@@ -130,9 +131,24 @@
   }
 
   &__link {
+    align-items: center;
     color: white; // TODO: help meee
     display: flex;
-    height: var(--a2);
+    min-height: var(--a2);
     padding: var(--a-1) var(--a0);
+  }
+
+  &__icon {
+    display: block;
+    flex: 0 0 var(--a0);
+    margin-right: var(--a-1);
+
+    &-stroke {
+      stroke: var(--hue-red-100);
+    }
+
+    &-fill {
+      fill: var(--hue-red-100);
+    }
   }
 }
