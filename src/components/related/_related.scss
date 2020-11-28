@@ -5,6 +5,7 @@ a.related__link {
   box-shadow: none;
   color: var(--color-project-link);
   display: block;
+  transition: background-color $timing-link, color $timing-link;
 
   &:hover, &:focus {
     color: var(--color-project-link-hover);
@@ -12,6 +13,7 @@ a.related__link {
 
   &:active {
     color: var(--color-project-link-active);
+    transition: none;
   }
 }
 
