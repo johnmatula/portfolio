@@ -35,18 +35,22 @@ module.exports = (function(eleventyConfig) {
     });
     let lowestSrc = stats[outputFormat][0];
     let highestSrc = stats[outputFormat][stats[outputFormat].length - 1];
-    let sizes = "500w 100vw"; // Make sure you customize this!
-    //console.log(stats);
+    let sizes = "500w 100vw"; // TODO: Make sure you customize this!
 
-    let containerStart, containerEnd = "";
+    let containerStart = "", containerEnd = "", linkStart = "", linkEnd = "";
 
-    if(container !== null) {
+    if(container !== null && container !== "basic") {
       containerStart = `<${container} class="responsive ${classList}">`;
       containerEnd = `</${container}>`;
     }
 
-    return `${containerStart}
-    <a href="${highestSrc.url}" class="responsive__link" itemprop="contentUrl" data-size="${highestSrc.width}x${highestSrc.height}"><picture class="responsive__picture">
+    if(container !== "basic") {
+      linkStart = `<a href="${highestSrc.url}" class="responsive__link" itemprop="contentUrl" data-size="${highestSrc.width}x${highestSrc.height}">`;
+      linkEnd = `</a>`;
+    }
+
+    return `${containerStart}${linkStart}
+    <picture class="responsive__picture">
       ${Object.values(stats).map(imageFormat => {
         return `  <source type="image/${imageFormat[0].format}" srcset="${imageFormat.map(entry => `${entry.url} ${entry.width}w`).join(", ")}" sizes="${sizes}">`;
       }).join("\n")}
@@ -56,7 +60,7 @@ module.exports = (function(eleventyConfig) {
           height="${lowestSrc.height}"
           alt="${alt}"
           class="responsive__img">
-      </a></picture>${containerEnd}`;
+      </picture>${linkEnd}${containerEnd}`;
   });
 
   eleventyConfig.addLayoutAlias("case-study", "../templates/case-study/case-study.njk");
