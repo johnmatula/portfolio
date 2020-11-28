@@ -100,14 +100,19 @@
   // CSS: SVG seems to work better with negative margins.
   &__float {
 
-    // The circular ??
+    // Circular headshot
     &--para-one {
+      clip-path: url("#para-one");
       float: left;
       shape-margin: var(--a0);
       shape-outside: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Ccircle cx='1' cy='1' r='1' fill-rule='evenodd'/%3E%3C/svg%3E");
       margin-left: calc(var(--gap-grid-home) * -1);
       margin-right: var(--gap-grid-home);
       width: 40%;
+
+      @include is-theme(dark) {
+        filter: contrast(1.15) brightness(.85);
+      }
 
       @include at-least(w0) {
         margin-left: calc(-1 * (((100% - var(--gap-grid-home)) * 1 / 5) + var(--gap-grid-home) + var(--a-1) ));
@@ -128,44 +133,6 @@
         margin-left: calc(-1 * var(--a5));
         width: var(--b5);
       }
-
-      svg * {
-        fill: currentColor;opacity: .25;
-      }
-    }
-
-    // The rectangular ??
-    &--para-two {
-      float: right;
-      margin-left: var(--gap-grid-home);
-      margin-right: calc(var(--gap-grid-home) * -1);
-      shape-margin: var(--a0);
-      shape-outside: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 4'%3E%3Cpath fill-rule='evenodd' d='M.626 0l4.318.761L4.373 4 .055 3.239z'/%3E%3C/svg%3E");
-      width: 50%;
-
-      @include at-least(w0) {
-        margin-right: calc(-1 * ((100% - var(--gap-grid-home)) * 1 / 5));
-        width: calc((100% - var(--gap-grid-home)) * 3 / 5);
-      }
-
-      @include at-least(w2) {
-        margin-right: calc(-1 * ((100% - var(--gap-grid-home)) * 2 / 5));
-        width: calc((100% - var(--gap-grid-home)) * 4 / 5);
-      }
-
-      @include at-least(w3) {
-        margin-right: calc(-1 * ((100% - var(--gap-grid-home)) * 3 / 8));
-        width: calc((100% - var(--gap-grid-home)) * 5 / 8);
-      }
-
-      @include at-least(w5) {
-        margin-right: calc(-1 * var(--a5));
-        width: calc(var(--a5) + var(--a3));
-      }
-
-      svg * {
-        fill: currentColor;opacity: .25;
-      }
     }
 
     // The current work arrow
@@ -173,7 +140,6 @@
       float: right;
       margin-left: var(--gap-grid-home);
       margin-right: calc(var(--gap-grid-home) * -1);
-      opacity: .5;
       shape-margin: var(--a0);
       shape-outside: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 164 136'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2' d='M77.184 131.306l19.629-25.882-31.43-21.291 96.035-13.497-4.354-30.983-96.175 13.516L85.212 23.9 59.37 4.552 4.76 76.856z'%3E%3C/path%3E%3C/svg%3E");
       width: 33%;
@@ -188,11 +154,16 @@
       }
 
       @include at-least(w5) {
-        width: var(--a4);
+        width: var(--a5);
       }
 
       svg * {
-        stroke: currentColor;
+        fill: var(--hue-shade-300);
+        stroke: none;
+
+        @include is-theme(dark) {
+          fill: var(--hue-blue-700);
+        }
       }
     }
   }
@@ -295,10 +266,11 @@
 
   }
 
+  // Adjust margin bottom depending on image in bottom-right corner.
   .final {
     @extend %link-body;
 
-    margin-bottom: var(--b5);
+    margin-bottom: var(--a4);
 
     &__content {
       grid-column: mat;
@@ -315,7 +287,12 @@
     }
 
     &__corner {
+      @include is-theme(dark) {
+        filter: contrast(1.15) brightness(.85);
+      }
+
       bottom: 0;
+      clip-path: url("#para-last");
       position: absolute;
       right: 0;
       width: var(--b5);
@@ -326,10 +303,6 @@
 
       @include at-least(w5) {
         width: 25%;
-      }
-
-      svg * {
-        fill: currentColor;opacity: .25;
       }
     }
   }
