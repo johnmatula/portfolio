@@ -3,95 +3,139 @@ title: Smarthome
 
 shortname: smarthome
 
-summary: This hobby project, a custom web app that builds off of an open-source project, has powered my apartment lights since 2015.
+summary: This hobby project — a combination of a web app, Raspberry Pi, and an old iPhone 4 — has powered my apartment lighting since 2015.
 
-opengraph: Learn more about the web app that has dutifully powered my apartment lights since 2015.
+opengraph: Learn more about the system that has dutifully powered my apartment lighting since 2015.
 ---
 
+{% from "src/components/aside/_aside.njk" import asideStart, asideEnd %}
+{% from "src/components/details/_details.njk" import details %}
+{% from "src/components/gallery/_gallery.njk" import galleryStart, galleryEnd %}
+{% from "src/components/lead-in/_lead-in.njk" import leadIn %}
+{% from "src/components/section-header/_section-header.njk" import sectionHeader %}
+{% from "src/components/related/_related.njk" import related %}
+{% from "src/components/retrospective/_retrospective.njk" import retrospective %}
+
 <section class="section">
-  <div class="header">
-    <h2>Motivation</h2>
-  </div>
+  {{ sectionHeader("Motivation") }}
 
-  <p>I love living in cities, which means I’ve been an apartment dweller for several years. In my life as a renter, I’ve come to make peace with décor decisions out of my control, like questionable bathroom choices or antique kitchen appliances. But one common trait seems to appear at each new place, something I never know what to do with.</p>
+  <p>{{ leadIn("I love living in cities,") }} which means I’ve been an apartment dweller for several years. Though every apartment is different, each place has had its share of questionable décor decisions. As a renter, I’ve made my peace with antique kitchen appliances and unappealing bathroom hardware. But in each place, my most common gripe has always been with the overhead lighting.</p>
 
-  <p>The “boob” light.</p>
+  <p>Each place I’ve lived in has had its own, uh, character: finial-adorned domes (<a href="https://www.apartmenttherapy.com/boob-lamps-36720027">“boob” lights</a>, if you prefer), <a href="https://www.homedepot.com/p/Hunter-Highbury-II-52-in-LED-Indoor-Matte-Black-Ceiling-Fan-with-Light-Kit-52028/300593308#product-overview">ceiling fan floodlights</a>, the <a href="https://www.shadesoflight.com/products/vintage-modern-crystal-mini-chandelier">most miniature chandeliers</a> ever. And if the look of the fixtures themselves wasn’t great, the light they gave off was worse: overpowering, flickery, and inefficient.</p>
 
-  <p>Take, for instance, my New York apartment, which has five of these domed, finial-adorned, ceiling lamps. <a href="https://www.apartmenttherapy.com/boob-lamps-36720027">Appearances aside</a>, the main issue of these lights are the LEDs that each fixture contains—too bright, harsh, and overpowering for my modest space. Further, since those lights are hardwired into the ceiling(?!), it’s not a simple swap of a few lightbulbs.</p>
+  <p>The easy solution here has been to skip the ceiling lights altogether, relying on lamps and custom lights to illuminate a space. In the first apartment I did that in, though, I quickly faced the downside of having separate switches for every single light. Without a single wall switch, I found myself running around <a href="https://www.youtube.com/watch?v=nVvxOwxuk_w">trying to find the clickers or the switches or the doodads</a> for each light.
 
-  <p>My obvious solution here was to skip the ceiling lights altogether and get some lamps! In doing so, though, I realized I just replaced one annoyance with another. Since each lamp has its own separate control, I soon found myself running around turning everyting off before heading out the door. Rather than spending time <a href="https://www.youtube.com/watch?v=nVvxOwxuk_w">trying to find the clickers or the switches or the doodads</a>, I decided to look into some sort of “smart plugs” to make everything centralized. And if I could do so at the lowest cost possible—even if that meant doing custom work myself—then even better.</p>
+  <p>To balance the desire for custom apartment lighting with the ease of use that a single light switch provides, I decided to look into a “smart home” solution to make everything centralized. And instead of diving right into a pre-built solution, I decided to investigate home-brewed solutions that could let me tinker and build something just for me.</p>
 </section>
 
 <section class="section">
-  <div class="header">
-    <h2>Process</h2>
-  </div>
+  {{ sectionHeader("Process") }}
 
-  <p>In my quest for a DIY smart outlet system, I found a blog article that explained how radio-frequency (RF) outlets could be controlled by a Raspberry Pi. Since I’m no electrical engineer, I followed the instructions to get my first-ever breadboard set up to interface with my Raspberry Pi. (Side note: don’t rely on me for your next microprocessors project.)</p>
+  <p>{{ leadIn("My quest for a DIY") }} smart outlet system uncovered <a href="https://timleland.com/wireless-power-outlets/">an article</a> that explained how to improve upon some remote-controlled outlets by using a Raspberry Pi. The guide identified <a href="https://github.com/timleland/rfoutlet">rfoutlet</a>, an open-source program that could send radio-frequency commands right from a transmitter connected to the Pi. So, my first step was to wire up my first-ever breadboard to get the transmitter working. (Side note, don’t rely on me for your next microprocessors project.)</p>
 
-  <p>Once everything was wired up, the last step showed a barebones webpage with buttons that could send commands for “outlet on” and “outlet off.” The digital buttons looked identical to the physical buttons on the remote that came with the outlets, but it didn’t have to. That’s where I knew I could spend time developing and tinkering to turn the buttons into something more robust.</p>
+  <p>The guide then described how to set up a little web server on the Pi that could send “outlet on” and “outlet off” commands from a webpage. Now, this example webpage from the guide was modeled directly after the physical remote control that came with the lights. Just like the physical remote, the webpage had two buttons for each outlet (separate buttons for “on” and “off”) and lacked an indicator of what was currently on. With the guide ending there, though, it was time to start tinkering on my own.</p>
 
-  <h3 class="subheader">Brains</h3>
-  <p>The biggest missing piece was the lack of a mechanism to report if a light was on or off, since the system only sent out commands. This was my first major addition to the project: adding a persistent state so that I could keep track of each outlet’s status, room, and light type.</p>
+  <h3 class="subheader">Giving the outlets a brain</h3>
+  <p>The crucial thing to add was a maintained system status, letting me know which lights were on and which were off. Out of the box, the outlets didn’t come with a centralized hub to keep track of this. With the Raspberry Pi, I could build something to record the commands flowing through and keep my own system status.</p>
 
-  <p>By adding that, I could start to build in all sorts of helpful features, like:</p>
+  <p>So… I did! I routed the outlet commands through a state object so that I could keep track of each outlet’s status, room, and light type. By adding that, I could start to add in all sorts of helpful buttons and lighting combinations, like:</p>
   <ul>
-    <li>Turning all lights in a room on</li>
-    <li>Setting predefined scenes, like “waking up” or “rainy day”</li>
-    <li>Controlling separate outlets as if they were a single light</li>
+    <li>Turning on all lights in a particular room</li>
+    <li>Setting and swapping out predefined scenes, like “waking up” or “evening”</li>
+    <li>Controlling separate outlets together, like a pair of lamps behaving as one “unit”</li>
     <li>Turning off everything before leaving</li>
   </ul>
 
-  <h3 class="subheader">Design</h3>
-  <p>With the functionality in place, I then had to figure out how to elegantly represent the status. The design had to be less like an app and more like an “appliance,” since I would mainly use a permanent device—an old iPhone 4—to show the buttons. That way, Smarthome would be as easy to use as a normal light switch.</p>
+  <h3 class="subheader">Balancing functionality with aesthetics</h3>
+  <p>From the start of the project, I planned to use a dedicated device to display the switches and status so that turning on an outlet would be just as easy as flipping a light switch. Since this thing—specifically, a trusty ol’ iPhone 4—would be permanently on the wall, I wanted it to have a purposeful appearance that presented lots of options in a well-designed way.</p>
 
-  <p>Taking some design cues from [other products](APPLE WATCH), I opted for a dark interface that blends into the iPhone’s black display bezel. I mapped the buttons roughly to the layout of my apartment—the spatial layout makes it easy to tap on a light without thinking too much about it. Each light is represented by an icon that gets highlighted when the outlet is on. Finally, along the bottom, there are three scenes, like “morning” and “rainy day,” and an “all lights off” button.</p>
+  <p>Taking some design cues from other products, like an <a href="https://developer.apple.com/design/human-interface-guidelines/watchos/visual/layout/">Apple Watch</a> or Google Nest, I opted for a dark interface so that the controls merged seamlessly with the iPhone’s black display bezel. In the interface itself, I abstracted the layout of my apartment onto the display so that buttons were spacially mapped to an outlet’s physical location. To show status, each button was represented by an icon that becomes highlighted when the outlet is on. Finally, I put scene buttons and the “everybody off” button at the bottom of the screen.</p>
 
-  <h3 class="subheader">Iterations</h3>
+  <h3 class="subheader">Iterate, iterate, and iterate some more</h3>
 
-  <p>As time went on, I iteratively added more features, like:</p>
+  <p>As time went on, I iteratively added more features to make this project feel less generic and more like me. I added things like:</p>
   <ul>
   <li>color themes, including a subtle rainbow one for Pride 2019</li>
   <li>current weather, to take advantage of some free space in the interface</li>
   </ul>
 
-  <p>The web app works on any device, but I enhanced the always-on-the-wall iPhone with some [custom functionality](JAILBREAK). That lets the iPhone automatically adjust its display brightness based on ambient light, it disables the lock screen, and it gives the device a break by turning off overnight.</p>
+  <p>To make the always-on-the-wall iPhone even more like an appliance, I also enhanced it with some <a href="https://en.wikipedia.org/wiki/IOS_jailbreaking">custom functionality</a>. That lets the iPhone automatically adjust its display brightness based on ambient light, it disables the lock screen, and it gives the device a break by turning off overnight.</p>
 </section>
 
 
-<section class="section section--gallery">
-  <div class="header">
-    <h2>Previews</h2>
-  </div>
-
-</section>
-
-
-
-<section class="section">
-  <div class="header">
-    <h2>Evaluation</h2>
-    <div class="header__parenthetical"><span class="a11y--hidden">(</span>What worked well&nbsp;and what I’d do differently<span class="a11y--hidden">)</span></div>
-  </div>
-
-  <ul class="retrospective">
-    <li class="lookback--good">Good: The Smarthome system has been extremely reliable, especially considering it’s cobbled together with cheap <abbr title="radio-frequency">RF</abbr> outlets, my best attempt at circuitry, and some old iPhones off of eBay.</li>
-    <li class="lookback--good">Bad: Although I’ve taken time to gradually add in features, I haven’t yet upgraded the app to use a frontend framework. I have some ideas on how to add granular light controls and other interface techniques, and a framework would let me skip maintaining app state and focus on the fun stuff.</li>
-    <li class="lookback--good">Good: Adding color themes later on helped to make the system feel like mine. Earlier versions were strictly monochromatic and a little too sterile, so that minor addition has made a big difference.</li>
-  </ul>
-</section>
+{{ galleryStart() }}
+{% responsiveImage "./src/supporting/images/sample.jpg", "A cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/wowow.png", "A cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
+{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
+{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
+{% responsiveImage "./src/supporting/images/sample.jpg", "The second cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/wowow.png", "The second cool thing", "responsive--halfwide responsive--doublehigh" %}
+{% responsiveImage "./src/supporting/images/sample.jpg", "The second cool thing", "responsive--halfwide" %}
+{{ galleryEnd() }}
 
 
-<section class="section">
-  <div class="header">
-    <h2>Details</h2>
-  </div>
 
-  <h3 class="details__key">Timeframe</h3>
-  <p class="details__value">Previous iteration introduced July 2015. Current interation introduced January 2018. Features added June 2019.</p>
 
-  <h3 class="details__key">Skills in use</h3>
+{{
+  retrospective([
+    {
+      rating: "good",
+      summary: "Smarthome has been consistently reliable and useful.",
+      content: "I’m pretty pleased, especially considering the project is cobbled together with low-cost outlets, my best attempt at circuitry, and some old iPhones."
+    },
+    {
+      rating: "bad",
+      summary: "The app doesn’t run on a frontend framework yet.",
+      content: "I have some ideas for granular light controls, dimmers, and other interface techniques. A framework would let me abstract away the app state management and focus on the fun stuff."
+    },
+    {
+      rating: "good",
+      summary: "Adding color themes helped to make Smarthome feel like mine.",
+      content: "Earlier versions were strictly monochromatic, which was sleek to the point of sterile. It was a nice reminder of how little changes can have big product impacts."
+    }
+  ])
+}}
 
-  <h3 class="details__key">Status as of August 2020</h3>
-  <p class="details__value">Still in use! Works as well as ever.</p>
-</section>
+
+{{
+  details([
+    {
+      key: "Timeframe",
+      value: "Previous iteration introduced July 2015. Current interation introduced January 2018. Features added June 2019."
+    },
+    {
+      key: "Skills in use",
+      value: "Frontend programming, system design, aaaa"
+    },
+    {
+      key: "Tech specs",
+      value: [
+        "Ten presentations covering fundamentals of frontend programming, of which I made eight",
+        "Nine CodePen examples to illustrate some CSS concepts",
+        "A post-session exam to evaluate progress"
+      ]
+    },
+    {
+      key: "Status as of December 2020",
+      value: "Still in use! Works as well as ever."
+    }
+  ])
+}}
+
+{{
+  related([
+    {
+      leader: "Here’s a fun one",
+      title: "Project Title",
+      description: "The great description I have",
+      url: "/foo"
+    },
+    {
+      leader: "Aaand a non-sequitur",
+      title: "Project Title",
+      description: "The great description I have",
+      url: "/foo"
+    }
+  ])
+}}
