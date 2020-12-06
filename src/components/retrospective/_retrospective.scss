@@ -11,7 +11,6 @@
     @extend %typography-body;
 
     align-items: baseline;
-    font-weight: 499;
     line-height: 1.33rem;
   }
 
@@ -32,6 +31,7 @@
   &__content {
     @extend %typography-details;
 
+    color: var(--color-text-secondary);
     line-height: 1.5rem;
     margin-top: var(--a-2);
   }
