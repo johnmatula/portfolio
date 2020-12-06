@@ -16,26 +16,28 @@ opengraph: Learn more about the website I redesigned for Umich Rec Sports and ho
 {% from "src/components/related/_related.njk" import related %}
 {% from "src/components/retrospective/_retrospective.njk" import retrospective %}
 
-<section>
+<section class="section">
   {{ sectionHeader("Motivation") }}
 
   <p>{{ leadIn("The University of Michigan’s") }} <a href="https://recsports.umich.edu">Recreational Sports</a> department is a multifaceted group that operates workout facilities, holds exercise classes, and plans individualized programs for students and faculty. (In other words, they do a heck of a lot.) Unfortunately, the group’s old site did them a disservice since all the information describing these programs and benefits was disorganized and unclear. What was clear: Rec Sports was ready for a new, easy-to-maintain site.</p>
 </section>
 
-<section>
+<section class="section">
   {{ sectionHeader("Process") }}
 
   <p>{{ leadIn("I started out this project") }} by corralling the key stakeholders to discuss each person’s goal for the site. We also created key personas at that initial meeting so that we could stay focused amidst all the information we were trying to clean up. This helped us set a clear direction for the site, keeping any possible scope creep in check.</p>
 
   <p>That initial meeting was the first of many. It was important to me to hold regular check-ins so that the design process was as open as it could be, collecting feedback iteratively and quickly. As our design meetings continued, I also tested my plans and designs with actual users to validate them, and I reported back the progress to stakeholders.</p>
 
+<div class="section__contents">
   {{ asideStart() }}
   {% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing", "", "div" %}
   {{ asideEnd("A good example of this was a custom Google Calendar module that displays the schedule for group exercise classes, with rationale for spending time on it.") }}
 
   <p>I held smaller meetings, too, which were critical to get buy-in for our radically different site architecture and content strategy. As a reaction to the old site’s bloated nature, I worked on the idea of a single-page structure for each major program of the Rec Sports deptartment. I also proposed a navigation and site structure that supported this (so that pages wouldn’t simply turn into long, scroll-heavy nightmares). This was only successful, though, with small work sessions with each program’s team where we reviewed their current content, explained our plans to each group in detail, and helped them to craft succinct copy. These sessions reassured stakeholders that their group would have proper representation on the site, all while helping to build up each other’s trust for the entirety of the project.</p>
+</div>
 
-  <p>For this project, I was both the lead UX designer and the lead frontend developer, so I constantly evaluated the feasibility and value of design decisions. Take, for instance, my idea for a custom Google Calendar module that displayed group exercise class schedules. While this would mean extra work for the dev team (me), the UX designer (still me) had a convincing rationale for it to be a flagship feature of the site. Balancing feasibility with product value is how I went about prioritizing all of the features on the site, which included modular components, instant facility info, and an entirely-custom WordPress editor interface for content managers.</p>
+  <p>For this project, I was both the lead UX designer and the lead frontend developer, so I constantly evaluated the feasibility and value of design decisions. Take, for instance, my idea for a custom Google Calendar module that displayed group exercise class schedules. While a rich feature like this would mean extra work for the dev team (me), the UX designer (still me) had a convincing rationale for it to be a flagship feature of the site. Balancing feasibility with product value is how I went about prioritizing all of the features on the site, which included modular components, instant facility info, and an entirely-custom WordPress editor interface for content managers.</p>
 
   <p>After launch, I kept evaluating the success of the site (in fact, that helped us make a key terminology change early on). We also tracked membership signups as a key success metric, and we saw a 19-percent increase immediately following the launch of the site.</p>
 
@@ -58,7 +60,7 @@ opengraph: Learn more about the website I redesigned for Umich Rec Sports and ho
     {
       rating: "eh",
       summary: "By acting as both the UX designer and the lead developer for the project, my design decisions always took feasibility into account.",
-      content: "This made for a product that I knew I could build in a timely manner, and at the same time it also meant that I kept some designs and features fairly basic."
+      content: "This made for a product that I knew I could build in a timely manner, and at the same time it meant some designs and features were limited in exploration."
     },
     {
       rating: "good",
@@ -66,11 +68,11 @@ opengraph: Learn more about the website I redesigned for Umich Rec Sports and ho
     },
     {
       rating: "good",
-      summary: "Creating a custom system powered by Google Calendar helped me self-learn a ton about APIs, caching, and data handling. (And PHP.)"
+      summary: "Creating a custom system powered by Google Calendar taught me a ton about APIs, caching, and data handling. (And PHP.)"
     },
     {
       rating: "good",
-      summary: "In providing a rich customization layer to the WordPress editor view, I was able to ensure that the site would be maintainable and easily adaptable for years."
+      summary: "In providing a rich customization layer to the WordPress editor view, I was able to ensure that the site would be maintainable and adaptable for years."
     }
   ])
 }}
