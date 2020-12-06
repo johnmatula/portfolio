@@ -215,7 +215,7 @@
     }
 
     .projects {
-      grid-column: content-major;
+      grid-column: content-full;
       margin-bottom: var(--a3);
 
       @include at-least(w0) {
@@ -322,13 +322,13 @@
   grid-template-columns:
     []
       calc(var(--gap-grid-home) + env(safe-area-inset-left))
-    [content-major-start content-minor-start title-start]
+    [content-major-start content-minor-start content-full-start title-start]
       var(--width-home-mat)
     [mat-start]
       auto
     [mat-end]
       var(--width-home-mat)
-    [content-major-end content-minor-end title-end]
+    [content-major-end content-minor-end content-full-end title-end]
       calc(var(--gap-grid-home) + env(safe-area-inset-right))
     [];
 
@@ -336,7 +336,7 @@
     grid-template-columns:
       []
         calc(var(--gap-grid-home) + env(safe-area-inset-left))
-      [content-major-start title-start]
+      [content-major-start content-full-start title-start]
         var(--width-home-mat)
       [mat-start]
         3fr
@@ -346,7 +346,7 @@
         2fr
       [mat-end title-end]
         var(--width-home-mat)
-      [content-minor-end]
+      [content-minor-end content-full-end]
         calc(var(--gap-grid-home) + env(safe-area-inset-right))
       [];
   }
@@ -357,7 +357,7 @@
         calc(var(--width-sidebar-expanded) * 1rem)
       []
         var(--gap-grid-home)
-      [content-major-start title-start]
+      [content-major-start content-full-start title-start]
         var(--width-home-mat)
       [mat-start]
         3fr
@@ -367,7 +367,7 @@
         2fr
       [mat-end title-end]
         var(--width-home-mat)
-      [content-minor-end]
+      [content-minor-end content-full-end]
         calc(var(--gap-grid-home) + env(safe-area-inset-right))
       [];
   }
@@ -380,7 +380,7 @@
         1fr
       []
         var(--gap-grid-home)
-      [content-major-start title-start]
+      [content-major-start content-full-start title-start]
         var(--width-home-mat)
       [mat-start]
         5fr
@@ -390,7 +390,7 @@
         3fr
       [mat-end title-end]
         var(--width-home-mat)
-      [content-minor-end]
+      [content-minor-end content-full-end]
         1fr
       []
         calc(var(--gap-grid-home) + env(safe-area-inset-right))
@@ -406,7 +406,7 @@
         minmax(var(--b4),auto)
       []
         var(--gap-grid-home)
-      [content-major-start title-start]
+      [content-major-start content-full-start title-start]
         var(--width-home-mat)
       [mat-start]
         5fr
@@ -416,7 +416,7 @@
         3fr
       [mat-end title-end]
         var(--width-home-mat)
-      [content-minor-end]
+      [content-minor-end content-full-end]
         minmax(var(--b4),auto)
       []
         calc(var(--gap-grid-home) + env(safe-area-inset-right))
@@ -429,7 +429,7 @@
         calc(var(--width-sidebar-expanded) * 1rem)
       []
         minmax(var(--gap-grid-home),auto)
-      [content-major-start title-start]
+      [content-major-start content-full-start title-start]
         var(--width-home-mat)
       [mat-start]
         minmax(auto,var(--a5))
@@ -441,7 +441,7 @@
         minmax(auto,var(--a5))
       [mat-end title-end]
         var(--width-home-mat)
-      [content-minor-end]
+      [content-minor-end content-full-end]
         minmax(var(--gap-grid-home),auto)
       [];
   }
