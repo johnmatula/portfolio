@@ -3,31 +3,33 @@ title: CrowdTwist Platform UX Redesign
 
 shortname: ux-redesign
 
-summary: My team held over a dozen sessions to review aspects of our platform and workflows. After analyzing the feedback we collected, we delivered a plan to improve our core offering.
+summary: My team held over a dozen sessions to review our whole platform and its most common workflows. After analyzing the feedback we collected, we delivered a plan to improve our core offering.
 
-opengraph: See how we held over a dozen sessions to analyze benefits and drawbacks of our platform, leading to a plan to overhaul our core offering.
+opengraph: See how we held over a dozen sessions to analyze our platform’s benefits and drawbacks, letting us deliver a plan to overhaul our product.
 ---
 
-
+{% from "src/components/aside/_aside.njk" import asideStart, asideEnd %}
+{% from "src/components/details/_details.njk" import details %}
+{% from "src/components/gallery/_gallery.njk" import galleryStart, galleryEnd %}
+{% from "src/components/lead-in/_lead-in.njk" import leadIn %}
+{% from "src/components/section-header/_section-header.njk" import sectionHeader %}
+{% from "src/components/related/_related.njk" import related %}
+{% from "src/components/retrospective/_retrospective.njk" import retrospective %}
 
 <section class="section">
-  <div class="header">
-    <h2>Process</h2>
-  </div>
+  {{ sectionHeader("Motivation") }}
 
-  <p>About a year into my time as Senior Product Designer at CrowdTwist, my team had some good processes in place to ensure that new features were vetted and understood by users. These feedback sessions were working well for new additions to our platform, but I noticed that we lacked a way to review existing features. We needed to evaluate the current state of things, especially legacy parts of the platform that weren’t thoroughly tested with users.</p>
-
-  <p>I put together a plan that helped us fill this gap: 13 feedback sessions that would manage to cover the entire platform. Each meeting was an hour long and was open to the entire organization, including Engineering, Client Success, Marketing, and Sales. The sessions were purposefully broad so that my resource-constrained team—that is, my team of two—could tackle the most pressing issues while saving deeper investigations for later.</p>
-
-  <p>Each session had two major parts: a discussion and a participatory design exercise. We started with an open forum of the benefits and drawbacks of that particular session’s topic. In these dialogues, we made sure to seek out a balance of opinions, avoiding sole reliance on the most vocal participant. These casual discussions helped warm everyone up for the hands-on exercise, which was something like card sorting, sketching, or storyboarding.</p>
+  <p>{{ leadIn("It was about a year") }} into my time as Senior Product Designer at CrowdTwist, and my team had implemented a good process to make sure new features were vetted and understood before being released. This was working well for new additions to our platform, but I noticed that we lacked the same sort of thing for existing features, especially legacy parts that weren’t thoroughly tested with users. With workflows becoming more complex, it was time to complete discovery of the current state of affairs so that we could start to suggest improvements.</p>
 </section>
 
 <section class="section">
-  <div class="header">
-    <h2>Process</h2>
-  </div>
+  {{ sectionHeader("Process") }}
 
-  <p>So what were we left with? Thanks to good participation from the company, we had plenty discussion feedback to sift through, design exercise results to decipher, and new questions to dig into later. We ended up summarizing the discussion points and pertinent data from the design exercises after each session while it was fresh.</p>
+  <p>{{ leadIn("I put together a plan") }} for us to take stock of things: 13 feedback sessions that covered the entire breadth of the platform. Each meeting was an hour long and was open to the entire organization, including Engineering, Client Success, Marketing, and Sales. I wanted to keep these sessions broad and open so that my resource-constrained, two-person team could tackle the most pressing issues and prioritize deeper investigations later.</p>
+
+  <p>Each session had two major parts: a discussion and a participatory design exercise. We started with an open forum of the benefits and drawbacks of that particular session’s topic. In these dialogues, we made sure to seek out a balance of opinions, avoiding sole reliance on the most vocal participant. These casual discussions helped warm everyone up for the hands-on exercise, which was something like card sorting, sketching, or storyboarding.</p>
+
+  <p>So, once we completed the sessions, then what? Thanks to good participation from the company, we had plenty discussion feedback to sift through, design exercise results to decipher, and new questions to dig into later. We ended up summarizing the discussion points and pertinent data from the design exercises after each session while it was fresh.</p>
 
   <p>Then, after all of the sessions, we created a prioritized plan of what areas needed UX attention first. We plotted features based on estimated technical complexity and design complexity onto a chart. Whatever was in the lower-left quadrant (low tech effort and design effort) formed the list of areas that were highest priority to address first. Combined with our list of topics to investigate further, we had a sound path forward to improve the CrowdTwist platform.</p>
 
@@ -35,55 +37,72 @@ opengraph: See how we held over a dozen sessions to analyze benefits and drawbac
 
 </section>
 
-<section class="section section--gallery">
-  <div class="header">
-    <h2>Previews</h2>
-  </div>
-
-  <ul>
-    <li>powerpoints</li>
-    <li>happy hour pics</li>
-    <li>card sorting exercises</li>
-    <li>post-it wall</li>
-  </ul>
-</section>
+{{ galleryStart() }}
+{% responsiveImage "./src/supporting/images/sample.jpg", "powerpoints, happy hour pics, card sorting exercises, post-it wall", "responsive--halfwide" %}
+{{ galleryEnd() }}
 
 
-<section class="section">
-  <div class="header">
-    <h2>Evaluation</h2>
-    <div class="header__parenthetical"><span class="a11y--hidden">(</span>What worked well&nbsp;and what I’d do differently<span class="a11y--hidden">)</span></div>
-  </div>
+{{
+  retrospective([
+    {
+      rating: "good",
+      summary: "We collected feeedback that had never been recorded at CrowdTwist.",
+    },
+    {
+      rating: "good",
+      summary: "The sessions improved visibility of our team and helped validate our long-term goals.",
+      content: "I consider this less of a main driving force behind this project but rather a nice side effect: being present and outgoing in a company (even a small one) helped us gain creidibility and encouraged us to keep going in our wide-ranging efforts."
+    },
+    {
+      rating: "bad",
+      summary: "The large format of our sessions meant that less-vocal colleagues might have been unwilling to speak up.",
+      content: "We did our best to ensure feedback from came from outgoing and reserved team members alike, but I think we could have done a better job. In the future, we could try varying the session’s size and format to better support everyone’s preferences."
+    }
+  ])
+}}
 
-  <ul class="retrospective">
-  <li class="retrospective--good">Good: We collected feedback that had never been recorded at CrowdTwist.</li>
-  <li class="retrospective--good">Good: The sessions improved visibility of our team and helped validate our long-term goals.</li>
-  <li class="retrospective--bad">Bad: Large format of sessions meant that less-vocal colleagues could be unwilling to speak up, even when encouraged to do so. In the future, we could vary feedback size and format to better support everyone’s preferences.</li>
-  </ul>
-</section>
+
+{{
+  details([
+    {
+      key: "Timeframe",
+      value: "June&hairsp;–&hairsp;September 2019"
+    },
+    {
+      key: "Tech specs",
+      value: [
+        "13 feedback sessions that covered the entirety of the CrowdTwist platform",
+        "Guided discussions to understand problem spots for each feature",
+        "Participatory design exercises to try out possible solutions for each feature, including role playing, card sorting, sketches, storyboards, user journeys, prioritization",
+        "A prioritized plan of features and areas to address first, reviewed by the team",
+        "A UX-themed happy hour, where we put out a call for testers for future phases (but more a way to enjoy ourselves and say thanks to our team)"
+      ]
+    },
+    {
+      key: "Skills in use",
+      value: "Presentations, UX testing, discussion facilitation, product strategy and prioritization"
+    },
+    {
+      key: "Status as of December 2020",
+      value: "After sessions were completed in September 2019, we moved onto redesigning and testing features with users. These redesigns are still in progress, working in conjunction with prioritization exercises with our Product team."
+    }
+  }]
+}}
 
 
-<section class="section section--details">
-  <div class="header">
-    <h2>Details</h2>
-  </div>
-
-  <h3 class="details__key">Timeframe</h3>
-  <p class="details__value">June&hairsp;–&hairsp;September 2019</p>
-
-  <h3 class="details__key">Tech specs</h3>
-  <ul class="details__valuelist">
-    <li>13 feedback sessions that covered the entirety of the CrowdTwist platform</li>
-    <li>Guided discussions to understand problem spots for each feature</li>
-    <li>Participatory design exercises to try out possible solutions for each feature, including role</li> playing, card sorting, sketches, storyboards, user journeys, prioritization
-    <li>A prioritized plan of features and areas to address first, reviewed by the team</li>
-    <li>A UX-themed happy hour, where we put out a call for testers for future phases (but more a way to enjoy ourselves and say thanks)</li>
-    </ul>
-
-    <h3 class="details__key">Skills in use</h3>
-    <p class="details__value">Presentations, UX testing, discussion facilitation, product strategy and prioritization</p>
-  </ul>
-
-  <h3 class="details__key">Status as of August 2020</h3>
-  <p class="details__value">After sessions were completed in September 2019, we moved onto redesigning and testing features with users. These redesigns are still in progress.</p>
-</section>
+{{
+  related([
+    {
+      leader: "TKTKTKTKTKTKTKTKTKTK TODO: TKTK Here’s a fun one",
+      title: "Project Title",
+      description: "The great description I have",
+      url: "/foo"
+    },
+    {
+      leader: "Aaand a non-sequitur",
+      title: "Project Title",
+      description: "The great description I have",
+      url: "/foo"
+    }
+  ])
+}}
