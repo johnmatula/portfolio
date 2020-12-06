@@ -19,26 +19,26 @@ opengraph: Learn more about the system that has dutifully powered my apartment l
 <section class="section">
   {{ sectionHeader("Motivation") }}
 
-  <p>{{ leadIn("I love living in cities,") }} which means I’ve been an apartment dweller for several years. Though every apartment is different, each place has had its share of questionable décor decisions. As a renter, I’ve made my peace with antique kitchen appliances and unappealing bathroom hardware. But in each place, my most common gripe has always been with the overhead lighting.</p>
+  <p>{{ leadIn("I love living in cities,") }} which means I’ve been an apartment dweller for several years. Though every apartment is different, each place has had its share of questionable décor decisions. As a renter, I’ve made my peace with things like antique kitchen appliances and unappealing bathroom hardware. But in each place, my most common gripe has always been with the overhead lighting.</p>
 
   <p>Each place I’ve lived in has had its own, uh, character: finial-adorned domes (<a href="https://www.apartmenttherapy.com/boob-lamps-36720027">“boob” lights</a>, if you prefer), <a href="https://www.homedepot.com/p/Hunter-Highbury-II-52-in-LED-Indoor-Matte-Black-Ceiling-Fan-with-Light-Kit-52028/300593308#product-overview">ceiling fan floodlights</a>, the <a href="https://www.shadesoflight.com/products/vintage-modern-crystal-mini-chandelier">most miniature chandeliers</a> ever. And if the look of the fixtures themselves wasn’t great, the light they gave off was worse: overpowering, flickery, and inefficient.</p>
 
   <p>The easy solution here has been to skip the ceiling lights altogether, relying on lamps and custom lights to illuminate a space. In the first apartment I did that in, though, I quickly faced the downside of having separate switches for every single light. Without a single wall switch, I found myself running around <a href="https://www.youtube.com/watch?v=nVvxOwxuk_w">trying to find the clickers or the switches or the doodads</a> for each light.
 
-  <p>To balance the desire for custom apartment lighting with the ease of use that a single light switch provides, I decided to look into a “smart home” solution to make everything centralized. And instead of diving right into a pre-built solution, I decided to investigate home-brewed solutions that could let me tinker and build something just for me.</p>
+  <p>To get soft, customized lighting without all fiddling around with all those switches, I decided to look into a “smart home” solution to make everything centralized. And instead of diving right into a pre-built solution, I decided to start by researching DIY projects to build myself something totally custom.</p>
 </section>
 
 <section class="section">
   {{ sectionHeader("Process") }}
 
-  <p>{{ leadIn("My quest for a DIY") }} smart outlet system uncovered <a href="https://timleland.com/wireless-power-outlets/">an article</a> that explained how to improve upon some remote-controlled outlets by using a Raspberry Pi. The guide identified <a href="https://github.com/timleland/rfoutlet">rfoutlet</a>, an open-source program that could send radio-frequency commands right from a transmitter connected to the Pi. So, my first step was to wire up my first-ever breadboard to get the transmitter working. (Side note, don’t rely on me for your next microprocessors project.)</p>
+  <p>{{ leadIn("My quest for a DIY") }} smart outlet system started with <a href="https://timleland.com/wireless-power-outlets/">an article</a> that explained how to improve upon some remote-controlled outlets by using a Raspberry Pi. The guide identified <a href="https://github.com/timleland/rfoutlet">rfoutlet</a>, an open-source program that can send radio-frequency commands right from a transmitter connected to the Pi. So, my first step was to wire up my first-ever breadboard to get the transmitter working. (Side note, don’t rely on me for your next microprocessors project.)</p>
 
-  <p>The guide then described how to set up a little web server on the Pi that could send “outlet on” and “outlet off” commands from a webpage. Now, this example webpage from the guide was modeled directly after the physical remote control that came with the lights. Just like the physical remote, the webpage had two buttons for each outlet (separate buttons for “on” and “off”) and lacked an indicator of what was currently on. With the guide ending there, though, it was time to start tinkering on my own.</p>
+  <p>The guide then described how to set up a little web server on the Pi so that someone could send “outlet on” and “outlet off” commands from a webpage. The example webpage included in the guide was a good proof-of-concept, since it looked and worked just like the physical remote control that came with the wireless outlets. As this was the end of the guide, it was time for me to start tinkering on my own.</p>
 
   <h3 class="subheader">Giving the outlets a brain</h3>
-  <p>The crucial thing to add was a maintained system status, letting me know which lights were on and which were off. Out of the box, the outlets didn’t come with a centralized hub to keep track of this. With the Raspberry Pi, I could build something to record the commands flowing through and keep my own system status.</p>
+  <p>The crucial thing to add was a maintained system status, letting me know which lights were on and which were off. Out of the box, the outlets didn’t come with a centralized hub to keep track of this—that’s why both the physical remote and the example webpage were forced to maintain separate buttons for “on” and “off”. With a whole Raspberry Pi at my disposal, though, I could easily add something to keep a record of the system’s status.</p>
 
-  <p>So… I did! I routed the outlet commands through a state object so that I could keep track of each outlet’s status, room, and light type. By adding that, I could start to add in all sorts of helpful buttons and lighting combinations, like:</p>
+  <p>So… I did! I routed the outlet commands through a state object so that I could keep track of each outlet’s status, adding extra metadata like its room and light type. By adding that, I no longer had to rely on stateless, separate buttons and could start to add in all sorts of helpful controls to turn on specific lighting combinations, like:</p>
   <ul>
     <li>Turning on all lights in a particular room</li>
     <li>Setting and swapping out predefined scenes, like “waking up” or “evening”</li>
@@ -47,9 +47,9 @@ opengraph: Learn more about the system that has dutifully powered my apartment l
   </ul>
 
   <h3 class="subheader">Balancing functionality with aesthetics</h3>
-  <p>From the start of the project, I planned to use a dedicated device to display the switches and status so that turning on an outlet would be just as easy as flipping a light switch. Since this thing—specifically, a trusty ol’ iPhone 4—would be permanently on the wall, I wanted it to have a purposeful appearance that presented lots of options in a well-designed way.</p>
+  <p>From the start of the project, I planned to use a dedicated device to display the switches and status so that turning on an outlet would be just as easy as flipping a light switch. Since this thing (specifically, a trusty ol’ iPhone 4) would be permanently affixed to the wall, I wanted it to have a purposeful, well-designed appearance that presented all these controls and statuses in a clear way.</p>
 
-  <p>Taking some design cues from other products, like an <a href="https://developer.apple.com/design/human-interface-guidelines/watchos/visual/layout/">Apple Watch</a> or Google Nest, I opted for a dark interface so that the controls merged seamlessly with the iPhone’s black display bezel. In the interface itself, I abstracted the layout of my apartment onto the display so that buttons were spacially mapped to an outlet’s physical location. To show status, each button was represented by an icon that becomes highlighted when the outlet is on. Finally, I put scene buttons and the “everybody off” button at the bottom of the screen.</p>
+  <p>Taking some design cues from other products, like an <a href="https://developer.apple.com/design/human-interface-guidelines/watchos/visual/layout/">Apple Watch</a> or Google Nest, I opted for a dark interface so that the controls merged seamlessly with the iPhone’s black display bezel. For the interface itself, I used an abstracted layout of my apartment and positioned the buttons corresponding to an outlet’s physical location. To indicate status, each button was represented by an icon that becomes highlighted when the outlet is on. Finally, I put scene buttons and the “everybody off!” button at the bottom of the screen.</p>
 
   <h3 class="subheader">Iterate, iterate, and iterate some more</h3>
 
@@ -57,9 +57,10 @@ opengraph: Learn more about the system that has dutifully powered my apartment l
   <ul>
   <li>color themes, including a subtle rainbow one for Pride 2019</li>
   <li>current weather, to take advantage of some free space in the interface</li>
+  <li>date and time!</li>
   </ul>
 
-  <p>To make the always-on-the-wall iPhone even more like an appliance, I also enhanced it with some <a href="https://en.wikipedia.org/wiki/IOS_jailbreaking">custom functionality</a>. That lets the iPhone automatically adjust its display brightness based on ambient light, it disables the lock screen, and it gives the device a break by turning off overnight.</p>
+  <p>Finally, to make the always-on-the-wall iPhone behave even more like a home appliance, I also enhanced it with some <a href="https://en.wikipedia.org/wiki/IOS_jailbreaking">custom functionality</a>. Doing so allowed me to automatically adjust the iPhone’s brightness based on ambient light, disable the lock screen, and schedule a nightly break by turning off the screen overnight.</p>
 </section>
 
 
@@ -87,12 +88,12 @@ opengraph: Learn more about the system that has dutifully powered my apartment l
     {
       rating: "bad",
       summary: "The app doesn’t run on a frontend framework yet.",
-      content: "I have some ideas for granular light controls, dimmers, and other interface techniques. A framework would let me abstract away the app state management and focus on the fun stuff."
+      content: "I have some ideas for granular light controls, dimmers, and other interface techniques. A framework will let me abstract away state management for the UI and focus on the fun stuff."
     },
     {
       rating: "good",
       summary: "Adding color themes helped to make Smarthome feel like mine.",
-      content: "Earlier versions were strictly monochromatic, which was sleek to the point of sterile. It was a nice reminder of how little changes can have big product impacts."
+      content: "Earlier versions were strictly monochromatic, which was sleek… but to the point where it felt sterile. It was a nice reminder of the big impacts that little changes like these can have."
     }
   ])
 }}
@@ -102,23 +103,24 @@ opengraph: Learn more about the system that has dutifully powered my apartment l
   details([
     {
       key: "Timeframe",
-      value: "Previous iteration introduced July 2015. Current interation introduced January 2018. Features added June 2019."
+      value: "Original iteration introduced July 2015. Current, redesigned interation introduced December 2017. Features added June 2019."
     },
     {
       key: "Skills in use",
-      value: "Frontend programming, system design, aaaa"
+      value: "Frontend programming, UI design, hardware/software interaction design, graphic design and layout, device management"
     },
     {
       key: "Tech specs",
       value: [
-        "Ten presentations covering fundamentals of frontend programming, of which I made eight",
-        "Nine CodePen examples to illustrate some CSS concepts",
-        "A post-session exam to evaluate progress"
+        "System that interfaces with radio-frequency (RF) controlled outlets via rfoutlet, an interface to send signals from a transmitter chip",
+        "Raspberry Pi web server bridge between app and transmitter, including a custom system status mechanism using PHP",
+        "A lightweight web app built with HTML, CSS, and JavaScript",
+        "Two iPhone 4 devices with extra capabilities, power management, custom appearance"
       ]
     },
     {
       key: "Status as of December 2020",
-      value: "Still in use! Works as well as ever."
+      value: "I still use it! Works as well as ever."
     }
   ])
 }}
@@ -126,7 +128,7 @@ opengraph: Learn more about the system that has dutifully powered my apartment l
 {{
   related([
     {
-      leader: "Here’s a fun one",
+      leader: "TKTKTKTKTKTKTKTKTKTK TODO: TKTK Here’s a fun one",
       title: "Project Title",
       description: "The great description I have",
       url: "/foo"
