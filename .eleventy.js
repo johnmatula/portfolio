@@ -16,6 +16,7 @@ module.exports = (function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/supporting/vendor-js": "js" });
   eleventyConfig.addPassthroughCopy({ "src/supporting/fonts": "fonts" });
   eleventyConfig.addPassthroughCopy({ "src/supporting/images": "img" }); // unnecessary???
+  eleventyConfig.addPassthroughCopy({ "src/supporting/pdf": "pdf" });
   eleventyConfig.addPassthroughCopy({ "src/supporting/favicon": "/" });
 
   eleventyConfig.addNunjucksFilter("is_string", function(obj) {
