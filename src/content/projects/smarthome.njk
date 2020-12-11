@@ -25,31 +25,42 @@ opengraph: Learn how I built my custom apartment lighting system, going strong s
 
   <p>The easy solution here has been to skip the ceiling lights altogether, relying on lamps and custom lights to illuminate a space. In the first apartment I did that in, though, I quickly faced the downside of having separate switches for every single light. Without a single wall switch, I found myself running around <a href="https://www.youtube.com/watch?v=nVvxOwxuk_w">trying to find the clickers or the switches or the doodads</a> for each light.
 
-  <p>To get soft, customized lighting without all fiddling around with all those switches, I decided to look into a “smart home” solution to make everything centralized. And instead of diving right into a pre-built solution, I decided to start by researching DIY projects to build myself something totally custom.</p>
+  <p>To get customized lighting without all that fiddling around with all those switches, I decided to look into a “smart home” solution to make everything centralized. And instead of diving right into a pre-built solution, I decided to start by researching DIY projects to build myself something totally custom.</p>
 </section>
 
 <section class="section">
   {{ sectionHeader("Process") }}
+  <div class="section__contents">
+    {{ asideStart() }}
+    {% responsiveImage "./src/supporting/images/breadboard.jpg", "The breadboard with the transmitter for my wireless outlets", "", "div" %}
+    {{ asideEnd("The breadboard and transmitter at the crux of this project. (Don’t rely on me for your next electrical engineering project.)") }}
 
-  <p>{{ leadIn("My quest for a DIY") }} smart outlet system started with <a href="https://timleland.com/wireless-power-outlets/">an article</a> that explained how to improve upon some remote-controlled outlets by using a Raspberry Pi. The guide identified <a href="https://github.com/timleland/rfoutlet">rfoutlet</a>, an open-source program that sent outlet commands, the same ones that the remote control did, from a transmitter chip connected to the Pi. My first step was to wire up my first-ever breadboard to get the transmitter working. (Side note, don’t rely on me for your next microprocessors project.)</p>
+    <p>{{ leadIn("My quest for a DIY") }} smart outlet system started with <a href="https://timleland.com/wireless-power-outlets/">an article</a> that explained how a particular <a href="https://www.etekcity.com/product/100068">brand</a> of remote-controlled outlets could be improved upon using a Raspberry Pi. The guide identified <a href="https://github.com/timleland/rfoutlet">rfoutlet</a>, an open-source program that sent outlet commands, the same ones that the remote control did, from a transmitter chip connected to the Pi. My first step was to wire up my first-ever breadboard to get the transmitter working.</p>
 
-  <p>The guide then described how to set up a little web server on the Pi so that someone could send “outlet on” and “outlet off” commands from a webpage. That example webpage was mostly a proof-of-concept, since it looked and worked just like the physical remote control that came with the wireless outlets. As this was the end of the guide and I wanted to push the interface further, it was time for me to start tinkering on my own.</p>
+    <p>The guide then described how to set up a little web server on the Pi so that someone could send “outlet on” and “outlet off” commands from a webpage. That example webpage was mostly a proof-of-concept, since it looked and worked just like the physical remote control that came with the wireless outlets. As this was the end of the guide and I wanted to push the interface further, it was time for me to start tinkering on my own.</p>
 
-  <h3 class="subheader">Giving the outlets a brain</h3>
-  <p>The crucial thing to add was a maintained system status, letting me know which lights were on and which were off. Out of the box, the outlets didn’t come with a centralized hub to keep track of this—that’s why both the physical remote and the example webpage were forced to maintain separate buttons for “on” and “off.” With a whole Raspberry Pi at my disposal, though, I could easily add something to keep a record of the system’s status.</p>
+    <h3 class="subheader">Giving the outlets a brain</h3>
+    <p>The crucial thing to add was a maintained system status, letting me know which lights were on and which were off. Out of the box, the outlets didn’t come with a centralized hub to keep track of this&thinsp;—&thinsp;that’s why both the physical remote and the example webpage were forced to maintain separate buttons for “on” and “off.” With a whole Raspberry Pi at my disposal, though, I could easily add something to keep a record of the system’s status.</p>
 
-  <p>So… I did! I routed the outlet commands through a state object so that I could keep track of each outlet’s status, adding extra metadata like its room and light type. By adding that, I no longer had to rely on stateless, separate buttons and could start to add in all sorts of helpful controls to turn on specific lighting combinations, like:</p>
-  <ul>
-    <li>Turning on all lights in a particular room</li>
-    <li>Setting and swapping out predefined scenes, like “waking up” or “evening”</li>
-    <li>Controlling separate outlets together, like a pair of lamps behaving as one “unit”</li>
-    <li>Turning off everything before leaving</li>
-  </ul>
+    <p>So… I did! I routed the outlet commands through a state object so that I could keep track of each outlet’s status, adding extra metadata like its room and light type. By adding that, I no longer had to rely on stateless, separate buttons and could start to add in all sorts of helpful controls to turn on specific lighting combinations, like:</p>
+    <ul>
+      <li>Turning on all lights in a particular room</li>
+      <li>Setting and swapping out predefined scenes, like “waking up” or “evening”</li>
+      <li>Controlling separate outlets together, like a pair of lamps behaving as one “unit”</li>
+      <li>Turning off everything before leaving</li>
+    </ul>
+  </div>
 
   <h3 class="subheader">Balancing functionality with aesthetics</h3>
-  <p>From the start of the project, I planned to use a dedicated device to display the switches and status so that turning on an outlet would be just as easy as flipping a light switch. Since this thing (specifically, a trusty ol’ iPhone 4) would be permanently affixed to the wall, I wanted it to have a purposeful, well-designed appearance that presented all these controls and statuses in a clear way.</p>
+  <div class="section__contents">
+    {{ asideStart() }}
+    {% responsiveImage "./src/supporting/images/smarthome-screenshot.png", "A screenshot of Smarthome", "", "div" %}
+    {{ asideEnd("Smarthome with the Pride color theme enabled. The layout is based off of my T-shaped apartment, and each light button is positioned in roughly the same spot as in my home.") }}
 
-  <p>Taking some design cues from other products, like an <a href="https://developer.apple.com/design/human-interface-guidelines/watchos/visual/layout/">Apple Watch</a> or Google Nest, I opted for a dark interface so that the controls merged seamlessly with the iPhone’s black display bezel. For the interface itself, I used an abstracted layout of my apartment and positioned the buttons corresponding to an outlet’s physical location. To indicate status, each button was represented by an icon that becomes highlighted when the outlet is on. Finally, I put scene buttons and the “everything off” button at the bottom of the screen.</p>
+    <p>From the start of the project, I planned to use a dedicated device to display the switches and status so that turning on an outlet would be just as easy as flipping a light switch. Since this thing (specifically, a trusty ol’ iPhone 4) would be permanently affixed to the wall, I wanted it to have a purposeful, well-designed appearance that presented all these controls and statuses in a clear way.</p>
+
+    <p>Taking some design cues from other products, like an <a href="https://developer.apple.com/design/human-interface-guidelines/watchos/visual/layout/">Apple Watch</a> or Google Nest, I opted for a dark interface so that the controls merged seamlessly with the iPhone’s black display bezel. For the interface itself, I used an abstracted layout of my apartment and positioned the buttons corresponding to an outlet’s physical location. To indicate status, each button was represented by an icon that becomes highlighted when the outlet is on. Finally, I put scene buttons and the “everything off” button at the bottom of the screen.</p>
+  </div>
 
   <h3 class="subheader">Iterate, iterate, and iterate some more</h3>
 
@@ -60,7 +71,9 @@ opengraph: Learn how I built my custom apartment lighting system, going strong s
   <li>the ever-mighty date and time</li>
   </ul>
 
-  <p>Finally, to make the always-on-the-wall iPhone behave even more like a home appliance, I also enhanced it with some <a href="https://en.wikipedia.org/wiki/IOS_jailbreaking">custom functionality</a>. Doing so allowed me to precisely adjust the iPhone’s brightness based on ambient light, disable the lock screen, and schedule a period overnight where the phone goes to sleep automatically.</p>
+  <p>I also made the always-on-the-wall iPhone behave even more like a home appliance by enhancing it with some <a href="https://en.wikipedia.org/wiki/IOS_jailbreaking">custom functionality</a>. Doing so allowed me to precisely adjust the iPhone’s brightness based on ambient light, disable the lock screen, and schedule a period overnight where the phone goes to sleep automatically.</p>
+
+  <p>More recently, I added a couple more old iPhones to the mix&thinsp;—&thinsp;they’re inexpensive on eBay these days&thinsp;—&thinsp;and a menubar app on my Mac, keeping my system scaling and adapting just for me.</p>
 </section>
 
 
