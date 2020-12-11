@@ -29,14 +29,14 @@ module.exports = (function(eleventyConfig) {
     }
 
     let stats = await Image(src, {
-      widths: [250, 500, null],
+      widths: [250, 500, 1000, null],
       formats: [outputFormat],
       urlPath: "/img/",
       outputDir: "./dist/img/",
     });
     let lowestSrc = stats[outputFormat][0];
     let highestSrc = stats[outputFormat][stats[outputFormat].length - 1];
-    let sizes = "500w 100vw"; // TODO: Make sure you customize this!
+    let sizes = "250w 500w 1000w 100vw"; // TODO: Make sure you customize this!
 
     let containerStart = "", containerEnd = "", linkStart = "", linkEnd = "";
 
