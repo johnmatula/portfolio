@@ -29,7 +29,9 @@
     width: calc(((100% - (var(--gap-grid-minor) * 5)) / 6 * 3) + (var(--gap-grid-minor) * 1));
   }
 
+  // TODO: Investigate a better way to handle floats and grid elements! Gah!
   @include at-least(w5) {
+    height: 0;
     margin-right: calc(-1 * (((100% - (var(--gap-grid-minor) * 5)) / 6 * 4) + var(--gap-grid-minor)));
     width: calc(((100% - (var(--gap-grid-minor) * 5)) / 6 * 4));
   }
