@@ -100,6 +100,8 @@
   --fill-photoswipe: var(--translucent-white-96);
   --fill-hud: rgba(246,245,243,.90); // TODO!
   --fill-submenu-expanded: var(--hue-red-500);
+  --fill-diagram-primary: var(--hue-blue-500);
+  --fill-diagram-secondary: var(--hue-shade-300);
 
   --stroke-logo-filled: var(--hue-red-300);
   --stroke-logo-filled-active: var(--hue-red-700);
@@ -109,12 +111,14 @@
   --stroke-navbar-separator: var(--translucent-shade-54);
   --stroke-hud: var(--translucent-shade-24);
   --stroke-body-link: var(--translucent-red-20);
+  --stroke-diagram-primary: var(--hue-blue-500);
+  --stroke-diagram-connector: var(--hue-red-300);
 
   @include is-theme(dark) {
     --color-text-primary: var(--hue-shade-0);
     --color-text-secondary: var(--hue-shade-300);
     --color-text-content: var(--hue-shade-100);
-    --color-body-link: var(--hue-red-300);
+    --color-body-link: var(--hue-red-100);
     --color-body-link-hover: var(--hue-shade-100);
     --color-body-link-active: var(--hue-shade-0);
     --color-nav-link: var(--hue-shade-0);
@@ -132,6 +136,8 @@
     --fill-photoswipe: var(--translucent-shade-93);
     --fill-hud: rgba(32,31,29,.86); // TODO!
     --fill-submenu-expanded: var(--hue-red-700);
+    --fill-diagram-primary: var(--hue-blue-100);
+    --fill-diagram-secondary: var(--hue-shade-700);
 
     --stroke-logo-filled: var(--hue-red-500);
     --stroke-logo-filled-active: var(--hue-red-300);
@@ -140,6 +146,8 @@
     --stroke-navbar-separator: var(--translucent-white-30);
     --stroke-hud: var(--translucent-white-20);
     --stroke-body-link: var(--translucent-red-36);
+    --stroke-diagram-primary: var(--hue-blue-100);
+    --stroke-diagram-connector: var(--hue-red-500);
   }
 
 
