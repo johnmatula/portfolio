@@ -19,9 +19,9 @@ opengraph: Learn how I built my custom apartment lighting system, going strong s
 <section class="section">
   {{ sectionHeader("Motivation") }}
 
-  <p>{{ leadIn("I love living in cities,") }} which means I’ve been an apartment dweller for several years. Though every apartment is different, each place has had its share of questionable décor decisions. As a renter, I’ve made my peace with things like antique kitchen appliances and unappealing bathroom hardware. But in each place, my most common gripe has always been with the overhead lighting.</p>
+  <p>{{ leadIn("I love living in cities,") }} which means I’ve been an apartment dweller for several years. Though every apartment is different, each place has had its share of questionable décor decisions. As a renter, I’ve made my peace with things like antique kitchen appliances and unappealing bathroom hardware. But in each one, my most common gripe has always been with the overhead lighting.</p>
 
-  <p>Each place I’ve lived in has had its own, uh, character: finial-adorned domes (<a href="https://www.apartmenttherapy.com/boob-lamps-36720027">“boob” lights</a>, if you prefer), <a href="https://www.homedepot.com/p/Hunter-Highbury-II-52-in-LED-Indoor-Matte-Black-Ceiling-Fan-with-Light-Kit-52028/300593308#product-overview">ceiling fan floodlights</a>, the <a href="https://www.shadesoflight.com/products/vintage-modern-crystal-mini-chandelier">most miniature chandeliers</a> ever. And if the look of the fixtures themselves wasn’t great, the light they gave off was worse: overpowering, flickery, and inefficient.</p>
+  <p>Each place I’ve lived in has had its own, uh, character: finial-adorned domes (aka <a href="https://www.apartmenttherapy.com/boob-lamps-36720027">“boob” lights</a>), <a href="https://www.homedepot.com/p/Hunter-Highbury-II-52-in-LED-Indoor-Matte-Black-Ceiling-Fan-with-Light-Kit-52028/300593308#product-overview">ceiling fan floodlights</a>, the <a href="https://www.shadesoflight.com/products/vintage-modern-crystal-mini-chandelier">most miniature chandeliers</a> ever. And if the look of the fixtures themselves wasn’t great, the light they gave off was worse: flickering, overpowering, and inefficient.</p>
 
   <p>The easy solution here has been to skip the ceiling lights altogether, relying on lamps and custom lights to illuminate a space. In the first apartment I did that in, though, I quickly faced the downside of having separate switches for every single light. Without a single wall switch, I found myself running around <a href="https://www.youtube.com/watch?v=nVvxOwxuk_w">trying to find the clickers or the switches or the doodads</a> for each light.
 
@@ -37,12 +37,16 @@ opengraph: Learn how I built my custom apartment lighting system, going strong s
 
     <p>{{ leadIn("My quest for a DIY") }} smart outlet system started with <a href="https://timleland.com/wireless-power-outlets/">an article</a> that explained how a particular <a href="https://www.etekcity.com/product/100068">brand</a> of remote-controlled outlets could be improved upon using a Raspberry Pi. The guide identified <a href="https://github.com/timleland/rfoutlet">rfoutlet</a>, an open-source program that sent outlet commands, the same ones that the remote control did, from a transmitter chip connected to the Pi. My first step was to wire up my first-ever breadboard to get the transmitter working.</p>
 
-    <p>The guide then described how to set up a little web server on the Pi so that someone could send “outlet on” and “outlet off” commands from a webpage. That example webpage was mostly a proof-of-concept, since it looked and worked just like the physical remote control that came with the wireless outlets. As this was the end of the guide and I wanted to push the interface further, it was time for me to start tinkering on my own.</p>
+    <p>The guide then described how to set up a little web server on the Pi so that someone could send “outlet on” and “outlet off” commands from a webpage. That example webpage was mostly a proof-of-concept, since it looked and worked just like the physical remote control that came with the wireless outlets. Since that was where the guide ended, though, and I wanted to push the interface further, it was time for me to start tinkering on my own.</p>
 
     <h3 class="subheader">Giving the outlets a brain</h3>
     <p>The crucial thing to add was a maintained system status, letting me know which lights were on and which were off. Out of the box, the outlets didn’t come with a centralized hub to keep track of this&thinsp;—&thinsp;that’s why both the physical remote and the example webpage were forced to maintain separate buttons for “on” and “off.” With a whole Raspberry Pi at my disposal, though, I could easily add something to keep a record of the system’s status.</p>
 
-    <p>So… I did! I routed the outlet commands through a state object so that I could keep track of each outlet’s status, adding extra metadata like its room and light type. By adding that, I no longer had to rely on stateless, separate buttons and could start to add in all sorts of helpful controls to turn on specific lighting combinations, like:</p>
+    {{ asideStart("aside--full svg--scale-stroke") }}
+    {% include "src/supporting/inline-svg/smarthome-diagram.svg" %}</p>
+    {{ asideEnd("This system overview shows all the parts that make Smarthome work. To turn on a light, I tap a button on the iPhone web app. The tap event fires an “outlet on” command from the web server to the rfoutlet program, which sends the RF signal via the chip on the breadboard. The radio signal is picked up by the outlet device, and the light flicks on.")}}
+
+    <p>So… I did! I routed the outlet commands through a state object so that I could keep track of each outlet’s status, adding extra metadata like its room and light type. By adding that, I no longer had to rely on separate, stateless buttons and could start to add in all sorts of helpful controls to turn on specific lighting combinations, like:</p>
     <ul>
       <li>Turning on all lights in a particular room</li>
       <li>Setting and swapping out predefined scenes, like “waking up” or “evening”</li>
@@ -64,11 +68,11 @@ opengraph: Learn how I built my custom apartment lighting system, going strong s
 
   <h3 class="subheader">Iterate, iterate, and iterate some more</h3>
 
-  <p>As time went on, I iteratively added more features to make this project feel less generic and more like me. I added things like:</p>
+  <p>As time went on, I iteratively added more features to make this system feel less generic and more like a custom project. I added things like</p>
   <ul>
-  <li>color themes, including a subtle rainbow theme for Pride 2019</li>
-  <li>current weather, to take advantage of some free space in the interface</li>
-  <li>the ever-mighty date and time</li>
+  <li>color themes, including a subtle rainbow theme for Pride 2019,</li>
+  <li>current weather, to take advantage of some free space and make the phone on the wall even more useful, and</li>
+  <li>the ever-mighty date and time.</li>
   </ul>
 
   <p>I also made the always-on-the-wall iPhone behave even more like a home appliance by enhancing it with some <a href="https://en.wikipedia.org/wiki/IOS_jailbreaking">custom functionality</a>. Doing so allowed me to precisely adjust the iPhone’s brightness based on ambient light, disable the lock screen, and schedule a period overnight where the phone goes to sleep automatically.</p>
@@ -78,14 +82,9 @@ opengraph: Learn how I built my custom apartment lighting system, going strong s
 
 
 {{ galleryStart() }}
-{% responsiveImage "./src/supporting/images/sample.jpg", "A cool thing", "responsive--halfwide" %}
-{% responsiveImage "./src/supporting/images/wowow.png", "A cool thing", "responsive--halfwide" %}
-{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
-{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
-{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
-{% responsiveImage "./src/supporting/images/sample.jpg", "The second cool thing", "responsive--halfwide" %}
-{% responsiveImage "./src/supporting/images/wowow.png", "The second cool thing", "responsive--halfwide responsive--doublehigh" %}
-{% responsiveImage "./src/supporting/images/sample.jpg", "The second cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/smarthome-wall.jpg", "The second cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/smarthome-menubar.png", "The second cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/smarthome-hall.jpg", "The second cool thing", "responsive--fullwide" %}
 {{ galleryEnd() }}
 
 
@@ -127,8 +126,9 @@ opengraph: Learn how I built my custom apartment lighting system, going strong s
       value: [
         "System that interfaces with radio-frequency (RF) controlled outlets via rfoutlet, an interface to send signals from a transmitter chip",
         "Raspberry Pi web server bridge between app and transmitter, including a custom system status mechanism using PHP",
-        "A lightweight web app built with HTML, CSS, and JavaScript",
-        "Two iPhone 4 devices with extra capabilities, power management, custom appearance"
+        "Lightweight web app built with HTML, CSS, and JavaScript",
+        "Two iPhone 4 devices with extra capabilities for finer power management and appearance control",
+        "Simple menubar app for macOS"
       ]
     },
     {
