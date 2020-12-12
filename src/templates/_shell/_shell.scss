@@ -79,3 +79,23 @@ a.anchor:target {
   margin: 0;
   padding: 0;
 }
+
+.diagram {
+  &__primary-fill {
+    fill: var(--fill-diagram-primary);
+    stroke: none;
+  }
+
+  &__primary-stroke {
+    fill: none;
+    stroke: var(--stroke-diagram-primary);
+  }
+
+  &__secondary {
+    fill: var(--fill-diagram-secondary);
+  }
+
+  &__connector {
+    stroke: var(--stroke-diagram-connector);
+  }
+}
