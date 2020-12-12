@@ -22,7 +22,15 @@
     grid-column: span 3;
   }
 
+  .responsive--fullwide {
+    grid-column: span 6;
+  }
+
   .responsive--doublehigh {
     grid-row: span 2;
+  }
+
+  .responsive--fitend img {
+    object-fit: blah;
   }
 }
