@@ -162,7 +162,7 @@
         stroke: none;
 
         @include is-theme(dark) {
-          fill: var(--hue-blue-700);
+          fill: var(--hue-blue-500);
         }
       }
     }
