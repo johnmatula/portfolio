@@ -28,7 +28,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         continue;
       }
 
-      linkEl = figureEl.children[0]; // <a> element
+      linkEl = figureEl.querySelector("a") // <a> element
 
       size = linkEl.getAttribute('data-size').split('x');
 
@@ -154,6 +154,9 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
       showHideOpacity: true,
 
+      // TODO: reenable
+      history: false,
+
       getThumbBoundsFn: function(index) {
         if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           console.log(window)
@@ -176,10 +179,10 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
       hideAnimationDuration: 200,
 
       // TODO: Remove dev-only properties...
-timeToIdle: 3000,
+      timeToIdle: 3000,
 
-// Same as above, but this timer applies when mouse leaves the window
-timeToIdleOutside: 0,
+      // Same as above, but this timer applies when mouse leaves the window
+      timeToIdleOutside: 0,
 
     };
 
@@ -219,9 +222,12 @@ timeToIdleOutside: 0,
   // loop through all gallery elements and bind events
   var galleryElements = document.querySelectorAll( gallerySelector );
 
+  // TODO: Do this in an alpine.js way
   for(var i = 0, l = galleryElements.length; i < l; i++) {
     galleryElements[i].setAttribute('data-pswp-uid', i+1);
-    galleryElements[i].onclick = onThumbnailsClick;
+    galleryElements[i].querySelectorAll('.responsive__link').forEach((ele) => {
+      ele.onclick = onThumbnailsClick
+    });
   }
 
   // Parse URL and open gallery if it contains #&pid=3&gid=1, only after load
