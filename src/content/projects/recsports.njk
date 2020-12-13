@@ -25,28 +25,37 @@ opengraph: Learn more about the website I redesigned for Umich Rec Sports and ho
 <section class="section">
   {{ sectionHeader("Process") }}
 
-  <p>{{ leadIn("I started out this project") }} by corralling the key stakeholders to discuss each person’s goal for the site. We also created <a href="https://drive.google.com/drive/u/3/folders/0B_U98JUDffu3NDZMeXBLd2g0cW8">key personas</a> at that initial meeting so that we could stay focused amidst all the information we were trying to clean up. This helped us set a clear direction for the site, keeping any possible scope creep in check.</p>
+  <p>{{ leadIn("I started out this project") }} by corralling the key stakeholders to discuss each person’s goal for the site. We also created <a href="https://drive.google.com/open?id=0B_U98JUDffu3U0RDc1I2UmFscE0">key personas</a> at that initial meeting so that we could stay focused amidst all the information we were trying to clean up. This helped us set a clear direction for the site, keeping any possible scope creep in check.</p>
 
   <p>That initial meeting was the first of many. It was important to me to hold regular check-ins so that the design process was as open as it could be, collecting feedback iteratively and quickly. As our design meetings continued, I also tested my plans and designs with actual users to validate them, and I reported back the progress to stakeholders.</p>
 
 <div class="section__contents">
   {{ asideStart() }}
-  {% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing", "", "div" %}
-  {{ asideEnd("A good example of this was a custom Google Calendar module that displays the schedule for group exercise classes, with rationale for spending time on it.") }}
+  {% responsiveImage "./src/supporting/images/recsports-pagestructure.png", "Wireframes showing overall page structure", "", "div" %}
+  {{ asideEnd("Going with a single-page structure was a radical departure for Rec Sports. That’s why I held individual meetings with each stakeholder to discuss the plan, address concerns, and help plan content.") }}
 
   <p>I held smaller meetings, too, which were critical to get buy-in for my radically different site architecture and content strategy. As a reaction to the old site’s bloated nature, I worked on the idea of a single-page structure for each major program of the Rec Sports department. I also proposed a navigation and site structure that supported this (so that pages wouldn’t simply turn into long-scrolling nightmares). This was only successful, though, with small work sessions with each subgroup so that I could explain this design, review their current content, and help them craft succinct copy. These sessions reassured stakeholders that their group would have proper representation on the site, all while helping to build up our mutual trust for the entirety of the project.</p>
 
   <p>For this project, I was both the lead UX designer and the lead frontend developer, so I constantly evaluated the feasibility and value of design decisions. Take, for instance, my idea for a custom Google Calendar module that displayed group exercise class schedules. While a rich feature like this would mean extra work for the dev team (me), the UX designer (still me) had a convincing rationale for it to be a flagship feature of the site. Balancing feasibility with product value is how I went about prioritizing all of the features on the site, which included modular components, instant facility info, and an entirely-custom WordPress editor interface to help content managers make easy updates.</p>
-  </div>
+</div>
+<div class="section__contents">
+
+  {{ asideStart("aside--full") }}
+  {% responsiveImage "./src/supporting/images/recsports-groupx.png", "A screenshot of the group exercise schedule I built", "", "div" %}
+  {{ asideEnd("I was able to design, test, and build a group exercise schedule module for the site. Since this program was a main driver of new memberships, it made sense to spend time creating a rich and valuable module.") }}
 
   <p>After launch, I kept evaluating the overall success of the site with testing and analytics&thinsp;—&thinsp;in fact, this helped us make a key terminology change early on. We also tracked membership signups as a key success metric, and we saw a 19-percent increase immediately following the launch of the site.</p>
 
-  <p>Maybe that’s why, months later, my work made its way elsewhere, like at <a href="https://recsports.oregonstate.edu">Oregon State University</a> and the <a href="https://recsports.virginia.edu">University of Virginia</a>… 😉</p>
+  <p>Maybe that’s why, months later, my work seemed to make its way elsewhere, like <a href="https://recsports.oregonstate.edu">Oregon State University</a> and the <a href="https://recsports.virginia.edu">University of Virginia</a>… 😉</p>
+  </div>
 </section>
 
 
 {{ galleryStart() }}
-{% responsiveImage "./src/supporting/images/sample.jpg", "A cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/recsports-desktop.png", "Screenshot of Rec Sports site on a desktop", "responsive--fullwide" %}
+{% responsiveImage "./src/supporting/images/recsports-hours.png", "Screenshot of Rec Sports homepage on an iPhone", "responsive--thirdwide" %}
+{% responsiveImage "./src/supporting/images/recsports-form.png", "Screenshot of a typical form on the Rec Sports website", "responsive--thirdwide" %}
+{% responsiveImage "./src/supporting/images/recsports-nav.png", "Screenshot of the nav for the one-page structure of the Rec Sports website", "responsive--thirdwide" %}
 {{ galleryEnd() }}
 
 

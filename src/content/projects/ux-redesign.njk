@@ -18,14 +18,26 @@ opengraph: See how we held over a dozen sessions to analyze our platform’s ben
 
 <section class="section">
   {{ sectionHeader("Motivation") }}
+  <div class="section__contents">
+    <p>{{ leadIn("It was about a year") }} into my time as Senior Product Designer at CrowdTwist, and my team had implemented a good process to make sure new features were vetted and understood before being released. This was working well for new additions to our platform, but I noticed that we lacked the same sort of thing for existing features, especially legacy parts that had never been thoroughly tested with users. With workflows becoming more complex, it was time to complete discovery of the current state of affairs so that suggest some improvements.</p>
 
-  <p>{{ leadIn("It was about a year") }} into my time as Senior Product Designer at CrowdTwist, and my team had implemented a good process to make sure new features were vetted and understood before being released. This was working well for new additions to our platform, but I noticed that we lacked the same sort of thing for existing features, especially legacy parts that had never been thoroughly tested with users. With workflows becoming more complex, it was time to complete discovery of the current state of affairs so that suggest some improvements.</p>
+    {{ asideStart("aside--full") }}
+    {% responsiveImage "./src/supporting/images/uxr-process.png", "A stylized overview of the CrowdTwist UX Redesign process.", "", "div" %}
+    {{ asideEnd("We had an opportunity to inclusively redesign our platform, so we tried to illustrate our iterative process as simply as possible in order to encourage everyone’s participation.") }}
+  </div>
+
 </section>
 
 <section class="section">
   {{ sectionHeader("Process") }}
 
+  <div class="section__contents">
+
   <p>{{ leadIn("I put together a plan") }} for us to take stock of things in the form of 13 feedback sessions that covered the entire breadth of the platform. Each meeting was an hour long and was open to the entire organization, including engineering, client success, marketing, and sales. I wanted to keep these sessions broad and open so that my resource-constrained, two-person team could collect a wealth of information at once, tackle the most pressing issues first, and save deeper investigations for later.</p>
+
+  {{ asideStart() }}
+    {% responsiveImage "./src/supporting/images/uxr-storyboard.png", "An agenda slide from one of the sessions", "", "div" %}
+  {{ asideEnd("I included a participatory design exercise in each session. Here, I illustrated an example storyboard for a session around customer service workflows.") }}
 
   <p>Each session had two major parts: a discussion and a participatory design exercise. We started with an open forum of the benefits and drawbacks of that particular session’s topic. In these dialogues, we made sure to seek out a balance of opinions, avoiding sole reliance on the most vocal participant. These casual discussions helped warm everyone up for the hands-on exercise, which was something like card sorting, sketching, or storyboarding.</p>
 
@@ -34,11 +46,15 @@ opengraph: See how we held over a dozen sessions to analyze our platform’s ben
   <p>Once we completed all of the sessions, we created a prioritized plan of the areas that needed UX attention. We estimated technical complexity and design complexity for different features and charted that onto a scatterplot. Whatever was in the lower-left quadrant&thinsp;—&thinsp;lowest tech effort and design effort&thinsp;—&thinsp;formed the list of areas that were best to start with. Combined with our list of topics to investigate further, we had a sound path forward to improve the CrowdTwist platform.</p>
 
   <p>This project wouldn’t have been successful without the excellent participation from the whole company or the hard work that my colleague put into each session. So, as a way to share our plan and thank everyone for their work, we wrapped up everything by hosting a UX-themed happy hour.</p>
+
+</div>
 </section>
 
 
 {{ galleryStart() }}
-{% responsiveImage "./src/supporting/images/sample.jpg", "powerpoints, happy hour pics, card sorting exercises, post-it wall", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/uxr-sketches.jpg", "A wall of Post-It sketches after a session", "responsive--fullwide" %}
+{% responsiveImage "./src/supporting/images/uxr-cardsort.jpg", "A participant’s open card-sort exercise", "responsive--twothirdwide" %}
+{% responsiveImage "./src/supporting/images/uxr-happyhour.jpg", "Those cards used as decorations for a UX-themed happy hour", "responsive--thirdwide" %}
 {{ galleryEnd() }}
 
 

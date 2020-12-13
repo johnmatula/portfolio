@@ -10,7 +10,7 @@ opengraph: Learn more about the courses I led that bolstered and improved the fr
 
 {% from "src/components/aside/_aside.njk" import asideStart, asideEnd %}
 {% from "src/components/details/_details.njk" import details %}
-{% from "src/components/gallery/_gallery.njk" import galleryStart, galleryEnd %}
+{% from "src/components/gallery/_gallery.njk" import galleryStart, galleryEnd, galleryMessage %}
 {% from "src/components/lead-in/_lead-in.njk" import leadIn %}
 {% from "src/components/section-header/_section-header.njk" import sectionHeader %}
 {% from "src/components/related/_related.njk" import related %}
@@ -42,6 +42,12 @@ opengraph: Learn more about the courses I led that bolstered and improved the fr
 
   <p>I expanded each topic into a full presentation. For each lecture’s slides, I cited high-quality sources like the <a href="https://developer.mozilla.org/en-US/">MDN Docs</a>, <a href="https://css-tricks.com">CSS-Tricks</a>, and <a href="https://www.smashingmagazine.com/">Smashing Magazine</a>. I started with broad explanations and then dove deep with example code, custom diagrams, and <a href="https://codepen.io/collection/AvVyGk">a collection of CodePens</a> to help give devs different ways to grapple course material.</p>
 
+  <div class="section__contents">
+  {{ asideStart("aside--full") }}
+  {% responsiveImage "./src/supporting/images/fea-codepens.png", "Screenshot of the Frontend Academy collection of CodePen examples", "", "div" %}
+  {{ asideEnd("The CodePen examples I adapted and put together supplemented each lecture’s slides and diagrams.")}}
+</div>
+
   <p>We then presented each topic in a weekly, one-hour Zoom call, talking alongside the slides and answering questions along the way. Each session was recorded, which we uploaded alongside the the slides and additional examples so that engineers could refer to them later on.</p>
 
   <p>Overall, we made good progress on everyone’s understanding of frontend coding. We wrote a pre- and post-academy quiz to track the team’s progress, and we saw a marked improvement of several percentage points. Not bad for a ten-week crash course!</p>
@@ -49,15 +55,12 @@ opengraph: Learn more about the courses I led that bolstered and improved the fr
 </section>
 
 
-{{ galleryStart() }}
-{% responsiveImage "./src/supporting/images/sample.jpg", "A cool thing", "responsive--halfwide" %}
-{% responsiveImage "./src/supporting/images/wowow.png", "A cool thing", "responsive--halfwide" %}
-{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
-{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
-{% responsiveImage "./src/supporting/images/xmasbokeh-07.jpg", "The second cool thing" %}
-{% responsiveImage "./src/supporting/images/sample.jpg", "The second cool thing", "responsive--halfwide" %}
-{% responsiveImage "./src/supporting/images/wowow.png", "The second cool thing", "responsive--halfwide responsive--doublehigh" %}
-{% responsiveImage "./src/supporting/images/sample.jpg", "The second cool thing", "responsive--halfwide" %}
+{{ galleryStart(parenthetical = "Selection of diagrams used in slides") }}
+{% responsiveImage "./src/supporting/images/fea-rule.png", "A cool thing", "responsive--fullwide" %}
+{% responsiveImage "./src/supporting/images/fea-cascade.png", "The second cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/fea-specificity.png", "The second cool thing", "responsive--halfwide" %}
+{% responsiveImage "./src/supporting/images/fea-flex.png", "A cool thing", "responsive--fullwide responsive--triplehigh" %}
+{{ galleryMessage("Diagrams are adapted from MDN Web Docs content. <a href='https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance'>Cascade and inheritance</a>, <a href='https://developer.mozilla.org/en-US/docs/Glossary/CSS_Selector'>CSS Selector</a>, and <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance'>Inheritance</a> by Mozilla Contributors are licensed under <a href='https://creativecommons.org/licenses/by-sa/2.5/'>CC-BY-SA 2.5</a>.") }}
 {{ galleryEnd() }}
 
 {{
@@ -84,7 +87,7 @@ opengraph: Learn more about the courses I led that bolstered and improved the fr
   details([
     {
       key: "Timeframe",
-      value: "May&hairsp;–&hairsp;July 2020"
+      value: "March&hairsp;–&hairsp;August 2020"
     },
     {
       key: "Skills in use",
