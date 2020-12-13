@@ -13,3 +13,7 @@
   </div>
 </div>
 {% endmacro %}
+
+{% macro galleryMessage(message, classList = "") %}
+<p class="gallery__message {{ classList }}">{{ message | safe }}</p>
+{% endmacro %}
