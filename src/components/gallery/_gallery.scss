@@ -22,11 +22,27 @@
     grid-column: span 3;
   }
 
+  .responsive--twothirdwide {
+    grid-column: span 4;
+  }
+
   .responsive--fullwide {
     grid-column: span 6;
   }
 
   .responsive--doublehigh {
     grid-row: span 2;
+  }
+
+  .responsive--triplehigh {
+    grid-row: span 3;
+  }
+
+  &__message {
+    @extend %typography-supporting;
+    @extend %link-body;
+
+    color: var(--color-text-secondary);
+    grid-column: span 6;
   }
 }
