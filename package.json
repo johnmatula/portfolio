@@ -4,15 +4,22 @@
   "description": "John’s personal portfolio site.",
   "main": "index.js",
   "scripts": {
-    "clean:dist": "rm -rf dist",
-    "build:sass": "sass --style=compressed --load-path=src/supporting/css src/components:src/supporting/generated/css src/supporting/css:src/supporting/generated/css src/templates:src/supporting/generated/css",
-    "build:js": "babel src/components src/templates --out-file src/supporting/generated/js/main.js --source-maps --ignore 'src/supporting/**/*.js'",
+    "clean:dist": "rm -rf dist-dev && rm -rf dist-prod",
+
+    "dev:sass": "sass --style=compressed --load-path=src/supporting/css src/components:src/supporting/generated/css src/supporting/css:src/supporting/generated/css src/templates:src/supporting/generated/css",
+    "dev:js": "babel src/components src/templates --out-file src/supporting/generated/js/main.js --source-maps --ignore 'src/supporting/**/*.js'",
+
+    "build:sass": "npm run dev:sass -- --no-source-map",
+    "build:js": "babel src/components src/templates --out-file src/supporting/generated/js/main.js --ignore 'src/supporting/**/*.js'",
+
     "watch:eleventy": "eleventy --serve",
-    "watch:eleventydebug": "DEBUG=Eleventy* eleventy --serve",
     "watch:sass": "npm run build:sass -- --watch",
     "watch:js": "watch 'npm run build:js' src/components src/templates",
-    "start": "npm run clean:dist && npm-run-all build:sass build:js --parallel watch:eleventy watch:sass watch:js",
-    "debug": "npm run clean:dist && npm-run-all build:sass build:js --parallel watch:eleventydebug watch:sass watch:js"
+
+    "minify:html": "html-minifier --input-dir dist-prod --output-dir dist-prod --file-ext html --collapse-whitespace --remove-comments --remove-script-type-attributes --remove-tag-whitespace  --minify-css true --minify-js true",
+
+    "start": "npm run clean:dist && npm-run-all dev:sass dev:js --parallel watch:eleventy watch:sass watch:js",
+    "build": "npm-run-all clean:dist build:sass build:js && NODE_ENV=prod eleventy && npm run minify:html"
   },
   "repository": {
     "type": "git",
@@ -31,7 +38,8 @@
   },
   "homepage": "https://github.com/johnmatula/portfolio#readme",
   "dependencies": {
-    "@11ty/eleventy-img": "^0.3.0"
+    "@11ty/eleventy-img": "^0.3.0",
+    "html-minifier": "^4.0.0"
   },
   "postcss": {
     "plugins": {
