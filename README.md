@@ -14,3 +14,9 @@ src
 ```
 
 Within `templates` is `shell`, the baseline layout that includes boilerplate HTML, nav, and the blank content area.
+
+## Things I need to clean up
+I was excited to get the site up ASAP, so there are some clean-up things left to do:
+* Use semantic color variables for Contact pane
+* Clean up Photoswipe UI logic
+* Add a couple of additional work examples (less involved than the case studies)
