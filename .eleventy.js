@@ -2,6 +2,9 @@ const CacheBuster = require('@mightyplow/eleventy-plugin-cache-buster');
 const Image = require("@11ty/eleventy-img");
 
 module.exports = (function(eleventyConfig) {
+  const env = process.env.NODE_ENV;
+  const outputDir = env === "prod" ? "dist-prod" : "dist-dev"
+
   const cacheBusterOptions = {
     createResourceHash(outputDirectory, url, target) {
       return Date.now();
@@ -23,6 +26,10 @@ module.exports = (function(eleventyConfig) {
     return typeof obj === "string";
   });
 
+  eleventyConfig.addShortcode("environmentData", function(prod, dev) {
+    return env === "prod" ? prod : dev;
+  });
+
   eleventyConfig.addNunjucksAsyncShortcode("responsiveImage", async function(src, alt, classList="responsive--thirdwide", container = "figure", outputFormat = "jpeg") {
     if(alt === undefined) {
       throw new Error(`No alt text provided on responsiveImage with source ${src}`);
@@ -32,7 +39,7 @@ module.exports = (function(eleventyConfig) {
       widths: [250, 500, 1000, null],
       formats: [outputFormat],
       urlPath: "/img/",
-      outputDir: "./dist/img/",
+      outputDir: `./${outputDir}/img/`,
     });
     let lowestSrc = stats[outputFormat][0];
     let highestSrc = stats[outputFormat][stats[outputFormat].length - 1];
@@ -69,7 +76,7 @@ module.exports = (function(eleventyConfig) {
   return {
     dir: {
       input: "src/content",
-      output: "dist",
+      output: outputDir,
       includes: "components",
       layouts: "../templates"
     }
