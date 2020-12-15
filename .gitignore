@@ -1,11 +1,9 @@
 .tmp
 node_modules
 dist
+dist-dev
+dist-prod
 .DS_Store
-src/html/case-studies/frontend-academy/*
-src/html/case-studies/product-design/*
-src/html/case-studies/seven-year-cleanup/*
-src/html/case-studies/ux-feedback-sessions/*
 src/markdown
 src/supporting/generated/*
 src/supporting/pdf/JohnMatula_resume.pdf
