@@ -16,7 +16,7 @@
     @extend %typography-title;
 
     grid-column: content-full;
-    margin: 0 0 var(--b1);
+    margin: var(--b1) 0;
   }
 
   &__summary {
