@@ -5,19 +5,14 @@
   "main": "index.js",
   "scripts": {
     "clean:dist": "rm -rf dist-dev && rm -rf dist-prod",
-
     "dev:sass": "sass --style=compressed --load-path=src/supporting/css src/components:src/supporting/generated/css src/supporting/css:src/supporting/generated/css src/templates:src/supporting/generated/css",
     "dev:js": "babel src/components src/templates --out-file src/supporting/generated/js/main.js --source-maps --ignore 'src/supporting/**/*.js'",
-
     "build:sass": "npm run dev:sass -- --no-source-map",
     "build:js": "babel src/components src/templates --out-file src/supporting/generated/js/main.js --ignore 'src/supporting/**/*.js'",
-
     "watch:eleventy": "eleventy --serve",
     "watch:sass": "npm run build:sass -- --watch",
     "watch:js": "watch 'npm run build:js' src/components src/templates",
-
     "minify:html": "html-minifier --input-dir dist-prod --output-dir dist-prod --file-ext html --collapse-whitespace --remove-comments --remove-script-type-attributes --remove-tag-whitespace  --minify-css true --minify-js true",
-
     "start": "npm run clean:dist && npm-run-all dev:sass dev:js --parallel watch:eleventy watch:sass watch:js",
     "build": "npm-run-all clean:dist build:sass build:js && NODE_ENV=prod eleventy && npm run minify:html"
   },
@@ -50,16 +45,16 @@
     ">= 0.75%"
   ],
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.11.1",
-    "@babel/plugin-transform-runtime": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
+    "@11ty/eleventy": "^0.11.1",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/plugin-transform-runtime": "^7.13.8",
+    "@babel/preset-env": "^7.13.8",
     "@mightyplow/eleventy-plugin-cache-buster": "^1.1.3",
     "autoprefixer": "^9.8.6",
     "npm-run-all": "^4.1.5",
-    "postcss-cli": "^7.1.1",
-    "sass": "^1.26.10",
+    "postcss-cli": "^7.1.2",
+    "sass": "^1.32.8",
     "watch": "^1.0.2"
   }
 }
