@@ -46,7 +46,7 @@
     ">= 0.75%"
   ],
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy": "^1.0.2",
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.8",
     "@babel/plugin-transform-runtime": "^7.13.8",
